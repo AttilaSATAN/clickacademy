@@ -1,0 +1,393 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"wid",
+				"width:   (property)"
+			],
+			[
+				"back",
+				"background-color:   (property)"
+			],
+			[
+				"kurum",
+				"kurumsal-mavi"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"ku",
+				"kurumsal-mavi"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"marg",
+				"margin-right"
+			],
+			[
+				"padd",
+				"padding-bottom:   (property)"
+			],
+			[
+				"bac",
+				"background-color:   (property)"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"template",
+				"templateUrl"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"for",
+				"Format Code"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"form",
+				"Format Code"
+			],
+			[
+				"format",
+				"Format Code"
+			],
+			[
+				"forma",
+				"Format Code"
+			],
+			[
+				"picke",
+				"Color picker"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"comme",
+				"Toggle Block Comment"
+			],
+			[
+				"commen",
+				"Toggle Block Comment"
+			],
+			[
+				"git ",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"gitc",
+				"Git: Commit"
+			],
+			[
+				"git:c",
+				"Git: Commit"
+			],
+			[
+				"Mar",
+				"Markdown Preview: Python Markdown: Preview in Browser"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 562.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Dev/Projects/hzesal1/client/app/partials/company-footer.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/concrete-block-machines-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/concrete-block-machines-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/less/app.less",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/less2css.sublime-settings",
+		"/C/Dev/Projects/hzesal1/client/app/js/states.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/vision-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/js/controllers.js",
+		"/C/Dev/Projects/hzesal1/client/app/js/app.js",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/angular-lupus.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/home-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/js/directives.js",
+		"/C/Dev/Projects/hzesal1/client/app/js/services.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/home-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/less/app.css",
+		"/C/Dev/Projects/hzesal1/client/app/css/app.css",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/Less2Css/less2css.sublime-settings",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/LESS/README.md",
+		"/C/Users/Attila/Desktop/angular-ui-router.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/concrete-block-machines-footer.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/company-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/about-us-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/company-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/concrete-block-machine.html",
+		"/C/Dev/Projects/hzesal1/.gitignore",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/angular-ui-bootstrap-tpls-0.9.0.js",
+		"/C/İş/Hammadde/BlankMap-World6-Equirectangular.svg",
+		"/C/Dev/Projects/hzesal1/client/app/img/dunya-hd.svg",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/docs/partials/api/angular.forEach.html",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/docs/partials/cookbook/form.html",
+		"/C/Dev/Projects/hzesal1/client/app/js/filters.js",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/docs/partials/misc/started.html",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/i18n/angular-locale_sw-tz.js",
+		"/C/Dev/Projects/hzesal1/Hammadde/azerbeycan1.xcf",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/i18n/angular-locale_pl.js",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/i18n/angular-locale_pl-pl.js",
+		"/C/Dev/Projects/hzesal1/client/app/template/lupus/disko/disko.html",
+		"/C/Dev/Hammadde/Angular/angular-bootstrap/bootstrap/README.md",
+		"/C/Users/Attila/AppData/Roaming/npm/node_modules/grunt/README.md",
+		"/C/Dev/Projects/hzesal1/client/app/template/lupus/disko/diskowrapper.html",
+		"/C/Dev/Projects/hzesal1/client/app/template/lupus/disko/main-wrapper.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/home.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/filtreler.html",
+		"/C/Users/Attila/Desktop/hosts",
+		"/C/Dev/Projects/hzesal1/hzesal.windows.dev",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Dev/Projects/hzesal1/nginx.conf.d/hzesal.windows.dev",
+		"/C/Dev/Projects/hzesal1/nginx.conf.d/cekirdek_emlak.dev",
+		"/C/Dev/nginx/conf/nginx.conf",
+		"/C/Dev/nginx/sites-enabled/hzesal.conf",
+		"/C/Dev/Projects/hzesal1/nginx.conf.d/cekirdek_emlak.conf",
+		"/C/Dev/Projects/hzesal1/nginx.conf.d/cekirdekemlak.dev.linux.conf.dev"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"360px",
+			"transform: rotateY(90deg);",
+			"Slider",
+			"img-circle",
+			"right",
+			"list-group-item",
+			"hz",
+			"sdf",
+			"Beton Parke Makinası Modeli",
+			"beton-santralleri",
+			"Modeli",
+			"=\"\"></",
+			">\n",
+			"land",
+			"carousel/carousel.",
+			"carousel",
+			"slide",
+			"UrlMatcher",
+			"$UrlMatcherFactory",
+			"'ui.router.util'",
+			"'ui'",
+			"'ui.router",
+			"cekirdekEmlak",
+			"gayrimenkul",
+			"cekirdekemlak"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "states.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 337.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

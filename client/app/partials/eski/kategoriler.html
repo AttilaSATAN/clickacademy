@@ -1,0 +1,145 @@
+<h2>
+	Kategori Duzenleme
+</h2>
+<!-- v2 -->
+<!-- <div class="container" ng-controller="KategoriDuzenlemeCtrl">
+	<div class="row">
+		<div class="col-md-12 kd-kategori-agaci">
+			<div class="kd-kategori-dali">
+				<button ng-click="kategoriGeri()" class="btn btn-default">
+					Üst Kategoriye Dön
+				</button>
+			</div>
+			<div class="kd-kategori-dali">
+				<span ng-show="!!!ekleniyor">
+					<button class="btn btn-sm" ng-click="ekleniyor=true;">
+						<span class="glyphicon glyphicon-plus">
+						</span>
+					</button>
+				</span>
+				<span class="input-group input-group-sm" ng-show="ekleniyor">
+					<form name="isimEklemeFormu">
+						<input ng-model="eklenen" class="form-control" ng-required="ekleniyor" />
+						<div class="input-group-btn">
+							<button class="btn btn-sm btn-info" ng-click="kategoriYeniEkle()" ng-disabled="!isimEklemeFormu.$valid">
+								Kaydet
+							</button>
+							<button class="btn btn-sm btn-warning" ng-click="ekleniyor=false">
+								İptal
+							</button>
+						</div>
+					</form>
+				</span>
+				<ul class="nav nav-pills nav-stacked">
+					<li ng-mouseenter="kategoriMouseEnter(kategori._id)" class="kategori-animasyon"
+					ng-repeat="kategori in listelenenKategoriler " ng-include="'/partials/kategoriDali.html'">
+					</li>
+				</ul>
+			</div>
+			<div class="kd-kategori-dali">
+				<span ng-show="!!!ekleniyor">
+					<button class="btn btn-sm" ng-click="ekleniyor=true;">
+						<span class="glyphicon glyphicon-plus">
+						</span>
+					</button>
+				</span>
+				<span class="input-group input-group-sm" ng-show="ekleniyor">
+					<form name="isimEklemeFormu">
+						<input ng-model="eklenen" class="form-control" ng-required="ekleniyor" />
+						<div class="input-group-btn">
+							<button class="btn btn-sm btn-info" ng-click="kategoriYeniEkle()" ng-disabled="!isimEklemeFormu.$valid">
+								Kaydet
+							</button>
+							<button class="btn btn-sm btn-warning" ng-click="ekleniyor=false">
+								İptal
+							</button>
+						</div>
+					</form>
+				</span>
+				<ul class="nav nav-pills nav-stacked">
+					<li ng-click="kategoriClick(kategori.parent)" class="kategori-animasyon" ng-repeat="kategori in altKategoriler"
+					ng-include="'/partials/kategoriDali.html'">
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!-- <button class="btn" ng-click="populate()">Deneme Ekle</button> -->
+<div>
+	<div style="width: 98%;overflow: hidden;margin: 20px auto;">
+		<div class="kd-kategori-dali">
+			<div>
+				<div class="list-group">
+					<a class="list-group-item" href="javascript:void(0)" ng-click="onClickToBack()"><span class="glyphicon glyphicon-chevron-left"></span> Geri</a>
+					<a class="list-group-item" ng-class="{active: kategori._id == secili, kategorianimasyon: true}"
+					ng-repeat="kategori in parentDisplay" ng-click="onClickToParent(kategori._id)" ng-include="'/partials/kategoriDali.html'">
+					</a>
+					<a ng-show="parentDisplay.length" class="list-group-item" ng-include="'partials/kategori-ekleme-formu.html'">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="kd-kategori-dali">
+			<div>
+				<div class="list-group">
+					<a class="list-group-item" ng-class="{active: kategori._id == secili, kategorianimasyon: true}"
+					ng-repeat="kategori in mainDisplay" ng-click="onClickToMain(kategori._id)" ng-include="'/partials/kategoriDali.html'">
+					</a>
+					<div class="list-group-item">
+						<span ng-show="!ekleniyor">
+							<button class="btn btn-sm" ng-click="ekleniyor=true;">
+								<span class="glyphicon glyphicon-plus">
+								</span>
+							</button>
+						</span>
+						<div ng-show="ekleniyor">
+							<form name="mainEklemeFormu">
+								<div class="input-group input-group-sm">
+									<input ng-model="eklenen" class="form-control" required />
+									<button class="btn btn-sm btn-info input-group-button" ng-click="kategoriEkle(1)"
+									ng-disabled="!mainEklemeFormu.$valid">
+										Kaydet
+									</button>
+									<button class="btn btn-sm btn-warning input-group-button" ng-click="ekleniyor=false">
+										İptal
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="kd-kategori-dali">
+
+			<div class="list-group">
+				<a class="list-group-item" ng-class="{active: kategori._id == secili, kategorianimasyon: true}"
+				ng-repeat="kategori in childDisplay" ng-click="onClickToChild(kategori._id)" ng-include="'/partials/kategoriDali.html'">
+				</a>
+				<div class="list-group-item" ng-show="childParentID">
+						<span ng-show="!childEkleniyor">
+							<button class="btn btn-sm" ng-click="childEkleniyor=true;">
+								<span class="glyphicon glyphicon-plus">
+								</span>
+							</button>
+						</span>
+						<div ng-show="childEkleniyor">
+							<form name="childEklemeFormu">
+								<div class="input-group input-group-sm">
+									<input ng-model="eklenenChild" class="form-control" required />
+									<button class="btn btn-sm btn-info input-group-button" ng-click="kategoriEkle(2)"
+									ng-disabled="!childEklemeFormu.$valid">
+										Kaydet
+									</button>
+									<button class="btn btn-sm btn-warning input-group-button" ng-click="childEkleniyor=false">
+										İptal
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>

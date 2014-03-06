@@ -1,0 +1,42 @@
+<div class="lupus-aside">
+	<div class="aside-dialog">
+		<div class="aside-content">
+			<div class="aside-header">
+				<button type="button" class="close" ng-click="lupusAside.acik = !lupusAside.acik">
+					×
+				</button>
+				<h4 class="aside-title">
+					Arama
+				</h4>
+			</div>
+			<div class="aside-body">
+				<div class="list-group">
+					<label for="ilanTuru">
+						İlan Türü
+					</label>
+					<select id="ilanTuru" class="form-control" ng-options="ilanTuru.name for ilanTuru in ilanTurleri" ng-model="filtreler.ilanTuru">
+						<option value="">
+							Hepsi
+						</option>
+					</select>
+					<label for="gayrimenkulTuru">
+						Gayrimenkul Türü
+					</label>
+					<select id="gayrimenkulTuru" ng-model="filtreler.gayrimenkulTuru" ng-options="gayrimenkulTuru.name for gayrimenkulTuru in gayrimenkulTurleri" class="form-control">
+						<option value="">
+							Hepsi
+						</option>
+					</select>
+					<label for="altFiyat">
+						Alt Fiyat
+					</label>
+					<input type="number" min="0" id="altFiyat" ng-model="filtreler.min" class="form-control" placeholder="0 TL" />
+					<label for="ustFiyat">
+						Üst Fiyat
+					</label>
+					<input type="number" min="0" id="ustFiyat" ng-model="filtreler.max" class="form-control" placeholder="0 TL" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

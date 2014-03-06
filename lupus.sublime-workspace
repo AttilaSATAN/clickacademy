@@ -1,0 +1,854 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"controller",
+				"controller	Angular.js"
+			],
+			[
+				"factory",
+				"factory	AngularJS"
+			],
+			[
+				"facto",
+				"factory	AngularJS"
+			],
+			[
+				"paddi",
+				"padding-top"
+			],
+			[
+				"$inter",
+				"$interval	AngularJS"
+			],
+			[
+				"ng-cl",
+				"ng-click	AngularJS"
+			],
+			[
+				"webkit-tra",
+				"-webkit-transition-duration:   (property)"
+			],
+			[
+				"transiti",
+				"transition-duration:   (property)"
+			],
+			[
+				"webkit-transiti",
+				"-webkit-transition-delay:   (property)"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"backg",
+				"background"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"directive",
+				"verbose_directive	AngularJS"
+			],
+			[
+				"$inte",
+				"$interval	AngularJS"
+			],
+			[
+				"onres",
+				"onresize  (function)"
+			],
+			[
+				"w",
+				"width	.width"
+			],
+			[
+				"noop",
+				"angular.noop	AngularJS"
+			],
+			[
+				"direc",
+				"directive	AngularJS"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"$app",
+				"$scope.$apply"
+			],
+			[
+				"vide",
+				"videoIntro"
+			],
+			[
+				"bacgro",
+				"background-color:   (property)"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"ng-switch",
+				"ng-switch-when	AngularJS"
+			],
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"backgorund",
+				"background-color"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"fun",
+				"function  (keyword)"
+			],
+			[
+				"$roo",
+				"$rootScope"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"ri",
+				"right:   (property)"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"back",
+				"background-color:   (property)"
+			],
+			[
+				"kurum",
+				"kurumsal-mavi"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"ku",
+				"kurumsal-mavi"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"template",
+				"templateUrl"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "client/app/js/app.js",
+			"settings":
+			{
+				"buffer_size": 15438,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 60.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"lint opt",
+				"SublimeLinter: Report (Open Files)"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"lint",
+				"Package Control: Install Package"
+			],
+			[
+				"jsh",
+				"JSHint: Set Plugin Options"
+			],
+			[
+				"lin",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"remove pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"hint",
+				"JSHint: Set Plugin Options"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"for",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				"form",
+				"Format Code"
+			],
+			[
+				"forma",
+				"Format Code"
+			],
+			[
+				"fo",
+				"Format Code"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"fir",
+				"File: Rename"
+			],
+			[
+				"f",
+				"Format Code"
+			],
+			[
+				"pic",
+				"Color picker"
+			],
+			[
+				"picke",
+				"Color picker"
+			],
+			[
+				"format",
+				"Format Code"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"comme",
+				"Toggle Block Comment"
+			],
+			[
+				"commen",
+				"Toggle Block Comment"
+			],
+			[
+				"git ",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"gitc",
+				"Git: Commit"
+			],
+			[
+				"git:c",
+				"Git: Commit"
+			],
+			[
+				"Mar",
+				"Markdown Preview: Python Markdown: Preview in Browser"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 562.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Dev/Denemeler/angular-full-stack/server.js",
+		"/C/Dev/Projects/lupus/client/app/less/app.less",
+		"/C/Dev/Projects/lupus/client/app/lib/angular/angular-lupus-0.2.1.js",
+		"/C/Dev/Projects/lupus/client/app/lib/angular/angular-lupus-0.2.2-a.js",
+		"/C/Dev/Projects/lupus/client/app/js/services.js",
+		"/C/Dev/Projects/lupus/client/app/partials/ic-sayfa.html",
+		"/C/Dev/Projects/lupus/client/app/js/controllers.js",
+		"/C/Dev/Projects/lupus/client/app/partials/yonetim/ilanlar.html",
+		"/C/Dev/Projects/lupus/client/app/partials/yonetim/kurslar.html",
+		"/C/Dev/Projects/lupus/client/app/partials/yonetim/kurs.html",
+		"/C/Dev/Projects/lupus/client/app/partials/kurs.html",
+		"/C/Dev/Projects/lupus/client/app/less/app-animations.less",
+		"/C/Dev/Projects/lupus/client/app/js/states.js",
+		"/C/Dev/Projects/lupus/client/app/partials/kurslar-kategorisi.html",
+		"/C/Dev/Projects/lupus/client/app/js/app.js",
+		"/C/Users/Attila/AppData/Local/Temp/Rar$DIa0.144/mongolab.js",
+		"/C/Dev/Projects/lupus/client/app/partials/mesleki-egitim-alin.html",
+		"/C/Dev/Projects/lupus/client/app/less/lupus.less",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/disko/disko.html",
+		"/C/Dev/Projects/lupus/client/app/js/directives.js",
+		"/C/Dev/Projects/lupus/client/app/css/animate.css",
+		"/C/Dev/Projects/lupus/client/app/index.html",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/evliya/evliya-navbar.html",
+		"/C/Users/Attila/Desktop/map.init.js",
+		"/C/Dev/Projects/lupus/client/app/partials/eiğitim-kategorisi-giris.html",
+		"/C/Dev/Projects/lupus/client/app/partials/biz.html",
+		"/C/Dev/Projects/lupus/client/app/css/app.css",
+		"/C/Dev/Projects/lupus/client/app/partials/home-top.html",
+		"/C/Dev/Projects/lupus/client/app/less/lupus-animations.less",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/disko/lupus-disko-img.html",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/disko/disko-video-intro.html",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/disko/disko-video-intro-wrapper.html",
+		"/C/Dev/Projects/lupus/client/app/lib/angular/angular-lupus-0.2.0.js",
+		"/C/Dev/Projects/lupus/client/app/js/filters.js",
+		"/C/Dev/Projects/lupus/client/app/template/lupus/disko/lupus-disko-img-wrapper.html",
+		"/C/Dev/Projects/lupus/client/app/partials/home-bottom.html",
+		"/C/Dev/Projects/lupus/client/app/partials/egitimler.html",
+		"/C/Dev/Projects/lupus/client/app/css/lupus-animations.css",
+		"/C/Dev/Projects/lupus/client/app/css/bootstrap.css",
+		"/C/Dev/Projects/lupus/client/app/lib/angular/angular-lupus.js",
+		"/C/Dev/Projects/lupus/client/app/lib/angular/angular-ui-router.js",
+		"/C/Dev/Projects/lupus/client/app/template/lupus",
+		"/C/Dev/Projects/lupus/client/app/less/vars.css",
+		"/C/Dev/Projects/lupus/client/app/less/lupus.css",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/C/Dev/Projects/lupus/client/app/js/app-v2.js",
+		"/C/Dev/nginx/sites-enabled/lupus.conf",
+		"/C/Users/Attila/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/C/Dev/Projects/lupus/nginx.conf.d/lupus.windows.dev",
+		"/C/Dev/nginx/sites-enabled/hzesal.conf",
+		"/C/Dev/Projects/lupus-stack/test/spec/controllers/main.js",
+		"/C/Dev/Projects/lupus-stack/Gruntfile.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/home-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-mobile-batching-plant.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/vision-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-stationary-batching-plant.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-compact-batching-plant.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/batching-plants-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hze1012.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hze1020.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hze1025.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hze1036.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hze1042.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/text-block-mach-hzbm-8.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/concrete-block-machines-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/about-us-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/company-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/home-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/fast-navigate.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/fast-navigate.html",
+		"/C/Dev/Hammadde/angular-seed/test/unit/filtersSpec.js",
+		"/C/Dev/Hammadde/angular-seed/test/unit/servicesSpec.js",
+		"/C/Dev/Hammadde/angular-seed/test/lib/angular/angular-mocks.js",
+		"/C/Dev/Hammadde/angular-seed/test/unit/directivesSpec.js",
+		"/C/Dev/Hammadde/angular-seed/test/unit/controllersSpec.js",
+		"/C/Dev/Projects/hzesal1/client/app/js/directives.js",
+		"/C/Dev/Hammadde/angularjs-imageupload-directive/app.js",
+		"/C/Dev/Hammadde/angularjs-imageupload-directive/public/javascripts/imageupload.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1012.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hzbm-8.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hzbm-8.html",
+		"/C/Dev/Projects/hzesal1/client/app/lib/angular/angular-ui-bootstrap-tpls-0.9.0.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/model-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/model-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/less/app.less",
+		"/C/Dev/Projects/hzesal1/client/app/js/states.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/contact-form.html",
+		"/C/Dev/Projects/hzesal1/client/app/js/controllers.js",
+		"/C/Dev/Projects/hzesal1/client/app/js/app.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/contact.html",
+		"/C/Dev/Projects/hzesal1/nginx.conf.d/hzesal.linux.com",
+		"/C/Dev/Projects/hzesal1/client/app/less/disko.less",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/home-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/template/lupus/disko/disko.html",
+		"/C/Users/Attila/Desktop/angular-ui-router.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/home-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/index.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/cbmm-products.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/concrete-block-machines-body.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/concrete-block-machine-model.html",
+		"/C/Dev/Projects/hzesal1/.gitignore",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hze1012.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/concrete-block-machine-model.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1020.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1025.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1036.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1042.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hze1020.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hze1025.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hze1036.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/table-block-mach-hze1042.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/batching-plants-slider.html",
+		"/C/İş/Hz Esal/mobil-cbmm-8.html",
+		"/C/Dev/Projects/hzesal1/client/app/js/services.js",
+		"/C/Dev/Projects/hzesal1/client/app/less/lupus-podyum.less",
+		"/C/Dev/Hammadde/FlowPlayer/embed.min.js",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/main-menu.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/main-menu.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/tr/batching-plants-slider.html",
+		"/C/Dev/Projects/hzesal1/client/app/template/lupus/podyum/podyum.html",
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/text-block-mach-hzbm-8.html"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"<project>",
+			"C:\\Dev\\Projects\\hzesal1"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"3",
+			"5s",
+			"\">",
+			".egitim-kategorisi-giris div",
+			"h1",
+			"3",
+			"egitim-kategorisi-giris",
+			"flipInY",
+			"flipOutY",
+			".3",
+			"5s",
+			"repeat-animation",
+			"=",
+			"= ",
+			"translateY",
+			"slideElm",
+			"-",
+			"500px",
+			"lupus-disko",
+			"atBottom",
+			"00",
+			"evliya",
+			"lupus-disko-video-intro",
+			"lupus-disko",
+			"tansaction",
+			"500px",
+			"margin-top",
+			"animation",
+			"animation-name",
+			"sl",
+			"addEventListener",
+			"resize",
+			"onresize",
+			"box",
+			"bound",
+			"windowSize",
+			"template/lupus/disko/disko.html",
+			"next",
+			"windowSize",
+			"resize",
+			"false",
+			"gayrimenkul",
+			"cekirdekemlak",
+			"cekirdekEmlak",
+			"• ",
+			"en.",
+			"• ",
+			"•",
+			"console",
+			"• ",
+			"Our company and briquette ",
+			"",
+			"diskoCtrl",
+			"windowSize",
+			"538",
+			"width:",
+			"width",
+			"ui.bootstrap.collapse",
+			"ui.bootstrap.transition",
+			"ui.bootstrap.tpls",
+			">\n",
+			"false",
+			"\"",
+			"inputPassword",
+			"en.",
+			"mavi",
+			"3s;",
+			"animation-delay",
+			"en/",
+			"<",
+			"en",
+			"1",
+			"animation-delay",
+			"0.5",
+			"animation-delay",
+			"1s",
+			".lupus-disko-wrapper",
+			"	\n",
+			".lupus-disko-wrapper",
+			"giriste",
+			"all",
+			" linear;",
+			"-300px",
+			"ng-move",
+			"lupus-disko-wrapper",
+			"100",
+			"all",
+			"cubic-bezier(.8,.01,.98,.34)",
+			";\n",
+			"videoEnd",
+			"videoGrid",
+			"videoIntro",
+			"videoIntroEnded",
+			"()\n",
+			"div",
+			"$scope",
+			"allslides",
+			"Images",
+			"images",
+			"Images",
+			"images",
+			"Images",
+			"images",
+			"Images",
+			"images",
+			"fp-help",
+			"cloudfront.net/logo.png",
+			"d32wqyuo10o653.cloudfront.net/logo.png",
+			"en.",
+			"en",
+			"			<TD>\n				<BR>\n			</TD>",
+			" STYLE=\"border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" COLSPAN=3 HEIGHT=20 ALIGN=CENTER VALIGN=MIDDLE BGCOLOR=\"#EEECE1\" SDNUM=\"1055;1055;Standard\"",
+			" STYLE=\"border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" ROWSPAN=3 HEIGHT=167 ALIGN=CENTER VALIGN=MIDDLE SDNUM=\"1055;1055;Standard\"",
+			" STYLE=\"border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" COLSPAN=3 HEIGHT=19 ALIGN=CENTER VALIGN=MIDDLE BGCOLOR=\"#EEECE1\" SDNUM=\"1055;1055;Standard\"",
+			"STYLE=\"border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" ALIGN=LEFT VALIGN=MIDDLE SDNUM=\"1055;1055;Standard\"",
+			"</FONT>",
+			"<FONT FACE=\"Calibri\" COLOR=\"#000000\">",
+			"style=\"	font-size:12px\"",
+			"style=\".*\"",
+			"style=\"(.*)\"",
+			"STYLE=\"border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" COLSPAN=3 HEIGHT=19 ALIGN=CENTER VALIGN=MIDDLE BGCOLOR=\"#EEECE1\" SDNUM=\"1055;1055;Standard\"",
+			"style=\".*\"",
+			"</FONT>",
+			"<FONT FACE=\"Calibri\" COLOR=\"#000000\">",
+			".model-ayrintilari-sayfa-slider",
+			"HEIGHT=",
+			"Height",
+			"HEIGHT"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"iElm",
+			"İeLM"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "client/app/js/app.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 15438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								387,
+								387
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 104.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 102.0
+	},
+	"project": "lupus.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Dev\\Projects\\hzesal1\\hzesal1.sublime-project"
+			],
+			[
+				"h",
+				"C:\\Dev\\Projects\\hzesal1\\hzesal1.sublime-project"
+			],
+			[
+				"gay",
+				"C:\\Dev\\Projects\\gayrimenkul\\gayrimenkul.sublime-project"
+			],
+			[
+				"for",
+				"C:\\Dev\\Projects\\hzesal1\\nginx.conf.d\\hzesal1.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 318.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

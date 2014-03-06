@@ -1,0 +1,18 @@
+<div ui-view="view-egitimler">
+	<h1>Eğitim Kategorileri</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 egitim-kategorisi-giris" ng-repeat="egitim in egitimler" >
+                <div>
+                    <img class="img-responsive" style="margin:0 auto;"/>
+                    <h3>{{egitim.header}}</h3>
+                    <p>{{egitim.text}}</p>
+                    <a ui-sref="egitimler.kategori.egitimListesi(egitim.kategoriLink)" class="btn btn-lg btn1">{{egitim.buttonText}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"><div ng-include="meslekiEgitim" scope="" onload=""</div>
+        </div>
+    </div>
+</div>

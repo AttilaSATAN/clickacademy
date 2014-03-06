@@ -1,0 +1,78 @@
+<div class="container" ng-init='ilan = 
+		{ 
+			baslik: "200m2 Fabrika", 
+			aciklamaMetni: "Genel amaca uygun fabrika binası.", 
+			gayrimenkulTuru: "52b97777145156847a000001",
+			fiyat:1300000, 
+			ozellikler: [{ 
+				key: "katlar", 
+				value: [{ katAdi: "Zemin Kat", alan: 100 
+				},{ katAdi: "1. Kat", alan: 100 }]
+			 },{ 
+			 	key: "vinc", 
+			 	value: true 
+			 },{
+			 	key: "asansor", 
+			 	value: true 
+			 },{
+			 	key: "limana_yakin",
+			 	value: false
+			 },{
+			 	key: "tren_istasyonuna_yakin", 
+			 	value: false 
+			 },{
+			 	key: "ana_yola_yakin",
+			 	value: true
+			 }]
+		 };
+		tumOzellikler = {"52b97777145156847a000001": ["vinc", "katlar", "asansor","limana_yakin","tren_istasyonuna_yakin","ana_yola_yakin"]}'>
+	<div class="row">
+		<div class="col-md-12">
+			İlan Düzenleme
+		</div>
+		<pre>
+			{{ilan|json}}
+		</pre>
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="baslik" class="col-sm-2 control-label">
+					İlan Başlığı
+				</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="ilan.baslik" id="baslik" placeholder="İlan Başlığı">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="aciklamaMetni" class="col-sm-2 control-label">
+					Açıklama Metni
+				</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="5" ng-model="ilan.aciklamaMetni" class="form-control"
+					id="aciklamaMetni">
+					</textarea>
+				</div>
+				<div class="form-group">
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">
+							Kaydet
+						</button>
+					</div>
+				</div>
+		</form>
+		</div>
+	</div>
+	<div ng-repeat="ozellik in ilan.ozellikler" ng-controller="gayrimenkulHucreCntr">
+		<div ng-switch on="ozellik.key">
+			<div ng-switch-when="katlar">
+				<div ng-include="'partials/katlar-duzenle.html'"></div>
+			</div>
+			<div ng-switch-default>
+				<span class="gayrimenkul-ozelligi">
+					{{d(ozellik.key)}}
+				</span>
+				{{ozellik.value}}
+			</div>
+		</div>
+	</div>

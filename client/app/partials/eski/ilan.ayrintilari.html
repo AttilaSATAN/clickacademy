@@ -1,0 +1,33 @@
+<div class="main-container" style="margin-top:40px;">
+    <hr/>
+    <div class="satilik ilan-ayrintilari">
+        <h2>
+            {{ilan.baslik}}
+        </h2>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-9">
+                        <img class="img-responsive" ng-src="img/{{seciliResim.src}}" />
+                        <p>
+                            {{ilan.aciklamaMetni}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="img-responsive" ng-click="seciliResim.src = resimler[$index]" ng-src="img/{{resim}}" ng-repeat="resim in ilan.gorseller" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <div class="col-sm-9" ng-repeat="ozellik in ilan.ozellikler">
+                        <span><b>Fiyat</b> :  {{ilan.fiyat}} TL</span>
+                    </div>
+                        <div class="col-sm-9" ng-repeat="ozellik in ilan.ozellikler">
+                        <span><b>{{ozellik.key}}</b> : {{ozellik.value}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

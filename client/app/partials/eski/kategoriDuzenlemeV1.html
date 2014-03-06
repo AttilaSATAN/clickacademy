@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h3>
+				Kategori Ekle
+			</h3>
+			<form name="eklemeFormu">
+				<div class="form-group">
+					<!-- {{kategoriler | json}} -->
+					<select ng-model="eklenecek.parent" ng-options="kategori as kategori._id for kategori in kategoriler"
+					class="form-control" name="eklenecek_parent">
+						<option value="">
+							--Üst Kategori--
+						</option>
+					</select>
+				</div>
+				<div class="form-group" ng-class="{'has-error': !eklemeFormu.$valid}">
+					<input type="text" name="eklenecek_name" class="form-control" ng-model="eklenecek.name"
+					required ozgun-kategori placeholder="Kategori Ekle" />
+					<span class="help-block" ng-show="!!eklemeFormu.eklenecek_name.$error.ozgunKategori">
+						Bu kategori Daha Önce Eklenmiş
+					</span>
+					<span class="help-block" ng-show="!!eklemeFormu.eklenecek_name.$error.required">
+						Lütfen Bir Kategori Adı Girin
+					</span>
+				</div>
+				<button class="btn btn-primary" ng-disabled="!eklemeFormu.$valid" ng-click="ekle()">
+					Kaydet
+				</button>
+			</form>
+		</div>
+		<div class="col-md-6" style="">
+			<h3>
+				Benzer ve İlgili Kategoriler
+			</h3>
+			<!-- <pre>{{kategoriler | json}}</pre> -->
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-repeat="kategori in kategoriler | filter: { name: eklenecek.name }">
+					<span ng-show="!!!duzenleniyor">
+						<button class="btn btn-sm" ng-click="duzenleniyor=true; duzenlenen= d(kategori.key)">
+							<span class="glyphicon glyphicon-pencil">
+							</span>
+						</button>
+						<span>
+							{{d(kategori.key)}} - {{d(kategori._id)}}
+						</span>
+					</span>
+					<span class="input-group input-group-sm" ng-show="duzenleniyor">
+						<input ng-model="duzenlenen" class="form-control" />
+						<div class="input-group-btn">
+							<button class="btn btn-sm btn-info">
+								Kaydet
+							</button>
+							<button class="btn btn-sm btn-warning" ng-click="duzenleniyor=false">
+								İptal
+							</button>
+						</div>
+					</span>
+				</li>
+			</ul>
+			<div>
+			</div>
+		</div>
+	</div>
+</div>

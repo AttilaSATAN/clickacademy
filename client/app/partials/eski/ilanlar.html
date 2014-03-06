@@ -1,0 +1,32 @@
+<div class="main-container"  style="margin-top:40px;">
+<div class="col-md-12">
+    <h1>İlanlarda Ara</h1><button style="margin-left: 15px;" type="button" class="btn btn-lg btn-primary" ng-click="lupusAside.acik = !lupusAside.acik">
+        <span class="glyphicon glyphicon-search">
+        </span>
+    </button> 
+    </div>
+</div>
+<hr/>
+<div class="main-container">
+    <div ng-class='{"col-md-3":lupusAside.acik, "closed":!lupusAside.acik}' ng-include="'partials/filtreler.html'"></div>
+    <div class="ilan-kutucuklari" ng-class='{"col-md-9":lupusAside.acik, "col-md-12":!lupusAside.acik}'>
+
+        <div class="col-md-3 col-sm-6 animation-fadeAndScale" ng-repeat="ilan in ilanlar | ilanFiltreleri:filtreler">
+            <div class="ilan-kutucugu " ng-class="slugify(ilan.ilanTuru.name)">
+                <h2>
+                    {{ilan.ilanTuru.name}}
+                </h2><!--{{ilan.gorseller[0]}}-->
+                <img class="img-responsive" src="http://hurriyetemlak.cubecdn.net/image.ashx?type=44&amp;image=Images\8\3\7\6\8\3\3\1\56c242bc-be46-4c45-97af-b7836292c447.jpg" />
+                <span class="fiyat">
+                    {{ilan.fiyat}} TL
+                </span>
+                <h4>
+                    {{ilan.baslik}}
+                </h4>
+                <a class="btn btn-default" ng-href="#/ilan/{{slugify(ilan.ilanTuru.name)}}/{{ilan._id}}">Ayrıntılar &raquo;</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<hr/>

@@ -1,0 +1,122 @@
+// out: ../css/app.css
+@import "vars.less";
+@import "lupus.less";
+
+body{
+	font-family: 'Merriweather Sans', sans-serif;
+	background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
+	background-attachment: fixed;
+	height: 100%;
+	>.frame{
+		opacity: 0.8;
+		>.frame{
+			>.frame{
+
+			}
+		}
+	}
+}
+.frame{
+	position: absolute;
+	overflow:hidden;
+	top:0;
+	left:0;
+	right: 0;
+	bottom:0;
+}
+.navbar{
+	animation: 1s linear all;
+	-webkit-animation: 1s linear all;
+	margin-bottom: 0;
+}
+
+.container.full-width{
+	width: 100%; max-width: 100%;
+}
+.lupus-disko-video{
+	position: absolute;
+	top: 0;
+}
+.lupus-disko-video-grid{
+	
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: url(../img/grid2.png);
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+.lupus-disko-video-grid.lupus-disko-video-grid-active{
+
+	opacity: 1;
+}
+.perde{
+	background:url(../img/1px70-fff.png);
+}
+
+.btn1{
+	background-color: #005bd8;
+	border-radius: 3px;
+	border:2px solid #fff;
+	color:#fff;
+	display: block;
+	
+	position: absolute;
+	bottom: 25px;
+	left:50%;
+	margin-left: -58px;
+	&:hover,&:focus{
+		background-color: #fff;
+		color:#005bd8;
+		border:2px solid #005bd8;
+	}
+}
+.btn2{
+	background-color: #005bd8;
+	border-radius: 3px;
+	border:2px solid #fff;
+	color:#fff;
+	font-size: 36px;
+
+	&:hover,&:focus{
+		background-color: #fff;
+		border:2px solid #005bd8;
+		color:#005bd8;
+	}
+}
+.mesleki-egitim-alin-banner{
+	background: #005bd8;
+	color:#fff;
+	padding: 20px 20px;
+	margin:10px 5px;
+}
+.egitim-kategorisi-giris{
+		padding: 20px 20px;
+
+	div{
+		position: relative;
+		min-height: 406px;
+		padding: 30px 50px;
+		// background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,72,242,0.65) 100%); /* FF3.6+ */
+		// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,72,242,0.65))); /* Chrome,Safari4+ */
+		// background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* Chrome10+,Safari5.1+ */
+		// background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* Opera 11.10+ */
+		// background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* IE10+ */
+		// background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* W3C */
+		// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a60048f2',GradientType=0 ); /* IE6-9 */
+		background:url(../img/x-bg-grid-noise.png);
+		color:#bbb;
+		border:1px solid #005bd8;
+	}
+	.btn-lg{
+		.btn1;
+	}
+}
+
+.view-bottom{
+	overflow: auto;
+}
+@import "app-animations.less";

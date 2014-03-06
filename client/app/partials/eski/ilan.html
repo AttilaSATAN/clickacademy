@@ -1,0 +1,30 @@
+<div class="main-container" style="margin-top:40px;">
+    <hr/>
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation" ng-include="'partials/filtreler.html'">
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			<div class="jumbotron">
+				<h1>
+				ilanlar
+				</h1>
+			</div>
+			<div class="ilanlar">
+				<div class="row">
+					<div class="col-sm-4">
+						<div ng-repeat="ilan in satilikDisplay" ng-include="'partials/satilik-ilan-kutucugu.html'">
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div ng-repeat="ilan in kiralikDisplay" ng-include="'partials/kiralik-ilan-kutucugu.html'">
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- .ilanlar -->
+		</div>
+		<!--/span-->
+</div>
+<!--/row-->
+<hr>
+

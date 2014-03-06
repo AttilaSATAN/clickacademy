@@ -1,0 +1,22 @@
+<span ng-show="!duzenleniyor">
+	<button class="btn btn-sm" ng-click="duzenleniyor=true; duzenlenen=d(kategori.key)">
+		<span class="glyphicon glyphicon-pencil">
+		</span>
+	</button>
+	<span>
+		{{d(kategori.key)}}
+	</span>
+</span>
+<span class="input-group input-group-sm" ng-show="duzenleniyor">
+	<form name="isimDuzenlemeFormu">
+		<input ng-model="duzenlenen" class="form-control" required />
+		<div class="input-group-btn">
+			<button class="btn btn-sm btn-info" ng-disabled="!isimDuzenlemeFormu.$valid">
+				Kaydet
+			</button>
+			<button class="btn btn-sm btn-warning" ng-click="duzenleniyor=false">
+				İptal
+			</button>
+		</div>
+	</form>
+</span>

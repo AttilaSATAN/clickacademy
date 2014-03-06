@@ -1,0 +1,13 @@
+<div class="lupus-disko" ng-style="style">
+
+    <div class="lupus-disko-video-intro" lupus-disko-video-intro video-intro="videoIntro"> </div>
+    <div class="lupus-disko-video-grid" ng-class='{"lupus-disko-video-grid-active": videoGrid}'></div>
+    <div class="lupus-disko-outer-wrapper " ng-repeat="slide in slides" ng-switch on="slide.type" ng-repeat="slide in slides" >
+        <div lupus-disko-img-wrapper slide-no="slideNo" ng-switch-when="image">
+        </div>
+        <div  style="position:absolute; bottom:80px; right:20px" ng-show="slide.captionUrl" class="lupus-disko-caption" ><h1>{{slide.captionUrl}}</h1></div>
+    </div>
+    <div style="position:absolute; bottom:50px; right:0;left:0";>
+        <button ng-click="prev()" class="btn btn-lg btn-primary">Geri</button><button ng-click="next()" class="btn btn-lg pull-right btn-primary" >İleri</button>
+    </div>
+</div>

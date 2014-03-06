@@ -1,0 +1,68 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h4 class="modal-title" ng-bind-html="title"></h4>
+      </div>
+      <div class="modal-body" >
+
+      <div class="satilik ilan-kutucugu">
+  <h2>
+    SATILIK
+  </h2>
+  <img class="img-responsive" src="http://placehold.it/370x370" />
+  <span class="fiyat">
+    {{ilan.fiyat}} TL
+  </span>
+  <h4>
+    {{ilan.baslik}}
+  </h4>
+  <div ng-repeat="(ozellik, deger) in ilan">
+
+        <div ng-switch on="deger.ozellik">
+          <div ng-switch-when="ozellikler">
+            <div ng-repeat="ozellik in deger.deger">
+              <div ng-switch on="ozellik.key">
+                <div ng-switch-when="katlar">
+                  <div ng-repeat="katlar in ozellik.value">
+                     <span class="gayrimenkul-ozelligi">{{d(katlar.katAdi)}}</span> {{katlar.alan}}m2
+                  </div>
+                </div>
+                <div ng-switch-default>
+                   <span class="gayrimenkul-ozelligi">{{d(ozellik.key)}}</span> {{ozellik.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- 
+    <div ng-switch on="deger.type">
+      <div ng-switch-when="number">
+        ( {{deger.ozellik}} ) : {{deger.deger}}
+      </div>
+      <div ng-switch-when="string">
+        ( {{deger.ozellik}} ) : {{deger.deger}}
+      </div> 
+      <div ng-switch-when="array">
+
+      </div>
+      <div ng-switch-default>
+         <span class="gayrimenkul-ozelligi">{{d(deger.ozellik)}}</span> {{deger.deger}}
+      </div>
+    </div>
+-->
+
+
+    
+  </div>
+  <a class="btn btn-default" ui-sref="ilan.ayrintilar({id:ilan._id})" role="button">Ayrıntılar &raquo;</a>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="$hide()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

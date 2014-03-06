@@ -1,0 +1,66 @@
+lupus-disko,
+.lupus-disko {
+    position:relative;
+    width: 100%;
+    overflow: hidden;
+    .btn-lg{
+        border-radius: 0
+    }
+}
+lupus-disko-wrapper,
+.lupus-disko-wrapper {
+    
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    img{
+        
+        top: 0;
+        left:0;
+
+    }
+    
+    .lupus-disko-caption {
+        position: absolute;
+        //background-color: @color1;
+        bottom: 50px;
+        right: 20px;
+        padding: 20px;
+        //Burası override olacak.
+    }
+}
+.lupus-disko-outer-wrapper {
+    position:absolute;
+    bottom:0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    .lupus-disko-wrapper{
+
+        &.lupus-img{
+             
+            img{
+                display: block;
+                transition: opacity 1s;
+                -webkit-transition: opacity 1s;
+                opacity: 0.01;
+                min-height: 1px;
+
+            }
+            &.active{
+                img{
+                    transition: opacity 1s;
+                    -webkit-transition: opacity 1s;
+                    opacity: 1;
+                }
+            }
+        }   
+    }
+}
+
+.capanime.ng-enter{
+
+    -webkit-animation:1s fadeInRight;
+    animation: 1s fadeInRight;
+}
