@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
-    ProgramCategory = mongoose.model('ProgramCategory'),
+    EgitimCategories = mongoose.model('EgitimCategories'),
     passport = require('passport');
 exports.query = function (req, res, next) {
-    return ProgramCategory.find(function (err, programCategory) {
+    return EgitimCategories.find(function (err, egitimCategories) {
         if (!err) {
-            return res.json(programCategory);
+            return res.json(egitimCategories);
         } else {
             return res.send(err);
         }

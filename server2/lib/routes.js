@@ -7,7 +7,10 @@ var api = require('./controllers/api'),
     states = require('./controllers/states'),
     partials = require('./controllers/partials'),
     template = require('./controllers/templates'),
-    programCategory = require('./controllers/program-category');
+    egitimCategories = require('./controllers/egitim-categories'),
+    egitimCategory = require('./controllers/egitim-category'),
+    egitim = require('./controllers/egitim'),
+    egitimler = require('./controllers/egitimler');
 var middleware = require('./middleware');
 
 /**
@@ -30,15 +33,38 @@ module.exports = function(app) {
   
   app.post('/service/api/states', states.create);
   app.get('/service/api/states', states.query);
+  //   function (req,res,next){
+  //   //egitimCategory.get
+  //   console.log(req)
+  //   res.json(req.params)
+  // });
+  // 
+  app.post('/service/api/egitim/visual', egitim.visual);
+  // 
+  // 
+  app.get('/service/api/egitim/by-category/:categoryUrl', egitim.byCategory);
+  app.get('/service/api/egitim/by-url/:egitimUrl', egitim.byUrl);
+  app.get('/service/api/egitim/:egitimId', egitim.get);
+  app.delete('/service/api/egitim/:egitimId', egitim.delete);
+  app.post('/service/api/egitim', egitim.save);
+  //app.delete('/service/api/egitim-category/:categoryId', egitimCategory.delete);
 
-  app.get('/service/api/program-category', programCategory.query);
-  app.get('/api/*', function(req, res) {
+  app.get('/service/api/egitimler', egitimler.query);  
+
+
+  app.get('/service/api/egitim-category/:categoryId', egitimCategory.get);
+  app.delete('/service/api/egitim-category/:categoryId', egitimCategory.delete);
+  app.post('/service/api/egitim-category', egitimCategory.save);
+  //app.delete('/service/api/egitim-category/:categoryId', egitimCategory.delete);
+
+  app.get('/service/api/egitim-categories', egitimCategories.query);
+  app.get('/service/*', function(req, res) {
     res.send(404);
   });
   app.get('/service/api/partials', partials.query);
   //app.get('/api/state/:statesId', states.show);
   
   // All other routes to use Angular routing in app/scripts/app.js
-  app.get('/partials/*', index.partials);
-  app.get('/*', middleware.setUserCookie, index.index);
+  //app.get('/partials/*', index.partials);
+  app.get('/*', middleware.setUserCookie);
 };

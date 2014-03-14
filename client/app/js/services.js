@@ -105,8 +105,30 @@ angular.module('lupusshow.services', [])
     .factory('PartialsResource', function ($resource) {
         return $resource('http://lupus-2.dev/service/api/partials');
     })
-    .factory('ProgramCategoryResource', function () {
-        return $resource('http://lupus-2.dev/service/api/program-kategori');
+    .factory('EgitimCategoriesResource', function ($resource) {
+        return $resource('http://lupus-2.dev/service/api/egitim-categories');
+    })
+    .factory('EgitimCategoryResource', function ($resource) {
+        return $resource('http://lupus-2.dev/service/api/egitim-category/:categoryId', 
+            {categoryId:'@id'});
+    })
+    .factory('EgitimlerResource', function ($resource) {
+        return $resource('http://lupus-2.dev/service/api/egitimler');
+    })
+    .factory('EgitimResource', function ($resource) {
+        return $resource('http://lupus-2.dev/service/api/egitim/:egitimId', 
+            {egitimId:'@id'});
+    })
+    .factory('EgitimByCategoryResource', function($resource){
+        return $resource('http://lupus-2.dev/service/api/egitim/by-category/:categoryUrl', 
+            {categoryUrl:'@categoryUrl'}, 
+            {'get': {
+                isArray: true
+            }});
+    })
+    .factory('EgitimByUrlResource', function($resource){
+        return $resource('http://lupus-2.dev/service/api/egitim/by-url/:egitimUrl', 
+            {egitimUrl:'@url'});
     })
     .factory('ProgramResource', function ($resource) {
         return $resource('http://lupus-2.dev/service/api/program');

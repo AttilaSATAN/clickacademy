@@ -456,33 +456,45 @@ yatayOrtala angular-lupus-0.2.0.js:270
         };
     });
 angular.module('lupus.assets', ['angularFileUpload'])
-    .directive('lupusAssets', function ($http, $timeout, $upload) {
+    .directive('lupusAssetsB', function ($http, $timeout, $upload) {
         return {
             // name: '',
             // priority: 1,
             // terminal: true,
             scope: {
                 postData: "=",
-                url: "="
+                url: '=',
+                asset: '='
             }, // {} = isolate, true = child, false/undefined = no change
             controller: function ($scope, $element, $attrs, $transclude) {
+
+                if($scope.postData.visual && $scope.postData.visual._id)
+                    console.log('_id var', $scope.postData);
+                else{
+                    $scope.postData.visual = {};
+                }
+
+
+
                 $scope.fileReaderSupported = window.FileReader !== null;
                 $scope.uploadRightAway = true;
+
                 $scope.hasUploader = function (index) {
                     return $scope.upload[index] !== null;
                 };
+
                 $scope.abort = function (index) {
                     $scope.upload[index].abort();
                     $scope.upload[index] = null;
                 };
-                /*
-                $file örneği: 
-                lastModifiedDate: Tue Jan 07 2014 22:38:53 GMT+0200 (Türkiye Standart Saati)
-                name: "logo.png"
-                size: 18515
-                type: "image/png"
-                webkitRelativePath: ""
-                */
+/*
+$file örneği: 
+lastModifiedDate: Tue Jan 07 2014 22:38:53 GMT+0200 (Türkiye Standart Saati)
+name: "logo.png"
+size: 18515
+type: "image/png"
+webkitRelativePath: ""
+*/
                 $scope.onFileSelect = function ($files) {
                     console.log($files)
                     $scope.selectedFiles = [];
@@ -526,10 +538,10 @@ angular.module('lupus.assets', ['angularFileUpload'])
                 $scope.start = function (index) {
                     $scope.progress[index] = 0;
                     $scope.upload[index] = $upload.upload({
-                        url: 'service/upload',
+                        url: $scope.url,
                         method: 'POST',
                         data: {
-                            myModel: $scope.postData
+                            postData: $scope.postData
                         },
                         formDataAppender: function (fd, key, val) {
                             if (angular.isArray(val)) {
@@ -543,28 +555,36 @@ angular.module('lupus.assets', ['angularFileUpload'])
                         file: $scope.selectedFiles[index],
                         fileFormDataName: 'gorsel'
                     })
-                        .then(function (response) {
-                            // TODO uploadResults sunucunun cevabı
-                            $scope.ilan.gorseller[index] = response.data;
-                        }, null, function (evt) {
-                            $scope.progress[index] = parseInt(100.0 *
-                                evt.loaded / evt.total);
-                        });
+                    .then(function (response) {
+                        // TODO uploadResults sunucunun cevabı
+                        console.log(response);
+                    }, null, function (evt) {
+                        $scope.progress[index] = parseInt(100.0 *
+                            evt.loaded / evt.total);
+                    });
                 };
             },
             // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
             // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
             template: '<div ng-show="dropSupported" class="lupus-gorsel-upload" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">Dosyaları buraya sürükleyip bırakınız.</div>\
-                <label for="fileToUpload">Select a File to Upload</label><br />\
-                <input type="file" ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />\
+                    <label for="fileToUpload">Veya Sisteme Yüklemek İçin Dosya(lar) Seçin</label><br />\
+                    <input type="file" id="fileToUpload" multiple ng-file-select="onFileSelect($files)" />\
                 <div ng-show="selectedFiles != null">\
-                    <div class="sel-file" ng-repeat="f in selectedFiles">\
-                        <img class="img-responsive" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">\
-                        <button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>\
-                        <span class="progress-display" ng-show="progress[$index] >= 0">\
-                        <div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>\
-                        </span>\
-                        <button class="btn btn-sm btn-danger" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">İptal</button>\
+                    <div style="height:100px; min-width:200px;float:left; " class="sel-file" ng-repeat="f in selectedFiles">\
+                        <div>\
+                            <img  style="height:100%; "ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">\
+                            <button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>\
+                            <span class="progress-display" ng-show="progress[$index] >= 0">\
+                            <div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>\
+                            </span>\
+                            <button class="btn btn-sm btn-danger" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">İptal</button>\
+                            <form role="form">\
+                                <div class="form-group">\
+                                    <label for="resim-adi"></label>\
+                                    <input type="text" ng-model="asset.name" class="form-control"/>\
+                                </div>\
+                            </form>\
+                        </div>\
                     </div>\
                 </div>',
             // templateUrl: '',

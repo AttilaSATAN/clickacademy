@@ -1,18 +1,28 @@
 /*global angular:true */
 var lupusshow = angular.module('lupusshow', ['ngAnimate', 'lupusshow.filters',
     'lupusshow.services', 'lupusshow.directives', 'lupusshow.controllers',
-    'ngSanitize', 'google-maps', 'ui.router', 'lupus', 'ngTouch','ngResource'
+    'ngSanitize', 'google-maps', 'ui.router', 'lupus', 'ngTouch',
+    'ngResource', 'angularFileUpload'
 ]);
 lupusshow.run(
-    ['$rootScope', '$state', '$stateParams',
-        function ($rootScope, $state, $stateParams) {
+    ['$rootScope', '$state', '$stateParams', '$timeout', 
+        function ($rootScope, $state, $stateParams, $timeout) {
             "use strict";
-            // It's very handy to add references to $state and $stateParams to the $rootScope
-            // so that you can access them from any scope within your applications.For example,
-            // <li ui-sref-active="active }"> will set the <li> // to active whenever
-            // 'contacts.list' or one of its decendents is active.
+//  It's very handy to add references to $state and $stateParams to the $rootScope
+//  so that you can access them from any scope within your applications. For example,  
+//  <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li> to 
+//  active whenever 'contacts.list' or one of its decendents is active.
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+            $rootScope.hideFrame1 = $rootScope.$state.current === 'home';
+            console.log($rootScope.hideFrame1)
+            $rootScope.$on('$stateChangeSuccess', function () {
+                console.log($rootScope.$state.current.name)
+                $rootScope.hideFrame1 = $rootScope.$state.current.name === 'home';
+                $timeout(function (){
+                    $rootScope.$apply('hideFrame1');
+                })
+            });
             $rootScope.kurslar = [{
                 "_id": "kurs0",
                 "name": "Corel Kursu",
@@ -270,3 +280,19 @@ Click Academy  Bilgisayar Kursu, T.C. Milli Eğitim Bakanlığına bağlı özel
             }];
         }
     ]);
+// var lupusboss = angular.module('lupusboss', ['ngAnimate', 'lupusshow.filters',
+//     'lupusshow.services', 'lupusshow.directives', 'lupusshow.controllers',
+//     'ngSanitize', 'google-maps', 'ui.router', 'lupus', 'ngTouch',
+//     'ngResource'
+// ]);
+// lupusboss.run(['$rootScope', '$state', '$stateParams',
+//     function ($rootScope, $state, $stateParams) {
+//         "use strict";
+//         // It's very handy to add references to $state and $stateParams to the $rootScope
+//         // so that you can access them from any scope within your applications.For example,
+//         // <li ui-sref-active="active }"> will set the <li> // to active whenever
+//         // 'contacts.list' or one of its decendents is active.
+//         $rootScope.$state = $state;
+//         $rootScope.$stateParams = $stateParams;
+//     }
+// ]);

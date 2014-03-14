@@ -323,3 +323,32 @@
     animation: bounceIn .8s linear;
     }
 }
+
+.fade {
+  opacity: 1;
+  -webkit-transition: opacity .3s linear;
+  transition: opacity .3s linear;
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  &.ng-enter {
+    opacity: 0
+  }
+
+  &.ng-enter.ng-enter-active,&.ng-leave {
+    opacity: 1
+  }
+
+  &.fade-add,&.ng-leave.ng-leave-active {
+    opacity: 0
+  }
+
+  &.fade-add.fade-add-active,&.fade-remove {
+    opacity: 1
+  }
+
+  &.fade-remove.fade-remove-active {
+    opacity: 0
+  }
+
+}

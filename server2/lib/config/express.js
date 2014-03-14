@@ -39,11 +39,9 @@ module.exports = function(app) {
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'html');
     app.use(express.logger('dev'));
-    app.use(express.json());
-    app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-
+    app.use(express.bodyParser());
     // Persist sessions with mongoStore
     app.use(express.session({
       secret: 'angular-fullstack secret',
@@ -54,10 +52,9 @@ module.exports = function(app) {
           console.log("db connection open");
       })
     }));
-
-    //use passport session
     app.use(passport.initialize());
     app.use(passport.session());
+    //app.use(express.csrf());
     
     // Router needs to be last
     app.use(app.router);

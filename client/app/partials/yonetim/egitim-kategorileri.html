@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <button class="pull-right btn btn-lg btn-primary" ng-click="yeniKategori = null">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h4>Kategoriler</h4>
+            <div class="list-group">
+                <div href="#" class="list-group-item clearfix animation-fadeAndScale" ng-class="{'list-group-item-info': yeniKategori._id == kategori._id}" ng-repeat="kategori in egitimCategories">
+                    <h5 class="list-group-item-heading pull-left">{{kategori.name}} - /{{kategori.url}}</h5>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="crud.remove(kategori._id);">Sil</a>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="duzenle(kategori);">Düzenle</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div ng-if="yeniKategori._id">
+                <h4>Düzenle</h4>
+            </div>
+            <div ng-if="!yeniKategori._id">
+                <h4>Yeni</h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="kategori-adi">Kategori Adı</label>
+                    <input type="text" name="kategori-adi" id="kategori-adi" class="form-control" ng-model="yeniKategori.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="kategori-url">Kategori URL</label>
+                    <input type="text" name="kategori-url" id="kategori-url" class="form-control" ng-model="yeniKategori.url"/>
+                </div>
+                <div class="form-group">
+                    <label for="alt-baslik">Alt Başlık</label>
+                    <input type="text" name="alt-baslik" id="alt-baslik" class="form-control" ng-model="yeniKategori.subHeader"/>
+                </div>
+                <div class="form-group">
+                    <label for="kategori-metni">Kategori Metni</label>
+                    <textarea name="kategori-metni" id="kategori-metni" class="form-control" ng-model="yeniKategori.description"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="javascript:void(0);"  ng-if="!yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-plus"></span>Yeni Ekle</a>
+    <a href="javascript:void(0);"  ng-if="yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+</div>
