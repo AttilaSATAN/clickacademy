@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label >Anahtar Kelimeler</label>
                     <input type-text class="form-control" ng-model="yeni.egitim.keywords[$index]" ng-repeat="keyword in yeni.egitim.keywords track by $index" placeholder="Anahtar Kelime"/>
-                    <button class="btn btn-sm btn-default" ng-click="yeni.egitim.keywords.push('')">
+                    <button class="btn btn-sm btn-default" ng-click="yeni.egitim.keywords.push(null)">
                         <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
                 </div>
         </form>
