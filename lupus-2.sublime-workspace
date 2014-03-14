@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ng-class",
+				"ng-class-odd	AngularJS"
+			],
+			[
 				"bac",
 				"background"
 			],
@@ -192,10 +196,40 @@
 	"buffers":
 	[
 		{
+			"contents": "/*global angular */\n/*jshint devel:true, browser:true */\nangular.module('lupusshow.controllers', [])\n    .controller('HomeCtrl', function ($scope, $timeout) {\n        \"use strict\";\n        // $scope.videoIntro = {\n        //     type: 'video',\n        //     srcs: [{\n        //         src: 'assets/click_web_anim.mp4',\n        //         type: 'video/mp4'\n        //     }, {\n        //         src: 'video/click_web_anim.webm',\n        //         type: 'video/webm'\n        //     }]\n        // };\n        $scope.homeSlides = [{\n            type: 'image',\n            src: 'img/after_effects.jpg'\n        }, {\n            type: 'image',\n            src: 'img/grafik_tasarim.jpg'\n        }, {\n            type: 'image',\n            src: 'img/photoshop.jpg'\n        }, {\n            type: 'image',\n            src: 'img/web_tasarim.jpg'\n        }, {\n            type: 'image',\n            src: 'img/autocad.jpg'\n        }, {\n            type: 'image',\n            src: 'img/java.jpg'\n        }, {\n            type: 'image',\n            src: 'img/seo.jpg'\n        }];\n    })\n    .controller('BizCtrl', function ($scope, $interval, $timeout) {})\n    .controller('EgitimlerKategoriCtrl', function ($scope, $rootScope, $timeout,\n        $stateParams, $interval, EgitimCategoriesResource) {\n        $scope.kategoriler = [];\n        $timeout(function () {\n            $scope.kategoriler = EgitimCategoriesResource.query();\n        }, 1500)\n    })\n    .\ncontroller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,\n    EgitimByCategoryResource, $stateParams) {\n    $scope.egitimler = [];\n    $scope.getCollection = function () {\n        $scope.egitimler = EgitimByCategoryResource.get({\n            categoryUrl: $stateParams.categoryUrl\n        });\n    }\n    $scope.getCollection();\n})\n    .controller('EgitimCtrl', function ($scope, $stateParams) {\n        console.log(\"$stateParams\");\n        $scope.egitim = {\n            \"_id\": \"kurs4\",\n            \"name\": \"C++ Eğitimi\",\n            \"link\": \"c++-egitimi\",\n            \"_categoryId\": \"1357ab\",\n            \"description\": \"C++\",\n            \"visual\": {\n                \"type\": \"video\",\n                \"srcs\": [{\n                    \"src\": \".avi\"\n                }, {\n                    \"src\": \".webm\"\n                }]\n            },\n            \"text\": \"1980'lerin başında Bjarne Stroustroup tarafından geliştirilen C'yi kapsayan ve nesne yönelimli programlamaya (Object Oriented Programming) olanak sağlayan sınıf tanımlarıyla ilerleten yaygın olarak kullanılan programlama dilidir. Genelde üniversitelerin bilgisayar, elektrik-elektronik, endüstri mühendisliği ve buna benzer bölümlerinde eğitim alan öğrencilerinin talep ettiği bir kurstur.\\\nC++ Kursuna Katılmak İçin Önkoşullar Nelerdir?\\\nAlgoritma bilgisine sahip olmak gereklidir.\",\n            \"dersler\": [\"C++ Tarihçesi\", \"API Tanıtımı\", \"Dizin silmek\",\n                \"İlk programın yazılıp derlenmesi ve çalıştırılması\",\n                \"C++ Dil Özellikleri\"\n            ],\n            \"keywords\": [\"c++\", \"programlama\", \"masa üstü\"],\n        };\n        $scope.bloglar = ['C++ İle Object Orianted Programlama',\n            'Header Dosyaları', 'QT'\n        ];\n        $scope.mesleki = ['Programlama Kariyer Eğitimi'];\n    })\n    .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {\n        $scope.egitimler = [];\n        var egitimler = [{\n            header: 'Temel Bilgisayar',\n            text: 'Photoshop bir grafik düzenleme programıdır. Grafik düzenleme yazılımları (Photo Editing Software)',\n            buttonText: 'Ayrıntılar',\n            kategoriLink: {\n                kategoriLink: 'temel-bilgisayar-egitimi'\n            }\n        }, {\n            header: 'Bilişim Teknolojileri',\n            text: 'Bundan dolayı içerdiği çizim araçları, kalem ve fırçadan çok, kesme kopyalama ve silme üzerine dayalıdır. Bu tip programlar kabaca örnek vermek gerekirse, iki resmin montajlanmasından var ',\n            buttonText: 'Ayrıntılar',\n            kategoriLink: {\n                kategoriLink: 'bilisim-teknolojileri'\n            }\n        }, {\n            header: 'Görsel Bilişim',\n            text: 'Photoshop yeni bir resim oluşturmaktan bir çok alanda kullanılırlar. Bu programlar yanyana gelmemiş insanları aynı resim içinde göstermek, hiç gitmediğiniz yerlerde çekilmiş fotoğraflar oluşturmak, var olan arabanızın rengini değiştirmek gibi işlemler de yapılabilir.',\n            buttonText: 'Ayrıntılar',\n            kategoriLink: {\n                kategoriLink: 'gorsel-bilisim'\n            }\n        }];\n        var meslekiEgitimBannerSok = function () {\n            $timeout(function () {\n                $scope.meslekiEgitim =\n                    'partials/mesleki-egitim-alin.html';\n            }, 300);\n        };\n        $timeout(function () {\n            var a = 0;\n            var inter = $interval(function () {\n                if (a < egitimler.length) {\n                    $scope.egitimler.push(egitimler[a]);\n                    a++;\n                } else {\n                    $interval.cancel(inter);\n                    meslekiEgitimBannerSok();\n                }\n            }, 300);\n        }, 1200);\n    })\n    .controller('YonetimCtrl', ['$scope',\n        function ($scope) {}\n    ])\n    .controller('YonetimStatesCtrl', function ($scope, StateResource) {\n        $scope.states = StateResource.query(function () {\n            console.log(arguments);\n        });\n        $scope.create = function () {};\n        //$scope.update = function (){};\n    })\n    .controller('YonetimTemplatesCtrl', ['$scope', 'PartialsResource',\n        'slugify', 'TemplateResource',\n        function ($scope, PartialsResource, slugify, TemplateResource) {\n            $scope.data = PartialsResource.get(function () {\n                console.log(arguments);\n            });\n            $scope.state = {};\n            $scope.$watch('state.pageName', function () {\n                $scope.state.url = slugify($scope.state.pageName);\n            });\n            $scope.kaydet = function () {};\n            //$scope.partials = PartialsResource.query();\n        }\n    ])\n    .controller('YonetimEgitimlerCtrl', function ($scope, EgitimResource,\n        EgitimlerResource, EgitimCategoriesResource, slugify) {\n        $scope.yeni = {};\n        $scope.noop = {\n            keywords: [],\n            name: null,\n            url: null,\n            _categoryId: null\n        };\n        $scope.yeni.egitim = angular.copy($scope.noop);\n        $scope.egitimCategories = EgitimCategoriesResource.query();\n        $scope.crud = {\n            remove: function (_id) {\n                EgitimResource.remove({\n                    egitimId: _id\n                }, function () {\n                    getCollection();\n                });\n            },\n            save: function (kategoriObj) {\n                var egitim = EgitimResource.get({\n                    egitimId: kategoriObj._id || 0\n                }, function () {\n                    egitim.name = $scope.yeni.egitim.name;\n                    egitim.url = $scope.yeni.egitim.url;\n                    egitim._categoryId = $scope.yeni.egitim._categoryId;\n                    egitim.keywords = $scope.yeni.egitim.keywords;\n                    egitim.$save(function () {\n                        $scope.yeni.egitim = angular.copy($scope.noop);\n                        getCollection();\n                    });\n                });\n            }\n        };\n        $scope.$watch('yeni.egitim.name', function () {\n            if (typeof $scope.yeni.egitim !== 'undefined') $scope.yeni.egitim\n                .url = slugify($scope.yeni.egitim.name);\n        });\n        $scope.duzenle = function (egitimObj) {\n            $scope.yeni.egitim = angular.copy(egitimObj);\n        };\n        var getCollection = function () {\n            $scope.egitimler = EgitimlerResource.query();\n        };\n        getCollection();\n    })\n    .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,\n        EgitimlerResource, EgitimByUrlResource, $stateParams) {\n        var getEgitim = function () {\n            $scope.egitim = EgitimByUrlResource.get({\n                egitimUrl: $stateParams.egitimUrl\n            }, function () {\n                console.log($scope.egitim);\n            });\n        };\n        getEgitim();\n    })\n    .controller('IletisimCtrl', function ($scope) {\n        $scope.map = {\n            center: {\n                latitude: 39.991162,\n                longitude: 32.77\n            },\n            zoom: 14,\n            marker: {\n                coords: {\n                    latitude: 39.991162,\n                    longitude: 32.738901\n                },\n                options: {\n                    draggable: false,\n                },\n                icon: 'img/hz_icon_marker.png'\n            }\n        };\n    })\n    .controller('YonetimEgitimKategorileriCtrl', function ($scope,\n        EgitimCategoriesResource, EgitimCategoryResource, slugify) {\n        $scope.crud = {\n            remove: function (_id) {\n                EgitimCategoryResource.remove({\n                    categoryId: _id\n                }, function () {\n                    getCollection();\n                });\n            },\n            create: function (kategoriObj) {\n                var kategori = EgitimCategoryResource.get({\n                    categoryId: kategoriObj._id || 0\n                }, function () {\n                    kategori.name = $scope.yeniKategori.name;\n                    kategori.url = $scope.yeniKategori.url;\n                    kategori.subHeader = $scope.yeniKategori.subHeader;\n                    kategori.description = $scope.yeniKategori.description;\n                    kategori.$save(function () {\n                        getCollection();\n                    });\n                });\n            }\n        };\n        $scope.$watch('yeniKategori.name', function () {\n            if (typeof $scope.yeniKategori !== 'undefined') $scope.yeniKategori\n                .url = slugify($scope.yeniKategori.name);\n        });\n        $scope.duzenle = function (kategoriObj) {\n            $scope.yeniKategori = angular.copy(kategoriObj);\n        };\n        var getCollection = function () {\n            $scope.egitimCategories = EgitimCategoriesResource.query();\n        };\n        getCollection();\n    });",
 			"file": "client/app/js/controllers.js",
+			"file_size": 10418,
+			"file_write_time": 130392547121076441,
 			"settings":
 			{
-				"buffer_size": 10055,
+				"buffer_size": 10319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/app/css/angular-motion.min.css",
+			"settings":
+			{
+				"buffer_size": 14668,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/app/index.html",
+			"settings":
+			{
+				"buffer_size": 3283,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\nlogs/*\n!.gitkeep\ntmp\n.DS_Store\nlib-cov\n*.seed\n*.log\n*.csv\n*.dat\n*.out\n*.pid\n*.gz\ndata\ndata/*\npids\nlogs\nresults\n*.sublime-project\n*.sublime-project\nnpm-debug.log\nnode_modules\n",
+			"file": ".gitignore",
+			"file_size": 140,
+			"file_write_time": 130336017220000000,
+			"settings":
+			{
+				"buffer_size": 175,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +237,7 @@
 			"file": "client/app/js/states.js",
 			"settings":
 			{
-				"buffer_size": 4959,
+				"buffer_size": 4739,
 				"line_ending": "Unix"
 			}
 		},
@@ -211,7 +245,7 @@
 			"file": "client/app/partials/egitimler.kategoriler.html",
 			"settings":
 			{
-				"buffer_size": 690,
+				"buffer_size": 946,
 				"line_ending": "Windows"
 			}
 		},
@@ -232,6 +266,17 @@
 			}
 		},
 		{
+			"contents": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-8\">\n            <button class=\"pull-right btn btn-lg btn-primary\" ng-click=\"yeni.egitim = null\">\n            <span class=\"glyphicon glyphicon-plus\"></span>\n            </button>\n            <h4>Eğitimler</h4>\n            <div class=\"list-group\">\n                <div href=\"#\" class=\"list-group-item clearfix animation-fadeAndScale\"  ng-class=\"{'list-group-item-info': yeni.egitim._id == egitim._id}\"  ng-repeat=\"egitim in egitimler\">\n                    <div class=\"col-sm-9\">\n                        <p class=\"list-group-item-heading\">{{egitim.name}}</p>\n                        <p class=\"list-group-item-heading\">/{{egitim.url}}</p>\n                    </div>\n                    <div class=\"col-sm-3\">\n                        <a class=\"btn btn-sm btn-warning pull-right\" ui-sref=\"yonetim.egitim-sayfasi({egitimUrl:egitim.url})\">Sayfayı Düzenle</a>\n                        <a href=\"javascript:void(0);\" class=\"btn btn-sm btn-danger pull-right\" ng-click=\"crud.remove(egitim._id);\">Sil</a>\n                        <a href=\"javascript:void(0);\" class=\"btn btn-sm btn-primary pull-right\" ng-click=\"duzenle(egitim);\">Düzenle</a>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-sm-4\">\n        \n            <div ng-if=\"yeni.egitim._id\">\n                <h4>Düzenle</h4>\n            </div>\n            <div ng-if=\"!yeni.egitim._id\">\n                <h4>Yeni</h4>\n            </div>\n            <form class=\"form-horizontal\" role=\"form\">\n                <div class=\"form-group\">\n                    <label for=\"kategori-adi\">Eğitim Adı</label>\n                    <input type=\"text\" name=\"kategori-adi\" id=\"kategori-adi\" class=\"form-control\" ng-model=\"yeni.egitim.name\"/>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"kategori-url\">Eğitim URL</label>\n                    <input type=\"text\" name=\"kategori-url\" id=\"kategori-url\" class=\"form-control\" ng-model=\"yeni.egitim.url\"/>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"egitim-kategori\">Eğitim Kategorisi</label>\n                    <select class=\"form-control\" name=\"egitim-kategori\" id=\"egitim-kategori\" ng-model=\"yeni.egitim._categoryId\" ng-options=\"kategori._id as kategori.name for kategori in egitimCategories\">{{kategori}}</select>\n                </div>\n                <div class=\"form-group\">\n                    <label >Anahtar Kelimeler</label>\n                    <input type-text class=\"form-control\" ng-model=\"yeni.egitim.keywords[$index]\" ng-repeat=\"keyword in yeni.egitim.keywords track by $index\" placeholder=\"Anahtar Kelime\"/>\n                    <button class=\"btn btn-sm btn-default\" ng-click=\"yeni.egitim.keywords.push(null)\">\n                        <span class=\"glyphicon glyphicon-plus\" ng-click=\"\"></span> Anahtar Kelime Ekle</button>\n                </div>\n        </form>\n        <a href=\"javascript:void(0);\" ng-if=\"!yeni.egitim._id\" class=\"btn btn-primary pull-right\" ng-click=\"crud.save(yeni.egitim)\"><span class=\"glyphicon glyphicon-plus\"></span>Yeni</a>\n        <a href=\"javascript:void(0);\" ng-if=\"yeni.egitim._id\" class=\"btn btn-primary pull-right\" ng-click=\"crud.save(yeni.egitim)\"><span class=\"glyphicon glyphicon-save\"></span>Kaydet</a>\n    </div>\n</div>\n</div>",
+			"file": "client/app/partials/yonetim/egitimler.html",
+			"file_size": 3439,
+			"file_write_time": 130391296968181688,
+			"settings":
+			{
+				"buffer_size": 3379,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "client/app/less/app.less",
 			"settings":
 			{
@@ -248,53 +293,10 @@
 			}
 		},
 		{
-			"file": "server2/lib/models/assets.js",
-			"settings":
-			{
-				"buffer_size": 226,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server2/lib/controllers/assets.js",
-			"settings":
-			{
-				"buffer_size": 352,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "client/app/lib/angular-lupus/lupus-0.2.1.js",
 			"settings":
 			{
 				"buffer_size": 29400,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/app/partials/yonetim/egitim-sayfasi.html",
-			"settings":
-			{
-				"buffer_size": 333,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-sm-4 egitim-kategorisi-giris\" ng-repeat=\"egitim in egitimler\" >\n            <div>\n            	<img class=\"img-responsive\" style=\"margin:0 auto;\"/>\n                <h3>{{egitim.header}}</h3>\n                <p>{{egitim.text}}</p>\n\n                <a ui-sref=\"kurslar.kategori(egitim.kategoriLink)\" class=\"btn btn-lg btn1\">{{egitim.buttonText}}</a>\n            </div>\n        </div>\n    </div>\n    <div class=\"row\">\n    	<div class=\"col-sm-12\"><div ng-include=\"meslekiEgitim\" scope=\"\" onload=\"\"</div>\n    </div>\n</div>",
-			"file": "client/app/partials/eski/ic-sayfa.html",
-			"file_size": 610,
-			"file_write_time": 130374542480414062,
-			"settings":
-			{
-				"buffer_size": 593,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server2/lib/controllers/egitim.js",
-			"settings":
-			{
-				"buffer_size": 4207,
 				"line_ending": "Windows"
 			}
 		}
@@ -459,6 +461,11 @@
 	},
 	"file_history":
 	[
+		"/C/Dev/Projects/lupus-2/server2/lib/controllers/egitim.js",
+		"/C/Dev/Projects/lupus-2/client/app/partials/eski/ic-sayfa.html",
+		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/egitim-sayfasi.html",
+		"/C/Dev/Projects/lupus-2/server2/lib/controllers/assets.js",
+		"/C/Dev/Projects/lupus-2/server2/lib/models/assets.js",
 		"/C/Dev/Projects/lupus-2/client/app/js/services.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/routes.js",
 		"/C/Dev/Projects/lupus-2/client/app/index.html",
@@ -467,13 +474,11 @@
 		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/egitimler.html",
 		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/egitim-kategorileri.html",
 		"/C/Dev/Projects/lupus-2/server2/lib/controllers/egitim-category.js",
-		"/C/Dev/Projects/lupus-2/server2/lib/controllers/egitim.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/models/egitim-categories.js",
 		"/C/Dev/Projects/lupus-2/client/app/lib/angular-lupus/lupus-0.2.1.js",
 		"/C/Dev/Projects/lupus-2/client/app/js/app.js",
 		"/C/Dev/Projects/lupus-2/client/app/template/lupus/disko/disko-video-intro.html",
 		"/C/Dev/Projects/lupus-2/client/app/less/app-animations.less",
-		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/egitim-sayfasi.html",
 		"/C/Dev/Projects/lupus-2/client/app/less/app.less",
 		"/C/Dev/Projects/lupus-2/client/app/js/states.js",
 		"/C/Dev/Projects/lupus-2/client/app/less/lupus-animations.less",
@@ -583,10 +588,7 @@
 		"/C/Dev/Projects/hzesal1/client/app/partials/tr/products-cbmm-hze1012.html",
 		"/C/Dev/Projects/hzesal1/client/app/partials/en/products-cbmm-hze1042.html",
 		"/C/Dev/Projects/hzesal1/client/app/partials/en/products-cbmm-hze1036.html",
-		"/C/Dev/Projects/hzesal1/client/app/partials/en/products-cbmm-hze1030.html",
-		"/C/Dev/Projects/hzesal1/client/app/partials/en/products-cbmm-hze1012.html",
-		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1012.html",
-		"/C/Dev/Projects/hzesal1/client/app/partials/tr/table-block-mach-hze1020.html"
+		"/C/Dev/Projects/hzesal1/client/app/partials/en/products-cbmm-hze1030.html"
 	],
 	"find":
 	{
@@ -760,7 +762,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -769,15 +771,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10055,
+						"buffer_size": 10319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7299,
-								7299
+								7626,
+								7626
 							]
 						],
 						"settings":
@@ -813,18 +815,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -935,27 +937,558 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2033.0,
+						"translation.y": 2352.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/app/css/angular-motion.min.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4848,
+								4848
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1823.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1136,
+								1136
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 210.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								140
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 4,
 					"file": "client/app/js/states.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4959,
+						"buffer_size": 4739,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2634,
-								2634
+								1674,
+								1674
 							]
 						],
 						"settings":
@@ -991,18 +1524,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1113,27 +1646,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 588.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
 					"file": "client/app/partials/egitimler.kategoriler.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 690,
+						"buffer_size": 946,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								470,
-								470
+								518,
+								518
 							]
 						],
 						"settings":
@@ -1169,18 +1702,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1294,11 +1827,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "client/app/partials/egitimler.kategori.egitim-listesi.html",
 					"semi_transient": false,
 					"settings":
@@ -1347,18 +1880,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1470,11 +2003,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "client/app/partials/egitim.html",
 					"semi_transient": false,
 					"settings":
@@ -1523,18 +2056,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1646,11 +2179,189 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
+					"file": "client/app/partials/yonetim/egitimler.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2397,
+								2397
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 418.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "client/app/less/app.less",
 					"semi_transient": false,
 					"settings":
@@ -1699,18 +2410,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1819,14 +2530,14 @@
 							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1684.0,
+						"translation.y": 1648.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 10,
 					"file": "client/app/partials/egitimler.html",
 					"semi_transient": false,
 					"settings":
@@ -1875,18 +2586,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -2000,363 +2711,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "server2/lib/models/assets.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								226,
-								226
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "server2/lib/controllers/assets.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								296,
-								296
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "client/app/lib/angular-lupus/lupus-0.2.1.js",
 					"semi_transient": false,
 					"settings":
@@ -2405,18 +2764,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -2530,541 +2889,7 @@
 						"translation.y": 6277.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "client/app/partials/yonetim/egitim-sayfasi.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 333,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								333,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "client/app/partials/eski/ic-sayfa.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 593,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								593,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "server2/lib/controllers/egitim.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4207,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1485,
-								1485
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
