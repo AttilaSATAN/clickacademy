@@ -103,39 +103,39 @@ angular.module('lupusshow.services', [])
         });
     })
     .factory('PartialsResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/partials');
+        return $resource('/service/api/partials');
     })
     .factory('EgitimCategoriesResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/egitim-categories');
+        return $resource('/service/api/egitim-categories');
     })
     .factory('EgitimCategoryResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/egitim-category/:categoryId', 
+        return $resource('/service/api/egitim-category/:categoryId', 
             {categoryId:'@id'});
     })
     .factory('EgitimlerResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/egitimler');
+        return $resource('/service/api/egitimler');
     })
     .factory('EgitimResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/egitim/:egitimId', 
+        return $resource('/service/api/egitim/:egitimId', 
             {egitimId:'@id'});
     })
     .factory('EgitimByCategoryResource', function($resource){
-        return $resource('http://lupus-2.dev/service/api/egitim/by-category/:categoryUrl', 
+        return $resource('/service/api/egitim/by-category/:categoryUrl', 
             {categoryUrl:'@categoryUrl'}, 
             {'get': {
                 isArray: true
             }});
     })
     .factory('EgitimByUrlResource', function($resource){
-        return $resource('http://lupus-2.dev/service/api/egitim/by-url/:egitimUrl', 
+        return $resource('/service/api/egitim/by-url/:egitimUrl', 
             {egitimUrl:'@url'});
     })
     .factory('ProgramResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/program');
+        return $resource('/service/api/program');
     })
     .factory('MeslekiResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/mesleki');
+        return $resource('/service/api/mesleki');
     })
     .factory('SektorelResource', function ($resource) {
-        return $resource('http://lupus-2.dev/service/api/sektorel');
+        return $resource('/service/api/sektorel');
     });
