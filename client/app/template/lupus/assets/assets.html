@@ -1,0 +1,30 @@
+<div class="lupus-assets">
+    <div lupus-assets-admin-displayer model-data="modelData">
+        
+    </div>
+    <div class="col-xs-3" ng-show="open" style="overflow-y:scroll;position:fixed; top:54px;right:0;display:block;bottom:0;background-color: #eee; float:none;border-left:1px solid #ccc">
+        <form role="form">
+            <div class="form-group">
+                <label for="resim-adi">Dosya Adı</label>
+                <input type="text" ng-model="asset.name" class="form-control"/>
+            </div>
+        </form>
+        <div ng-show="dropSupported" class="lupus-gorsel-upload" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">Dosyayı buraya sürükleyip bırakınız.</div>
+        <label for="fileToUpload">Veya Sisteme Yüklemek İçin Dosyayı Seçin</label><br />
+        <input type="file" id="fileToUpload" multiple ng-file-select="onFileSelect($files)" />
+        <div class="img-responsive" ng-repeat="presistantAsset in assets" ng-click="onClick(presistantAsset)">
+            <img  title="{{presistantAsset.name}}" ng-src="assets/{{presistantAsset.file}}" class="lupus-asset-img-review img-responsive"/>
+        </div>
+        <div ng-show="selectedFiles != null">
+            <div style="height:100px; min-width:200px;float:left; " class="sel-file" ng-repeat="f in selectedFiles">
+                <div>
+                    <button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>
+                    <span class="progress-display" ng-show="progress[$index] >= 0">
+                    <div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>
+                    </span>
+                    <button class="btn btn-sm btn-danger" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
