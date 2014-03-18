@@ -12,8 +12,9 @@
         <div ng-show="dropSupported" class="lupus-gorsel-upload" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">Dosyayı buraya sürükleyip bırakınız.</div>
         <label for="fileToUpload">Veya Sisteme Yüklemek İçin Dosyayı Seçin</label><br />
         <input type="file" id="fileToUpload" multiple ng-file-select="onFileSelect($files)" />
-        <div class="img-responsive" ng-repeat="presistantAsset in assets" ng-click="onClick(presistantAsset)">
+        <div class="img-responsive" ng-repeat="presistantAsset in assets | filter:asset.name" ng-click="onClick(presistantAsset)">
             <img  title="{{presistantAsset.name}}" ng-src="assets/{{presistantAsset.file}}" class="lupus-asset-img-review img-responsive"/>
+            <span>{{presistantAsset.name}}</span>
         </div>
         <div ng-show="selectedFiles != null">
             <div style="height:100px; min-width:200px;float:left; " class="sel-file" ng-repeat="f in selectedFiles">
