@@ -20,93 +20,96 @@ angular.module('lupusshow')
                         'bottom': {}
                     }
                 })
-                .state('egitimler', {
-                    abstract: true,
-                    url: '/egitimler',
-                    views: {
-                        'top': {},
-                        'bottom': {
-                            templateUrl: 'partials/egitimler.html',
-                            controller: 'EgitimlerCtrl'
-                        },
-                    }
-                })
-                .state('egitimler.kategoriler', {
-                    url: '/kategoriler',
-                    templateUrl: 'partials/egitimler.kategoriler.html',
-                    controller: 'EgitimlerKategoriCtrl',
-
-                })
-                .state('egitimler.kategori', {
-                    abstract: true,
-                    url: '/kategori',
-                    templateUrl: 'partials/egitimler.kategori.html',
-                    //controller: 'EgitimlerKategoriCtrl'
-                })
-                .state('egitimler.kategori.egitimlistesi', {
-                    url: '/:categoryUrl',
-                    templateUrl: 'partials/egitimler.kategori.egitim-listesi.html',
-                    controller: 'EgitimlerKategoriEgitimListesiCtrl'
-                })
-                .state('egitim', {
-                    url: '/egitim/:egitimUrl',
-                    templateUrl: 'partials/egitim.html',
-                    controller: 'EgitimCtrl'
-                })
-                .state('mesleki-uzmanlik-egitimi', {
-                    url: '/mesleki-uzmanlik-egitimi',
-                    views: {
-                        'top': {},
-                        'bottom': {
-                            templateUrl: 'partials/mesleki-uzmanlik-egitimi.html',
-                            controller: 'HakkimizdaCtrl'
-                        },
-                    }
-                })
-                .state('iletisim', {
-                    url: '/iletisim',
-                    views: {
-                        'top': {},
-                        'bottom': {
-                            templateUrl: 'partials/iletisim.html',
-                            contoller: 'IletisimCtrl'
+                    .state('egitimler', {
+                        url: '/egitimler',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/egitimler.html',
+                                controller: 'EgitimlerCtrl'
+                            },
                         }
-                    }
-                })
-                .state('templates', {
-                    url: '/templates',
-                    views: {
-                        'top': {},
-                        'bottom': {
-                            templateUrl: 'partials/yonetim/states.html',
-                            controller: 'YonetimTemplatesCtrl'
+                    })
+                    .state('egitimler.kategoriler', {
+                        url: '/kategoriler',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/egitimler.kategoriler.html',
+                                controller: 'EgitimlerKategoriCtrl'
+                            }
                         }
-                    }
-                })
-                .state('yonetim', {
-                    url: '/yonetim',
-                    views: {
-                        'top': {},
-                        'bottom': {
-                            templateUrl: 'partials/yonetim/index.html',
-                            controller: 'YonetimCtrl'
+                    })
+                    .state('egitimler.kategori', {
+                        abstract: true,
+                        url: '/kategori',
+                        templateUrl: 'partials/egitimler.kategori.html',
+                        //controller: 'EgitimlerKategoriCtrl'
+                    })
+                    .state('egitimler.kategori.egitimlistesi', {
+                        url: '/:categoryUrl',
+                        templateUrl: 'partials/egitimler.kategori.egitim-listesi.html',
+                        controller: 'EgitimlerKategoriEgitimListesiCtrl'
+                    })
+                    .state('egitim', {
+                        url: '/egitim/:egitimUrl',
+                        templateUrl: 'partials/egitim.html',
+                        controller: 'EgitimCtrl'
+                    })
+                    .state('mesleki-uzmanlik-egitimi', {
+                        url: '/mesleki-uzmanlik-egitimi',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/mesleki-uzmanlik-egitimi.html',
+                                controller: 'HakkimizdaCtrl'
+                            },
                         }
-                    }
-                })
-                .state('yonetim.egitim-kategorileri', {
-                    url: '/egitim-kategorileri',
-                    templateUrl: 'partials/yonetim/egitim-kategorileri.html',
-                    controller: 'YonetimEgitimKategorileriCtrl'
-                })
-                .state('yonetim.egitimler', {
-                    url: '/egitimler',
-                    templateUrl: 'partials/yonetim/egitimler.html',
-                    controller: 'YonetimEgitimlerCtrl'
-                })
-                .state('yonetim.egitim-sayfasi', {
-                    url: '/egitim-sayfasi/:egitimUrl',
-                    templateUrl: 'partials/yonetim/egitim-sayfasi.html',
-                    controller: 'YonetimEgitimSayfasiCtrl'
-                });
+                    })
+                    .state('iletisim', {
+                        url: '/iletisim',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/iletisim.html',
+                                contoller: 'IletisimCtrl'
+                            }
+                        }
+                    })
+                    .state('templates', {
+                        url: '/templates',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/yonetim/states.html',
+                                controller: 'YonetimTemplatesCtrl'
+                            }
+                        }
+                    })
+                    .state('yonetim', {
+                        url: '/yonetim',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/yonetim/index.html',
+                                controller: 'YonetimCtrl'
+                            }
+                        }
+                    })
+                    .state('yonetim.egitim-kategorileri', {
+                        url: '/egitim-kategorileri',
+                        templateUrl: 'partials/yonetim/egitim-kategorileri.html',
+                        controller: 'YonetimEgitimKategorileriCtrl'
+                    })
+                    .state('yonetim.egitimler', {
+                        url: '/egitimler',
+                        templateUrl: 'partials/yonetim/egitimler.html',
+                        controller: 'YonetimEgitimlerCtrl'
+                    })
+                    .state('yonetim.egitim-sayfasi', {
+                        url: '/egitim-sayfasi/:egitimUrl',
+                        templateUrl: 'partials/yonetim/egitim-sayfasi.html',
+                        controller: 'YonetimEgitimSayfasiCtrl'
+                    });
             }
         ]);

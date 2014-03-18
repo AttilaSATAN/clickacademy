@@ -46,7 +46,7 @@ angular.module('lupusshow.controllers', [])
     })
     .
 controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
-    EgitimByCategoryResource, $stateParams) {
+    EgitimByCategoryResource, $stateParams, $timeout) {
     $scope.egitimler = [];
     $scope.getCollection = function () {
         $scope.egitimler = EgitimByCategoryResource.get({
@@ -55,78 +55,14 @@ controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
     }
     $scope.getCollection();
 })
-    .controller('EgitimCtrl', function ($scope, $stateParams) {
-        console.log("$stateParams");
-        $scope.egitim = {
-            "_id": "kurs4",
-            "name": "C++ Eğitimi",
-            "link": "c++-egitimi",
-            "_categoryId": "1357ab",
-            "description": "C++",
-            "visual": {
-                "type": "video",
-                "srcs": [{
-                    "src": ".avi"
-                }, {
-                    "src": ".webm"
-                }]
-            },
-            "text": "1980'lerin başında Bjarne Stroustroup tarafından geliştirilen C'yi kapsayan ve nesne yönelimli programlamaya (Object Oriented Programming) olanak sağlayan sınıf tanımlarıyla ilerleten yaygın olarak kullanılan programlama dilidir. Genelde üniversitelerin bilgisayar, elektrik-elektronik, endüstri mühendisliği ve buna benzer bölümlerinde eğitim alan öğrencilerinin talep ettiği bir kurstur.\
-C++ Kursuna Katılmak İçin Önkoşullar Nelerdir?\
-Algoritma bilgisine sahip olmak gereklidir.",
-            "dersler": ["C++ Tarihçesi", "API Tanıtımı", "Dizin silmek",
-                "İlk programın yazılıp derlenmesi ve çalıştırılması",
-                "C++ Dil Özellikleri"
-            ],
-            "keywords": ["c++", "programlama", "masa üstü"],
-        };
-        $scope.bloglar = ['C++ İle Object Orianted Programlama',
-            'Header Dosyaları', 'QT'
-        ];
-        $scope.mesleki = ['Programlama Kariyer Eğitimi'];
-    })
+    .controller('EgitimCtrl', function ($scope, $stateParams) {})
     .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {
-        $scope.egitimler = [];
-        var egitimler = [{
-            header: 'Temel Bilgisayar',
-            text: 'Photoshop bir grafik düzenleme programıdır. Grafik düzenleme yazılımları (Photo Editing Software)',
-            buttonText: 'Ayrıntılar',
-            kategoriLink: {
-                kategoriLink: 'temel-bilgisayar-egitimi'
-            }
-        }, {
-            header: 'Bilişim Teknolojileri',
-            text: 'Bundan dolayı içerdiği çizim araçları, kalem ve fırçadan çok, kesme kopyalama ve silme üzerine dayalıdır. Bu tip programlar kabaca örnek vermek gerekirse, iki resmin montajlanmasından var ',
-            buttonText: 'Ayrıntılar',
-            kategoriLink: {
-                kategoriLink: 'bilisim-teknolojileri'
-            }
-        }, {
-            header: 'Görsel Bilişim',
-            text: 'Photoshop yeni bir resim oluşturmaktan bir çok alanda kullanılırlar. Bu programlar yanyana gelmemiş insanları aynı resim içinde göstermek, hiç gitmediğiniz yerlerde çekilmiş fotoğraflar oluşturmak, var olan arabanızın rengini değiştirmek gibi işlemler de yapılabilir.',
-            buttonText: 'Ayrıntılar',
-            kategoriLink: {
-                kategoriLink: 'gorsel-bilisim'
-            }
-        }];
-        var meslekiEgitimBannerSok = function () {
-            $timeout(function () {
-                $scope.meslekiEgitim =
-                    'partials/mesleki-egitim-alin.html';
-            }, 300);
-        };
         $timeout(function () {
-            var a = 0;
-            var inter = $interval(function () {
-                if (a < egitimler.length) {
-                    $scope.egitimler.push(egitimler[a]);
-                    a++;
-                } else {
-                    $interval.cancel(inter);
-                    meslekiEgitimBannerSok();
-                }
-            }, 300);
-        }, 1200);
+            $scope.animationStepOne = true;
+        }, 1000);
+        $timeout(function () {
+            $scope.animationStepTwo = true;
+        }, 2000);
     })
     .controller('YonetimCtrl', ['$scope',
         function ($scope) {}
@@ -204,13 +140,15 @@ Algoritma bilgisine sahip olmak gereklidir.",
         $scope.kaydedildi = false;
         $scope.egitim = {};
         var to = null;
+        console.log('YonetimEgitimSayfasiCtrl')
         var getEgitim = function () {
             $scope.egitim = EgitimByUrlResource.get({
                 egitimUrl: $stateParams.egitimUrl
-            }, function () {});
+            }, function () {
+                console.log($scope.egitim)
+            });
         };
         getEgitim();
-
         // $scope.$watch('egitim', function () {
         //     if (to) $timeout.cancel(to);
         //     to = $timeout(function () {
@@ -232,23 +170,26 @@ Algoritma bilgisine sahip olmak gereklidir.",
         //     }, 3000);
         // }, true);
         $scope.$watch('egitim', function () {
+            console.log('SAVEWE')
             if (to) $timeout.cancel(to);
             $scope.kaydediliyor = true;
             to = $timeout(function () {
-                if ($scope.egitim._asset) var egitim =
-                    EgitimResource.get({
-                        egitimId: $scope.egitim._id || 0
-                    }, function () {
+                console.log('SAVE')
+                var egitim = EgitimResource.get({
+                    egitimId: $scope.egitim._id || 0
+                }, function () {
+                    if ($scope.egitim._asset) {
                         egitim._asset = egitim._asset || {};
                         egitim._asset._id = $scope.egitim._asset
-                            ._id;
-                        egitim.name = $scope.egitim.name;
-                        egitim.description = $scope.egitim.description;
-                        egitim.$save(function (gitimServer) {
-                            $scope.kaydediliyor = false;
-                            $scope.kaydedildi = true;
-                        });
+                            ._id || null;
+                    }
+                    egitim.name = $scope.egitim.name;
+                    egitim.description = $scope.egitim.description;
+                    egitim.$save(function (gitimServer) {
+                        $scope.kaydediliyor = false;
+                        $scope.kaydedildi = true;
                     });
+                });
             }, 3000);
         }, true);
     })

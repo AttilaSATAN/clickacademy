@@ -4,6 +4,7 @@
 html{
 	height: 100%;
 }
+
 body{
 	font-family: 'Merriweather Sans', sans-serif;
 	background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
@@ -159,5 +160,37 @@ body{
 	margin-bottom: 10px;
 	background: #fff;
 	border:1px solid #ccc;
+}
+.egitim-sistemi-animation-sarmalayici{
+	.ust{
+		height: 135px;
+		background: url(../img/click_web_oklar_ust.png) top  center repeat-x;
+		.ust-canvas{
+			-webkit-transition: 1s;
+			transition: 1s;
+			height: 0;
+			background: url(../img/click_web_oklar_ust_3.png) no-repeat top 1px center ;
+		}
+		.ust-canvas.down{
+			height: 135px;
+		}
+	}
+	.orta{
+		height: 332px;
+		background: url(../img/click_web_oklar_orta.png) repeat-x;
+		.orta-canvas{
+			height: 0;
+			-webkit-transition: 1s;
+			transition: 1s;
+			background: url(../img/click_web_oklar_alt3.png) no-repeat bottom center ;
+		}
+		.orta-canvas.down{
+			height: 332px;
+		}
+	}
+	.alt{
+		height: 128px;
+		background: url(../img/click_web_oklar_alt.png) repeat-x top center ;
+	}
 }
 @import "app-animations.less";
