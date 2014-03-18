@@ -146,13 +146,15 @@ angular.module('lupusshow.directives', [])
             }, // {} = isolate, true = child, false/undefined = no change
             controller: function ($scope, $element, $attrs, $transclude) {
                 var isVisualSetted = function () {
-                    return !!$scope.modelData._asset && !! $scope.modelData
-                        ._asset.file
+                    return !!$scope.modelData._asset && !!$scope.modelData
+                        ._asset.file;
                 };
                 if (isVisualSetted()) $scope.src = $scope.modelData._asset.file;
                 $scope.$watch('modelData._asset', function () {
                     if (isVisualSetted()) $scope.src = $scope.modelData
                         ._asset.file || null;
+                    else $scope.src = null;
+                    console.log("change", isVisualSetted())
                 }, true);
             },
             // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements

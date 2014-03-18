@@ -1,1 +1,2 @@
-<img class="img-responsive" ng-src="assets/{{src}}"/>
+<img ng-if="src" class="img-responsive" ng-src="assets/{{src}}"/>
+<span ng-if="!src" class="text-warn"><span class="glyphicon glyphicon-remove"></span> Bir görsel Seçilmedi</span>
