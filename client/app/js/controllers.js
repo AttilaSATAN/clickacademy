@@ -199,15 +199,58 @@ Algoritma bilgisine sahip olmak gereklidir.",
         getCollection();
     })
     .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,
-        EgitimlerResource, EgitimByUrlResource, $stateParams) {
+        EgitimlerResource, EgitimByUrlResource, $stateParams, $timeout) {
+        $scope.kaydediliyor = false;
+        $scope.kaydedildi = false;
+        $scope.egitim = {};
+        var to = null;
         var getEgitim = function () {
             $scope.egitim = EgitimByUrlResource.get({
                 egitimUrl: $stateParams.egitimUrl
-            }, function () {
-                console.log($scope.egitim);
-            });
+            }, function () {});
         };
         getEgitim();
+
+        // $scope.$watch('egitim', function () {
+        //     if (to) $timeout.cancel(to);
+        //     to = $timeout(function () {
+        //         $scope.kaydediliyor = true;
+        //         if ($scope.egitim.visual) var egitim =
+        //             EgitimResource.get({
+        //                 egitimId: $scope.egitim._id || 0
+        //             }, function () {
+        //                 egitim.visual = egitim.visual || {};
+        //                 egitim.visual._id = $scope.egitim.visual
+        //                     ._id;
+        //                 egitim.name =  $scope.egitim.name;
+        //                 egitim.description =  $scope.egitim.description;
+        //                 egitim.$save(function () {
+        //                     $scope.kaydediliyor = false;
+        //                     $scope.kaydedildi = true;
+        //                 });
+        //             });
+        //     }, 3000);
+        // }, true);
+        $scope.$watch('egitim', function () {
+            if (to) $timeout.cancel(to);
+            $scope.kaydediliyor = true;
+            to = $timeout(function () {
+                if ($scope.egitim._asset) var egitim =
+                    EgitimResource.get({
+                        egitimId: $scope.egitim._id || 0
+                    }, function () {
+                        egitim._asset = egitim._asset || {};
+                        egitim._asset._id = $scope.egitim._asset
+                            ._id;
+                        egitim.name = $scope.egitim.name;
+                        egitim.description = $scope.egitim.description;
+                        egitim.$save(function (gitimServer) {
+                            $scope.kaydediliyor = false;
+                            $scope.kaydedildi = true;
+                        });
+                    });
+            }, 3000);
+        }, true);
     })
     .controller('IletisimCtrl', function ($scope) {
         $scope.map = {
@@ -230,6 +273,7 @@ Algoritma bilgisine sahip olmak gereklidir.",
     })
     .controller('YonetimEgitimKategorileriCtrl', function ($scope,
         EgitimCategoriesResource, EgitimCategoryResource, slugify) {
+        $scope.yeniKategori = {};
         $scope.crud = {
             remove: function (_id) {
                 EgitimCategoryResource.remove({
@@ -246,6 +290,8 @@ Algoritma bilgisine sahip olmak gereklidir.",
                     kategori.url = $scope.yeniKategori.url;
                     kategori.subHeader = $scope.yeniKategori.subHeader;
                     kategori.description = $scope.yeniKategori.description;
+                    kategori._asset = kategori._asset || {};
+                    kategori._asset._id = $scope.yeniKategori._asset._id;
                     kategori.$save(function () {
                         getCollection();
                     });

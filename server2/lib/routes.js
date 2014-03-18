@@ -10,7 +10,9 @@ var api = require('./controllers/api'),
     egitimCategories = require('./controllers/egitim-categories'),
     egitimCategory = require('./controllers/egitim-category'),
     egitim = require('./controllers/egitim'),
-    egitimler = require('./controllers/egitimler');
+    egitimler = require('./controllers/egitimler'),
+    assets = require('./controllers/assets'),
+    asset = require('./controllers/asset');
 var middleware = require('./middleware');
 
 /**
@@ -51,6 +53,8 @@ module.exports = function(app) {
 
   app.get('/service/api/egitimler', egitimler.query);  
 
+  app.post('/service/api/asset' , asset.file);
+  app.get('/service/api/assets' , assets.query);
 
   app.get('/service/api/egitim-category/:categoryId', egitimCategory.get);
   app.delete('/service/api/egitim-category/:categoryId', egitimCategory.delete);

@@ -3,7 +3,7 @@
 "use strict";
 var lupus = angular.module("lupus", ["lupus.acrophobia", "lupus.danceFloor",
     "lupus.scrollDisplay", "lupus.templates", "lupus.disko",
-    "lupus.service", 'lupus.evliya', 'lupus.assets'
+    "lupus.service", 'lupus.evliya'
 ]);
 /**
  * @ngdoc service
@@ -455,145 +455,7 @@ yatayOrtala angular-lupus-0.2.0.js:270
             }
         };
     });
-angular.module('lupus.assets', ['angularFileUpload'])
-    .directive('lupusAssetsB', function ($http, $timeout, $upload) {
-        return {
-            // name: '',
-            // priority: 1,
-            // terminal: true,
-            scope: {
-                postData: "=",
-                url: '=',
-                asset: '='
-            }, // {} = isolate, true = child, false/undefined = no change
-            controller: function ($scope, $element, $attrs, $transclude) {
 
-                if($scope.postData.visual && $scope.postData.visual._id)
-                    console.log('_id var', $scope.postData);
-                else{
-                    $scope.postData.visual = {};
-                }
-
-
-
-                $scope.fileReaderSupported = window.FileReader !== null;
-                $scope.uploadRightAway = true;
-
-                $scope.hasUploader = function (index) {
-                    return $scope.upload[index] !== null;
-                };
-
-                $scope.abort = function (index) {
-                    $scope.upload[index].abort();
-                    $scope.upload[index] = null;
-                };
-/*
-$file örneği: 
-lastModifiedDate: Tue Jan 07 2014 22:38:53 GMT+0200 (Türkiye Standart Saati)
-name: "logo.png"
-size: 18515
-type: "image/png"
-webkitRelativePath: ""
-*/
-                $scope.onFileSelect = function ($files) {
-                    console.log($files)
-                    $scope.selectedFiles = [];
-                    $scope.progress = [];
-                    if ($scope.upload && sul > 0) {
-                        var sul = $scope.upload.length;
-                        var sun = 0;
-                        for (sun = 0; sun < sul; sun++) {
-                            if ($scope.upload[sun] !== null) {
-                                $scope.upload[sun].abort();
-                            }
-                        }
-                    }
-                    $scope.upload = [];
-                    $scope.uploadResult = [];
-                    $scope.selectedFiles = $files;
-                    $scope.dataUrls = [];
-                    var setPreview = function (fileReader, index) {
-                        fileReader.onload = function (e) {
-                            $timeout(function () {
-                                $scope.dataUrls[index] = e.target.result;
-                            });
-                        };
-                    };
-                    var l = $files.length;
-                    var nf = 0;
-                    for (; nf < l; nf++) {
-                        var $file = $files[nf];
-                        if (window.FileReader && $file.type.indexOf('image') > -
-                            1) {
-                            var fileReader = new FileReader();
-                            fileReader.readAsDataURL($files[nf]);
-                            setPreview(fileReader, nf);
-                        }
-                        $scope.progress[nf] = -1;
-                        if ($scope.uploadRightAway) {
-                            $scope.start(nf);
-                        }
-                    }
-                };
-                $scope.start = function (index) {
-                    $scope.progress[index] = 0;
-                    $scope.upload[index] = $upload.upload({
-                        url: $scope.url,
-                        method: 'POST',
-                        data: {
-                            postData: $scope.postData
-                        },
-                        formDataAppender: function (fd, key, val) {
-                            if (angular.isArray(val)) {
-                                angular.forEach(val, function (v) {
-                                    fd.append(key, v);
-                                });
-                            } else {
-                                fd.append(key, val);
-                            }
-                        },
-                        file: $scope.selectedFiles[index],
-                        fileFormDataName: 'gorsel'
-                    })
-                    .then(function (response) {
-                        // TODO uploadResults sunucunun cevabı
-                        console.log(response);
-                    }, null, function (evt) {
-                        $scope.progress[index] = parseInt(100.0 *
-                            evt.loaded / evt.total);
-                    });
-                };
-            },
-            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-            template: '<div ng-show="dropSupported" class="lupus-gorsel-upload" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">Dosyaları buraya sürükleyip bırakınız.</div>\
-                    <label for="fileToUpload">Veya Sisteme Yüklemek İçin Dosya(lar) Seçin</label><br />\
-                    <input type="file" id="fileToUpload" multiple ng-file-select="onFileSelect($files)" />\
-                <div ng-show="selectedFiles != null">\
-                    <div style="height:100px; min-width:200px;float:left; " class="sel-file" ng-repeat="f in selectedFiles">\
-                        <div>\
-                            <img  style="height:100%; "ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">\
-                            <button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>\
-                            <span class="progress-display" ng-show="progress[$index] >= 0">\
-                            <div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>\
-                            </span>\
-                            <button class="btn btn-sm btn-danger" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">İptal</button>\
-                            <form role="form">\
-                                <div class="form-group">\
-                                    <label for="resim-adi"></label>\
-                                    <input type="text" ng-model="asset.name" class="form-control"/>\
-                                </div>\
-                            </form>\
-                        </div>\
-                    </div>\
-                </div>',
-            // templateUrl: '',
-            // replace: true,
-            // transclude: true,
-            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-            link: function ($scope, iElm, iAttrs, controller) {}
-        };
-    });
 angular.module('lupus.evliya', [])
     .directive('lupusEvliyaNavbar', function (windowSize, $rootScope) {
         return {

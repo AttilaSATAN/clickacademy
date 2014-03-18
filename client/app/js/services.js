@@ -102,6 +102,12 @@ angular.module('lupusshow.services', [])
             }
         });
     })
+    .factory('AssetsResource',function($resource){
+        return $resource('/service/api/assets');
+    })
+    .factory('AssetResource',function($resource){
+        return $resource('/service/api/asset');
+    })
     .factory('PartialsResource', function ($resource) {
         return $resource('/service/api/partials');
     })

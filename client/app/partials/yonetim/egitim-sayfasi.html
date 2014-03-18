@@ -1,12 +1,24 @@
 <div class="container">
+<div class="row">
+<p class="text-center text-warning" ng-if="kaydediliyor">Yaptığınız değişiklikler otomatik olarak kaydediliyor lütfen bekleyiniz.</p>
+<p class="text-center text-success" ng-if="!kaydediliyor && kaydedildi">Kaydedildi.</p></div>
     <div class="row">
-        <div class="col-sm-6" >
-            <div lupus-assets-b url="'service/api/egitim/visual'" post-data="egitim">
+        <div class="col-sm-5" >
+            <div lupus-assets-b model-data="egitim">
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <h1>{{egitim.name}}</h1>
-            <p>{{egitim.text}}</p>
+            <form role="form">
+                <div class="form-group">
+                    <label for="egitim-baslik">Başlık</label>
+                    <input type="text" ng-model="egitim.name" class="form-control" name="egitim-baslik" id="egitim-baslik"/>
+                </div>
+                <div class="form-group">
+                    <label for="egitim-description">İçerik</label>
+                    <textarea name="egitim-description" id="egitim-description" class="form-control" ng-model="egitim.description"></textarea>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Egitimler = mongoose.model('Egitimler'),
     EgitimCategories = mongoose.model('EgitimCategories'),
+    Assets = mongoose.model('Assets'),
     passport = require('passport'),
     fs = require('fs');
 exports.save = function (req, res, next) {
@@ -11,45 +12,56 @@ exports.save = function (req, res, next) {
             res.json(then);
         });
     } else {
-        Egitimler.findById(req.body._id, function (err, egitim) {
-            if (err) return res.send(err);
-            egitim.name = req.body.name;
-            egitim.url = req.body.url;
-            egitim._categoryId = req.body._categoryId;
-            egitim.keywords = req.body.keywords;
-            egitim.save(function (err, then) {
-                if (err) return res.json(err);
-                res.json(then);
+        Egitimler.findById(req.body._id)
+            .populate('_asset')
+            .exec(function (err, egitim) {
+                if (err) return res.send(err);
+                console.log(req.body._asset)
+                egitim.name = req.body.name;
+                egitim.url = req.body.url;
+                egitim._categoryId = req.body._categoryId;
+                egitim.keywords = req.body.keywords;
+                egitim.description = req.body.description;
+                if (req.body._asset) {
+                    egitim._asset = mongoose.Types.ObjectId(req.body._asset
+                        ._id);
+                }
+                console.log("egitim._asset", egitim._asset)
+                egitim.save(function (err, then) {
+                    if (err) return res.json(err);
+                    res.json(then);
+                });
             });
-        });
     }
 };
 exports.byCategory = function (req, res, next) {
     var categoryUrl = req.params.categoryUrl;
-
     if (categoryUrl) {
         return EgitimCategories.findOne({
             url: categoryUrl
-        }, function (err, category) {
-            if(err) return res.json(err);
-            if (category._id) {
-            
-                Egitimler.find({})
-                    .populate('_categoryId')
-                    .find({
-                        _categoryId: category._id
-                    }).exec(function (err, egitim) {
-                        console.log(category._id, egitim)
-                        if (!err) {
-                            return res.json(egitim);
-                        } else {
-                            res.json(err);
-                        }
-                    });
-            } else {
-                res.json(err || 'sikinti');
-            }
-        });
+        })
+            .populate('_asset')
+            .exec(function (err, category) {
+                if (err) return res.json(err);
+                if (category._id) {
+                    Egitimler.find({})
+                        .populate('_categoryId')
+                        .find({
+                            _categoryId: category._id
+                        })
+                        .populate('_asset')
+                        .exec(function (err, egitim) {
+                            console.log(category._id, egitim)
+                            if (!err) {
+                                return res.json(egitim);
+                            } else {
+                                res.json(err);
+                            }
+                        });
+                } else {
+                    res.json(err || 'sikinti');
+                }
+            });
     }
     res.json(req.params)
 };
@@ -88,25 +100,29 @@ exports.visual = function (req, res, next) {
 };
 exports.get = function (req, res, next) {
     var egitimId = req.params.egitimId;
-    Egitimler.findById(egitimId, function (err, egitim) {
-        if (!err) {
-            return res.json(egitim);
-        } else {
-            res.json(egitim);
-        }
-    });
+    Egitimler.findById(egitimId)
+        .populate('_asset')
+        .exec(function (err, egitim) {
+            if (!err) {
+                return res.json(egitim);
+            } else {
+                res.json(egitim);
+            }
+        });
 };
 exports.byUrl = function (req, res, next) {
     var egitimUrl = req.params.egitimUrl;
     Egitimler.findOne({
         url: egitimUrl
-    }, function (err, egitim) {
-        if (!err) {
-            return res.json(egitim);
-        } else {
-            res.json(egitim);
-        }
-    });
+    })
+        .populate('_asset')
+        .exec(function (err, egitim) {
+            if (!err) {
+                return res.json(egitim);
+            } else {
+                res.json(egitim);
+            }
+        });
 };
 exports.delete = function (req, res, next) {
     var egitimId = req.params.egitimId;

@@ -10,7 +10,7 @@ exports.save = function (req, res, next) {
             res.json(then);
         });
     } else {
-        EgitimCategories.findById(req.body._id, function (err, category) {
+        EgitimCategories.findById(req.body._id).populate('_asset').exec(function (err, category) {
             if (err) return res.send(err);
             console.log(req.body.name)
             console.log(category)
@@ -18,6 +18,11 @@ exports.save = function (req, res, next) {
             category.url = req.body.url;
             category.subHeader = req.body.subHeader;
             category.description = req.body.description;
+            if (req.body._asset) {
+                console.log(req.body._asset)
+                category._asset = mongoose.Types.ObjectId(req.body._asset._id);
+                //egitim.visual._id = req.body.visual;
+            }
             category.save(function (err, then) {
                 if (err) return res.json(err);
                 res.json(then);
@@ -27,7 +32,7 @@ exports.save = function (req, res, next) {
 };
 exports.get = function (req, res, next) {
     var categoryId = req.params.categoryId;
-    EgitimCategories.findById(categoryId, function (err, egitimCategory) {
+    EgitimCategories.findById(categoryId).populate('_asset').exec(function (err, egitimCategory) {
         console.log(egitimCategory)
         if (!err) {
             return res.json(egitimCategory);

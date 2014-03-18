@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-5">
             <button class="pull-right btn btn-lg btn-primary" ng-click="yeniKategori = null">
             <span class="glyphicon glyphicon-plus"></span>
             </button>
@@ -13,12 +13,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div ng-if="yeniKategori._id">
                 <h4>Düzenle</h4>
             </div>
             <div ng-if="!yeniKategori._id">
                 <h4>Yeni</h4>
+            </div>
+            <pre>{{yeniKategori|json}}</pre>
+            <div lupus-assets-b model-data="yeniKategori">
             </div>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -38,8 +41,8 @@
                     <textarea name="kategori-metni" id="kategori-metni" class="form-control" ng-model="yeniKategori.description"></textarea>
                 </div>
             </form>
+            <a href="javascript:void(0);"  ng-if="!yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-plus"></span>Yeni Ekle</a>
+            <a href="javascript:void(0);"  ng-if="yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
         </div>
     </div>
-    <a href="javascript:void(0);"  ng-if="!yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-plus"></span>Yeni Ekle</a>
-    <a href="javascript:void(0);"  ng-if="yeniKategori._id" class="btn btn-primary pull-right" ng-click="crud.create(yeniKategori)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
 </div>

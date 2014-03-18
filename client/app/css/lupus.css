@@ -49,3 +49,6 @@ lupus-disko-wrapper .lupus-disko-caption,
   -webkit-animation: 1s fadeInRight;
   animation: 1s fadeInRight;
 }
+.lupus-asset-img-review{
+  border: 4px dashed #bbb; margin-bottom:10px;
+}

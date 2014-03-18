@@ -8,7 +8,7 @@ var EgitimlerSchema = new Schema({
     _categoryId: {type: Schema.Types.ObjectId, ref:'EgitimCategories'},
     description: String,
     keywords:[{type:String}],
-    visual: {type: Schema.Types.ObjectId, ref:'Assets'},
+    _asset: {type: Schema.Types.ObjectId, ref:'Assets'},
 });
 
 mongoose.model('Egitimler', EgitimlerSchema);

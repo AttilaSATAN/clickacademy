@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 var AssetsSchema = new Schema({
 	name: String,
-	fileName: {type:String, unique: true},
+	file: {type:String, unique: true},
 	type: String
 });
 
