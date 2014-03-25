@@ -147,8 +147,7 @@ angular.module('lupusshow.directives', [])
             }, // {} = isolate, true = child, false/undefined = no change
             controller: function ($scope, $element, $attrs, $transclude) {
                 var isVisualSetted = function () {
-                    
-                    return !!$scope.modelData._asset && !!$scope.modelData
+                    return !!$scope.modelData._asset && !! $scope.modelData
                         ._asset.file;
                 };
                 if (isVisualSetted()) $scope.src = $scope.modelData._asset.file;
@@ -186,31 +185,70 @@ directive('lupusAssetsDisplayer', function () {
         // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
         link: function ($scope, iElm, iAttrs, controller) {}
     };
-}).directive('egitimBulutu',  function(){
-    // Runs during compile
-    // 
-    console.log('egitimBulutu')
-    return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        scope: {
-            egitimler: '='
-        }, // {} = isolate, true = child, false/undefined = no change
-        // controller: function($scope, $element, $attrs, $transclude) {},
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-        // template: '',
-        templateUrl: 'template/akademik-egitim-canvas.html',
-        // replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        link: function($scope, iElm, iAttrs, controller) {
-            console.log($scope.egitimler)
-            console.log(iElm)
-            document.body.onresize = function(){
-
+})
+    .directive('egitimBulutuEgitim', function ($timeout) {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            scope: {
+                egitim: '='
+            }, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            template: ' <div class="egitim">{{egitim.name}}</div>',
+            // templateUrl: '',
+            replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function ($scope, iElm, iAttrs, controller) {
+                var randin = function (max, min) {
+                    max = max || 300;
+                    min = min || 100;
+                    return Math.floor(Math.random() * (max - min + 1)) + min +
+                        'px';
+                },
+                    initTop = randin(),
+                    initLeft = randin();
+                iElm.css({
+                    'top': initTop,
+                    'left': initLeft
+                });
+                iElm.css('transition', '5s');
+                $timeout(function () {
+                    iElm.css({
+                        'top': randin(),
+                        'left': randin()
+                    });
+                }, 1600);
             }
-        }
-    };
-});
+        };
+    })
+    .directive('egitimBulutu', function () {
+        // Runs during compile
+        // 
+        console.log('egitimBulutu')
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            scope: {
+                egitimler: '='
+            }, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            templateUrl: 'template/akademik-egitim-canvas.html',
+            // replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function ($scope, iElm, iAttrs, controller) {
+                console.log($scope.egitimler)
+                console.log(iElm)
+                document.body.onresize = function () {}
+            }
+        };
+    });

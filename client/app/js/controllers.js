@@ -250,16 +250,15 @@ angular.module('lupusshow.controllers', [])
     })
     .controller('YazılımEgitimBulutuCtrl', function ($scope) {
         $scope.egitimler = [
-        {name: 'cs'}, 
-        {name: 'css'}, 
-        {name: 'js'}, 
-        {name: 'asp'}, 
-        {name: 'c+}+'}, 
-        {name: 'css'}, 
-        {name: 'py'}, 
-        {name: 'ruby'}, 
-        {name: 'alg'}, 
-        {name: 'crpt'}];
+        {name: 'CS'}, 
+        {name: 'CSS'}, 
+        {name: 'JS'}, 
+        {name: 'ASP'}, 
+        {name: 'C++'},  
+        {name: 'PY'}, 
+        {name: 'RUBY'}, 
+        {name: 'ALG'}, 
+        {name: 'CRYP'}];
     })
     .controller('YonetimBlogsCtrl', function ($scope, BlogsResource,
         BlogResource, slugify) {
@@ -305,7 +304,7 @@ angular.module('lupusshow.controllers', [])
             $scope.yeni.blog = angular.copy(blogObj);
         };
         var getCollection = function () {
-            console.log("getCollection")
+            
             $scope.blogs = BlogsResource.query();
         };
         getCollection();

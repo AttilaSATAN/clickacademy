@@ -213,11 +213,11 @@ body > .frame {
 }
 .mesleki-egitim-canvas {
   position: relative;
-  border: 1px solid #ccc;
 }
 .mesleki-egitim-canvas .egitim {
   position: absolute;
   background-color: #0375a4;
+  border: 3px solid #025172;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   min-width: 60px;
