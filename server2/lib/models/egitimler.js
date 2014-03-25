@@ -1,4 +1,4 @@
-"1use strict";
+"use strict";
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -8,6 +8,7 @@ var EgitimlerSchema = new Schema({
     _categoryId: {type: Schema.Types.ObjectId, ref:'EgitimCategories'},
     description: String,
     keywords:[{type:String}],
+    short: String,
     _asset: {type: Schema.Types.ObjectId, ref:'Assets'},
 });
 

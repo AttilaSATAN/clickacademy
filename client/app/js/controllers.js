@@ -39,30 +39,48 @@ angular.module('lupusshow.controllers', [])
     .controller('BizCtrl', function ($scope, $interval, $timeout) {})
     .controller('EgitimlerKategoriCtrl', function ($scope, $rootScope, $timeout,
         $stateParams, $interval, EgitimCategoriesResource) {
-        $scope.kategoriler = [];
         $timeout(function () {
             $scope.kategoriler = EgitimCategoriesResource.query();
-        }, 1500)
+        }, 1500);
     })
-    .
-controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
-    EgitimByCategoryResource, $stateParams, $timeout) {
-    $scope.egitimler = [];
-    $scope.getCollection = function () {
-        $scope.egitimler = EgitimByCategoryResource.get({
-            categoryUrl: $stateParams.categoryUrl
-        });
-    }
-    $scope.getCollection();
-})
+    .controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
+        EgitimByCategoryResource, $stateParams, $timeout) {
+        $scope.egitimler = [];
+        $scope.getCollection = function () {
+            $scope.egitimler = EgitimByCategoryResource.get({
+                categoryUrl: $stateParams.categoryUrl
+            });
+        };
+        $scope.getCollection();
+    })
     .controller('EgitimCtrl', function ($scope, $stateParams) {})
     .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {
-        $timeout(function () {
-            $scope.animationStepOne = true;
-        }, 1000);
-        $timeout(function () {
-            $scope.animationStepTwo = true;
-        }, 2000);
+        var totalStep = 5,
+            currentStep = 0;
+        $scope.buttons = [{
+            buttonText: "Eğitim Kategorileri",
+            sref: 'egitimler.kategoriler'
+        }, {
+            buttonText: "Meslek Eğitimleri",
+            sref: 'egitimler.mesleki'
+        }, {
+            buttonText: "Sektörel Eğitimler",
+            sref: 'egitimler.sektorel'
+        }];
+        $scope.animationStep = [];
+        var doStep = function () {
+            $scope.animationStep[currentStep] = true;
+            if (currentStep < totalStep) {
+                currentStep++;
+                step();
+            }
+        };
+        var step = function () {
+            $timeout(function () {
+                doStep();
+            }, 500);
+        };
+        step();
     })
     .controller('YonetimCtrl', ['$scope',
         function ($scope) {}
@@ -108,6 +126,9 @@ controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
                 });
             },
             save: function (kategoriObj) {
+                console.log({
+                    egitimId: kategoriObj._id || 0
+                })
                 var egitim = EgitimResource.get({
                     egitimId: kategoriObj._id || 0
                 }, function () {
@@ -140,7 +161,6 @@ controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
         $scope.kaydedildi = false;
         $scope.egitim = {};
         var to = null;
-        console.log('YonetimEgitimSayfasiCtrl')
         var getEgitim = function () {
             $scope.egitim = EgitimByUrlResource.get({
                 egitimUrl: $stateParams.egitimUrl
@@ -149,32 +169,10 @@ controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
             });
         };
         getEgitim();
-        // $scope.$watch('egitim', function () {
-        //     if (to) $timeout.cancel(to);
-        //     to = $timeout(function () {
-        //         $scope.kaydediliyor = true;
-        //         if ($scope.egitim.visual) var egitim =
-        //             EgitimResource.get({
-        //                 egitimId: $scope.egitim._id || 0
-        //             }, function () {
-        //                 egitim.visual = egitim.visual || {};
-        //                 egitim.visual._id = $scope.egitim.visual
-        //                     ._id;
-        //                 egitim.name =  $scope.egitim.name;
-        //                 egitim.description =  $scope.egitim.description;
-        //                 egitim.$save(function () {
-        //                     $scope.kaydediliyor = false;
-        //                     $scope.kaydedildi = true;
-        //                 });
-        //             });
-        //     }, 3000);
-        // }, true);
         $scope.$watch('egitim', function () {
-            console.log('SAVEWE')
             if (to) $timeout.cancel(to);
             $scope.kaydediliyor = true;
             to = $timeout(function () {
-                console.log('SAVE')
                 var egitim = EgitimResource.get({
                     egitimId: $scope.egitim._id || 0
                 }, function () {
@@ -211,6 +209,106 @@ controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
                 icon: 'img/hz_icon_marker.png'
             }
         };
+    })
+    .controller('YonetimBlogCtrl', function ($scope, BlogsResource,
+        BlogResource, BlogByUrlResource, $stateParams, $timeout) {
+        $scope.kaydediliyor = false;
+        $scope.kaydedildi = false;
+        $scope.blog = {};
+        var to = null;
+        var getBlog = function () {
+            $scope.blog = BlogByUrlResource.get({
+                blogUrl: $stateParams.blogUrl
+            }, function () {
+                console.log($scope.blog)
+            });
+        };
+        getBlog();
+        $scope.newRow = function () {
+            $scope.blog._rows = $scope.blog._rows || [];
+            $scope.blog._rows.push({
+                name: 'Boş Başlık',
+                text: 'boş metin'
+            });
+        };
+        $scope.kaydet = function () {
+            $scope.kaydediliyor = true;
+            var blog = BlogResource.get({
+                blogId: $scope.blog._id || 0
+            }, function () {
+                blog._rows = $scope.blog._rows;
+                blog.description = $scope.blog.description;
+                console.log("giden blog", blog._rows[0])
+                blog.$save(function (gitimServer) {
+                    console.log('birşeyler kaydedilmiş olmalı')
+                    $scope.kaydediliyor = false;
+                    $scope.kaydedildi = true;
+                    getBlog();
+                });
+            });
+        };
+    })
+    .controller('YazılımEgitimBulutuCtrl', function ($scope) {
+        $scope.egitimler = [
+        {name: 'cs'}, 
+        {name: 'css'}, 
+        {name: 'js'}, 
+        {name: 'asp'}, 
+        {name: 'c+}+'}, 
+        {name: 'css'}, 
+        {name: 'py'}, 
+        {name: 'ruby'}, 
+        {name: 'alg'}, 
+        {name: 'crpt'}];
+    })
+    .controller('YonetimBlogsCtrl', function ($scope, BlogsResource,
+        BlogResource, slugify) {
+        $scope.yeni = {};
+        $scope.noop = {
+            tags: [],
+            name: null,
+            url: null,
+        };
+        $scope.yeni.blog = angular.copy($scope.noop);
+        $scope.crud = {
+            remove: function (_id) {
+                BlogResource.remove({
+                    blogId: _id
+                }, function () {
+                    getCollection();
+                });
+            },
+            save: function (blogObj) {
+                console.log({
+                    blogId: blogObj._id || 0
+                })
+                var blog = BlogResource.get({
+                    blogId: blogObj._id || 0
+                }, function () {
+                    console.log(blog)
+                    blog.name = $scope.yeni.blog.name;
+                    blog.url = $scope.yeni.blog.url;
+                    blog.tags = $scope.yeni.blog.tags;
+                    blog.$save(function () {
+                        $scope.yeni.blog = angular.copy($scope.noop);
+                        getCollection();
+                    });
+                });
+            }
+        };
+        $scope.$watch('yeni.blog.name', function () {
+            console.log($scope.yeni.blog)
+            if (typeof $scope.yeni.blog !== 'undefined') $scope.yeni.blog
+                .url = slugify($scope.yeni.blog.name);
+        });
+        $scope.duzenle = function (blogObj) {
+            $scope.yeni.blog = angular.copy(blogObj);
+        };
+        var getCollection = function () {
+            console.log("getCollection")
+            $scope.blogs = BlogsResource.query();
+        };
+        getCollection();
     })
     .controller('YonetimEgitimKategorileriCtrl', function ($scope,
         EgitimCategoriesResource, EgitimCategoryResource, slugify) {

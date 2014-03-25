@@ -1,4 +1,6 @@
+@import "animate.less";
 
+@egitim-animasyon-zamanlamasi: 0.5s;
 .view-top {
 
     position: absolute;
@@ -350,5 +352,86 @@
   &.fade-remove.fade-remove-active {
     opacity: 0
   }
+
+}
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.3);
+        -ms-transform: scale(.3);
+        transform: scale(.3);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+    70% {
+        -webkit-transform: scale(.9);
+        -ms-transform: scale(.9);
+        transform: scale(.9);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.bounceIn.in {
+    animation-duration:@egitim-animasyon-zamanlamasi;
+    -webkit-animation-duration:@egitim-animasyon-zamanlamasi;
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+.bounceIn{
+    opacity: 0;
+    -webkit-transform: scale(.3);
+}
+.egitim-sistemi-animation-sarmalayici{
+  .ust{
+    height: 135px;
+    background: url(../img/click_web_oklar_ust.png) top  center repeat-x;
+    .ust-canvas{
+      -webkit-transition: @egitim-animasyon-zamanlamasi;
+      transition: @egitim-animasyon-zamanlamasi;
+      height: 0;
+      background: url(../img/click_web_oklar_ust_3.png) no-repeat top 1px center ;
+    }
+    .ust-canvas.down{
+      height: 135px;
+    }
+  }
+
+  .orta{
+    height: 332px;
+    background: url(../img/click_web_oklar_orta.png) repeat-x;
+    .orta-canvas{
+      height: 0;
+      -webkit-transition: @egitim-animasyon-zamanlamasi;
+      transition: @egitim-animasyon-zamanlamasi;
+      background: url(../img/click_web_oklar_alt3.png) no-repeat bottom center ;
+    }
+    .orta-canvas.down{
+      height: 332px;
+    }
+  }
+  .alt{
+    height: 128px;
+    background: url(../img/click_web_oklar_alt.png) repeat-x top center ;
+  }
+}
+.yukari-gir {
+         opacity: 0;
+        -webkit-transform: scale(.9) translateY(20px);
+        &.in{
+          -webkit-animation: fadeInUpScale 1s;
+          animation: fadeInUpScale 1s;
+        }
 
 }

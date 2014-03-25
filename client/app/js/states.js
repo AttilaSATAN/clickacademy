@@ -33,8 +33,22 @@ angular.module('lupusshow')
                     .state('egitimler.kategoriler', {
                         url: '/kategoriler',
                         views: {
-                            'top': {},
-                            'bottom': {
+                            'top@': {},
+                            'bottom@': {
+                                templateUrl: 'partials/egitimler.kategoriler.html',
+                                controller: 'EgitimlerKategoriCtrl',
+                            },
+                            'kategorilersag@': {
+                                templateUrl: 'partials/yazilim-egitimi-bulutu.html',
+                                controller: 'YazilimEgitimBulutuCtrl'
+                            }
+                        }
+                    })
+                    .state('egitimler.kategoriler.kategori', {
+                        url: '/kategoriler',
+                        views: {
+                            'top@': {},
+                            'bottom@': {
                                 templateUrl: 'partials/egitimler.kategoriler.html',
                                 controller: 'EgitimlerKategoriCtrl'
                             }
@@ -66,6 +80,16 @@ angular.module('lupusshow')
                             },
                         }
                     })
+                    .state('hakkimizda', {
+                        url: '/hakkimizda',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/hakkimizda.html',
+                                contoller: 'IletisimCtrl'
+                            }
+                        }
+                    })
                     .state('iletisim', {
                         url: '/iletisim',
                         views: {
@@ -73,16 +97,6 @@ angular.module('lupusshow')
                             'bottom': {
                                 templateUrl: 'partials/iletisim.html',
                                 contoller: 'IletisimCtrl'
-                            }
-                        }
-                    })
-                    .state('templates', {
-                        url: '/templates',
-                        views: {
-                            'top': {},
-                            'bottom': {
-                                templateUrl: 'partials/yonetim/states.html',
-                                controller: 'YonetimTemplatesCtrl'
                             }
                         }
                     })
@@ -96,13 +110,53 @@ angular.module('lupusshow')
                             }
                         }
                     })
+                    .state('blog', {
+                        url: '/blog/:blogUrl',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/blog.html',
+                                controller: 'BlogCtrl'
+                            }
+                        }
+                    })
+                    .state('blogs', {
+                        url: '/bloglar',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/blog.html',
+                                controller: 'BlogCtrl'
+                            }
+                        }
+                    })
+                    .state('yonetim.blogs', {
+                        url: '/bloglar',
+                        templateUrl: 'partials/yonetim/blogs.html',
+                        controller: 'YonetimBlogsCtrl'
+                    })
+                    .state('yonetim.blog', {
+                        url: '/blog/:blogUrl',
+                        templateUrl: 'partials/yonetim/blog.html',
+                        controller: 'YonetimBlogCtrl'
+                    })
                     .state('yonetim.egitim-kategorileri', {
-                        url: '/egitim-kategorileri',
+                        url: '/blog',
                         templateUrl: 'partials/yonetim/egitim-kategorileri.html',
                         controller: 'YonetimEgitimKategorileriCtrl'
                     })
                     .state('yonetim.egitimler', {
                         url: '/egitimler',
+                        templateUrl: 'partials/yonetim/egitimler.html',
+                        controller: 'YonetimEgitimlerCtrl'
+                    })
+                    .state('yonetim.mesleki', {
+                        url: '/mesleki-egitimler',
+                        templateUrl: 'partials/yonetim/mesleki-egitimler.html',
+                        controller: 'YonetimEgitimlerCtrl'
+                    })
+                    .state('yonetim.sektorel', {
+                        url: '/sektorel-egitimler',
                         templateUrl: 'partials/yonetim/egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })

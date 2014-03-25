@@ -10,7 +10,8 @@
     "passport": "latest",
     "passport-local": "latest",
     "ejs": "~0.8.4",
-    "judo":"*"
+    "judo":"*",
+    "async": "*"
   },
  "devDependencies": {
         "jpegtran-bin": "0.2.0",

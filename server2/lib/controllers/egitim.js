@@ -16,7 +16,6 @@ exports.save = function (req, res, next) {
             .populate('_asset')
             .exec(function (err, egitim) {
                 if (err) return res.send(err);
-                console.log(req.body._asset)
                 egitim.name = req.body.name;
                 egitim.url = req.body.url;
                 egitim._categoryId = req.body._categoryId;

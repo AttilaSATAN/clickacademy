@@ -1,19 +1,27 @@
 <h1>Eğitim Kategorileri</h1>
 <div class="container-fluid">
-
     <!--<div class="row row-kategori" ng-class-odd="'animation-fadeAndSlideLeft'"  ng-class-even="'animation-fadeAndSlideRight'" ng-repeat="egitim in egitimler" >-->
-    <div class="row row-kategori clearfix" ng-class-odd="'animation-fadeAndSlideLeft'"  ng-class-even="'animation-fadeAndSlideRight'"  ng-repeat="kategory in kategoriler" >
-        <div class="col-md-8">
-            <img class="img-responsive" style="margin:0 auto;"/>
-            <h4>{{kategory.name}}</h4>
-            <p>{{kategory.subHeader}}</p>
-            <p>{{kategory.url}}</p>
-        </div>
-        <div class="col-md-4">
-            <a ui-sref="egitimler.kategori.egitimlistesi({categoryUrl:kategory.url})" class="btn btn-lg">Bu kategorideki Eğitimler</a>
-        </div>
-    </div>
     <div class="row">
-        <div class="col-sm-12"><div ng-include="meslekiEgitim" scope="" onload=""</div>
+        <div class="col-xs-6">
+            <div class="row row-kategori clearfix animation-fadeAndScale"  ng-repeat="kategory in kategoriler" >
+                <a ui-sref="egitimler.kategori.egitimlistesi({categoryUrl:kategory.url})"><div class="col-md-8">
+                    <div class="col-xs-4">
+                        <img class="img-responsive" ng-src="assets/{{kategory._asset.file}}" style="margin:0 auto;"/>
+                    </div>
+                    <div class="col-xs-8">
+                        <h4>{{kategory.name}}</h4>
+                        <p>{{kategory.subHeader}}</p>
+                        <p>{{kategory.url}}</p>
+                    </div>
+                </div>
+                </a>
+                <div class="col-xs-4">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6" ng-controller="YazılımEgitimBulutuCtrl">
+            <div egitim-bulutu egitimler="egitimler"></div>
+        </div>
     </div>
+</div>
 </div>

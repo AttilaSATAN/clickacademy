@@ -1,17 +1,27 @@
 <div class="egitim-sistemi-animation-sarmalayici">
-	<div class="ust">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6 ust-canvas" ng-class="{down:animationStepOne}"></div>
-			</div>
-		</div>
-	</div>
-	<div class="orta">
-				<div class="container">
-			<div class="row">
-				<div class="col-xs-6 orta-canvas" ng-class="{down:animationStepTwo}"></div>
-			</div>
-		</div>
-	</div>
-	<div class="alt"></div>
+    <div>
+    </div>
+    <div class="ust">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 ust-canvas" ng-class="{down:animationStep[0]}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="orta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 orta-canvas" ng-class="{down:animationStep[1]}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="alt">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    <a href="#" class="btn btn-lg btn-primary bounceIn" ui-sref="{{button.sref}}" ng-class="{in:animationStep[$index + 2]}"ng-repeat="button in buttons">{{button.buttonText}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

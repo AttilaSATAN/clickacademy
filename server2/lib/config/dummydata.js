@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Thing = mongoose.model('Thing'),
     Template = mongoose.model('Template'),
     EgitimCategories = mongoose.model('EgitimCategories'),
+    Blogs = mongoose.model('Blogs'),
     Egitimler = mongoose.model('Egitimler');
 /**
  * Populate database with sample application data
@@ -37,7 +38,6 @@ var mongoose = require('mongoose'),
 //     });
 // Egitimler.find({})
 //     .remove(function () {
-
 //         Egitimler.create({
 //             "name": "Corel Kursu",
 //             "url": "corel-kursu",
@@ -259,13 +259,16 @@ var mongoose = require('mongoose'),
 //           console.log("finished population eğitimler");
 //         });
 //     });
-Template.find({})
+Blogs.find({})
     .remove(function () {
-        Template.create({
-            file: 'dummy.html',
-            name: 'Dummy'
+        Blogs.create({
+            name: "Deneme",
+            url: 'deneme',
+            description: 'deneme deneme',
+            tags: ['deneme1', 'deneme2'],
+            _rows: []
         }, function () {
-            console.log('finished populating templates');
+            console.log('finished populating blogs');
         });
     });
 // EgitimCategories.find({})

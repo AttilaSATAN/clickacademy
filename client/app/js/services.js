@@ -111,6 +111,17 @@ angular.module('lupusshow.services', [])
     .factory('PartialsResource', function ($resource) {
         return $resource('/service/api/partials');
     })
+    .factory('BlogsResource', function ($resource){
+        return $resource('/service/api/blogs');
+    })
+    .factory('BlogResource', function ($resource) {
+        return $resource('/service/api/blog/:blogId', 
+            {blogId:'@id'});
+    })
+    .factory('BlogByUrlResource', function ($resource) {
+        return $resource('/service/api/blog/by-url/:blogUrl', 
+            {blogUrl:'@url'});
+    })
     .factory('EgitimCategoriesResource', function ($resource) {
         return $resource('/service/api/egitim-categories');
     })
@@ -144,4 +155,5 @@ angular.module('lupusshow.services', [])
     })
     .factory('SektorelResource', function ($resource) {
         return $resource('/service/api/sektorel');
-    });
+    })
+    

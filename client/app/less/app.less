@@ -99,8 +99,7 @@ body{
 	margin:10px 5px;
 }
 .egitim-kategorisi-giris{
-		padding: 20px 20px;
-
+	padding: 20px 20px;
 	div{
 		position: relative;
 		min-height: 406px;
@@ -120,7 +119,6 @@ body{
 		.btn1;
 	}
 }
-
 .view-bottom{
 	overflow: auto;
 }
@@ -161,36 +159,27 @@ body{
 	background: #fff;
 	border:1px solid #ccc;
 }
-.egitim-sistemi-animation-sarmalayici{
-	.ust{
-		height: 135px;
-		background: url(../img/click_web_oklar_ust.png) top  center repeat-x;
-		.ust-canvas{
-			-webkit-transition: 1s;
-			transition: 1s;
-			height: 0;
-			background: url(../img/click_web_oklar_ust_3.png) no-repeat top 1px center ;
-		}
-		.ust-canvas.down{
-			height: 135px;
-		}
+.navbar-inverse{
+	background-color: @ca-blue;
+	border: 1px solid @ca-blue-border;
+	.navbar-nav > li > a {
+		color:#ccc;
 	}
-	.orta{
-		height: 332px;
-		background: url(../img/click_web_oklar_orta.png) repeat-x;
-		.orta-canvas{
-			height: 0;
-			-webkit-transition: 1s;
-			transition: 1s;
-			background: url(../img/click_web_oklar_alt3.png) no-repeat bottom center ;
-		}
-		.orta-canvas.down{
-			height: 332px;
-		}
-	}
-	.alt{
-		height: 128px;
-		background: url(../img/click_web_oklar_alt.png) repeat-x top center ;
+}
+.mesleki-egitim-canvas{
+	position: relative;
+	border: 1px solid #ccc;
+	.egitim{
+		position:absolute;
+		background-color:lighten(@ca-blue,10%);
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		min-width: 60px;
+		min-height: 60px;
+		color:#f0f0f0;
+		line-height: 60px;
+		text-align: center;
+		font-weight: bold;
 	}
 }
 @import "app-animations.less";
