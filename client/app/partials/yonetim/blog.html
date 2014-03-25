@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">{{blog.name}}</div>
+    <div class="col-md-8">
+        <button class="pull-right btn btn-lg btn-primary" ng-click="newRow()">
+        <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <div class="row" ng-repeat="row in blog._rows">
+            <div class="col-sm-4" >
+                <div ng-if="addingAsset" lupus-assets-b model-data="row"></div><br>
+                <button class="btn btn-primary" ng-click="addingAsset = !addingAsset">Görseli Düzenle</button>
+            </div>
+            <div class="col-sm-8">
+                <h1>{{row.name}}</h1>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="row-baslik">Başlık</label>
+                        <input type="text" ng-model="row.name" class="form-control" name="row-baslik" id="row-baslik"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="row-text">İçerik</label>
+                        <textarea name="row-text" id="row-text" class="form-control" ng-model="row.text"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button class="pull-right btn btn-lg btn-primary" ng-click="kaydet()">
+        Kaydet
+        </button>
+    </div>
+</div>

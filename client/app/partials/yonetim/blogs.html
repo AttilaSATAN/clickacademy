@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <button class="pull-right btn btn-lg btn-primary" ng-click="yeni.blog = null">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h4>Bloglar</h4>
+            <div class="list-group">
+                <div href="#" class="list-group-item clearfix animation-fadeAndScale"  ng-class="{'list-group-item-info': yeni.blog._id == blog._id}"  ng-repeat="blog in blogs">
+                    <div class="col-sm-9">
+                        <p class="list-group-item-heading">{{blog.name}}</p>
+                        <p class="list-group-item-heading">/{{blog.url}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-sm btn-warning pull-right" ui-sref="yonetim.blog({blogUrl:blog.url})">Sayfayı Düzenle</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="crud.remove(blog._id);">Sil</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="duzenle(blog);">Düzenle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        
+            <div ng-if="yeni.blog._id">
+                <h4>Düzenle</h4>
+            </div>
+            <div ng-if="!yeni.blog._id">
+                <h4>Yeni</h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="blog-adi">Blog Adı</label>
+                    <input type="text" name="blog-adi" id="blog-adi" class="form-control" ng-model="yeni.blog.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="blog-url">Blog URL</label>
+                    <input type="text" name="blog-url" id="blog-url" class="form-control" ng-model="yeni.blog.url"/>
+                </div>
+                <div class="form-group">
+                    <label >Anahtar Kelimeler</label>
+                    <input type-text class="form-control" ng-model="yeni.blog.tags[$index]" ng-repeat="keyword in yeni.blog.tags track by $index" placeholder="Anahtar Kelime"/>
+                    <button class="btn btn-sm btn-default" ng-click="yeni.blog.tags.push(null)">
+                        <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
+                </div>
+        </form>
+        <a href="javascript:void(0);" ng-if="!yeni.blog._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.blog)"><span class="glyphicon glyphicon-plus"></span>Yeni</a>
+        <a href="javascript:void(0);" ng-if="yeni.blog._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.blog)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+    </div>
+</div>
+</div>
