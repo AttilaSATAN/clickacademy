@@ -8,7 +8,7 @@ var EgitimlerSchema = new Schema({
     _categoryId: {type: Schema.Types.ObjectId, ref:'EgitimCategories'},
     description: String,
     keywords:[{type:String}],
-    short: String,
+    shortTag: String,
     _asset: {type: Schema.Types.ObjectId, ref:'Assets'},
 });
 

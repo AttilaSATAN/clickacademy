@@ -37,31 +37,36 @@ angular.module('lupusshow.controllers', [])
         }];
     })
     .controller('BizCtrl', function ($scope, $interval, $timeout) {})
-    .controller('EgitimlerKategoriCtrl', function ($scope, $rootScope, $timeout,
+    .controller('KategorilerCtrl', function ($scope) {})
+    .controller('KategoriListesiCtrl', function ($scope, $rootScope, $timeout,
         $stateParams, $interval, EgitimCategoriesResource) {
+        $rootScope.kategori = $rootScope.kategori || {};
         $timeout(function () {
             $scope.kategoriler = EgitimCategoriesResource.query();
         }, 1500);
     })
-    .controller('EgitimlerKategoriEgitimListesiCtrl', function ($scope,
-        EgitimByCategoryResource, $stateParams, $timeout) {
+    .controller('KategoriEgitimleriCtrl', function ($scope,
+        EgitimByCategoryResource, $stateParams, $timeout, $rootScope) {
+        $rootScope.kategori = $rootScope.kategori || {};
         $scope.egitimler = [];
         $scope.getCollection = function () {
             $scope.egitimler = EgitimByCategoryResource.get({
                 categoryUrl: $stateParams.categoryUrl
             });
         };
-        $scope.getCollection();
+        $timeout(function () {
+            $scope.getCollection();
+        }, 500);
     })
     .controller('EgitimCtrl', function ($scope, $stateParams) {})
     .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {
         var totalStep = 5,
             currentStep = 0;
         $scope.buttons = [{
-            buttonText: "Eğitim Kategorileri",
-            sref: 'egitimler.kategoriler'
+            buttonText: "Uzmanlık Eğitimleri",
+            sref: 'egitimler.kategori.liste'
         }, {
-            buttonText: "Meslek Eğitimleri",
+            buttonText: "Akademik Eğitimler",
             sref: 'egitimler.mesleki'
         }, {
             buttonText: "Sektörel Eğitimler",
@@ -128,7 +133,7 @@ angular.module('lupusshow.controllers', [])
             save: function (kategoriObj) {
                 console.log({
                     egitimId: kategoriObj._id || 0
-                })
+                });
                 var egitim = EgitimResource.get({
                     egitimId: kategoriObj._id || 0
                 }, function () {
@@ -136,6 +141,7 @@ angular.module('lupusshow.controllers', [])
                     egitim.url = $scope.yeni.egitim.url;
                     egitim._categoryId = $scope.yeni.egitim._categoryId;
                     egitim.keywords = $scope.yeni.egitim.keywords;
+                    egitim.shortTag = $scope.yeni.egitim.shortTag;
                     egitim.$save(function () {
                         $scope.yeni.egitim = angular.copy($scope.noop);
                         getCollection();
@@ -249,16 +255,25 @@ angular.module('lupusshow.controllers', [])
         };
     })
     .controller('YazılımEgitimBulutuCtrl', function ($scope) {
-        $scope.egitimler = [
-        {name: 'CS'}, 
-        {name: 'CSS'}, 
-        {name: 'JS'}, 
-        {name: 'ASP'}, 
-        {name: 'C++'},  
-        {name: 'PY'}, 
-        {name: 'RUBY'}, 
-        {name: 'ALG'}, 
-        {name: 'CRYP'}];
+        $scope.egitimler = [{
+            name: 'CS'
+        }, {
+            name: 'CSS'
+        }, {
+            name: 'JS'
+        }, {
+            name: 'ASP'
+        }, {
+            name: 'C++'
+        }, {
+            name: 'PY'
+        }, {
+            name: 'RUBY'
+        }, {
+            name: 'ALG'
+        }, {
+            name: 'CRYP'
+        }];
     })
     .controller('YonetimBlogsCtrl', function ($scope, BlogsResource,
         BlogResource, slugify) {
@@ -304,7 +319,6 @@ angular.module('lupusshow.controllers', [])
             $scope.yeni.blog = angular.copy(blogObj);
         };
         var getCollection = function () {
-            
             $scope.blogs = BlogsResource.query();
         };
         getCollection();

@@ -1,0 +1,15 @@
+<div  class="clearfix pull-left lupus-col-kategori-egitim-ayrintilari">
+    <a ui-sref="egitim.url" class="egitim-ayrintilar clearfix animation-fadeAndSlideRight" ng-repeat="egitim in egitimler">
+    <div class="egitim-dynamic-icon pull-left" >{{egitim.shortTag}}</div>
+    <div class="egitim-dynamic-icon-text pull-left">{{egitim.name}}</div>
+    <div class="row">
+        <div class="col-sm-12"><h6 class="">{{egitim.subHeader}}</h6></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6"><img style="padding:10px" ng-if="egitim._asset.file" class="img-responsive" ng-src="/assets/{{egitim._asset.file}}"/></div>
+        <div class="col-sm-6"><p style="color:#ddd">{{egitim.description}}</p></div>
+    </div>
+
+    </a>
+    <div ui-view></div>
+</div>

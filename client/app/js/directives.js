@@ -193,7 +193,9 @@ directive('lupusAssetsDisplayer', function () {
             // priority: 1,
             // terminal: true,
             scope: {
-                egitim: '='
+                egitim: '=',
+                index: '=',
+                egitimLength: '='
             }, // {} = isolate, true = child, false/undefined = no change
             // controller: function($scope, $element, $attrs, $transclude) {},
             // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
@@ -204,25 +206,17 @@ directive('lupusAssetsDisplayer', function () {
             // transclude: true,
             // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
             link: function ($scope, iElm, iAttrs, controller) {
-                var randin = function (max, min) {
-                    max = max || 300;
-                    min = min || 100;
-                    return Math.floor(Math.random() * (max - min + 1)) + min +
-                        'px';
-                },
-                    initTop = randin(),
-                    initLeft = randin();
+                console.log($scope.egitimLength, $scope.index)
+                var poz = 1 / $scope.egitimLength * $scope.index;
+                var angle = poz * Math.PI * 2;
+                x = Math.cos(angle) * 100 * 10 / $scope.egitimLength;
+                y = Math.sin(angle) * 100 * 10 / $scope.egitimLength;
+
                 iElm.css({
-                    'top': initTop,
-                    'left': initLeft
+                    'top': 120 + y + 'px',
+                    'left': 300 + x + 'px'
                 });
-                iElm.css('transition', '5s');
-                $timeout(function () {
-                    iElm.css({
-                        'top': randin(),
-                        'left': randin()
-                    });
-                }, 1600);
+                //iElm.css('transition', '5s');
             }
         };
     })

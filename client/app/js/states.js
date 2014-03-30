@@ -30,40 +30,36 @@ angular.module('lupusshow')
                             },
                         }
                     })
-                    .state('egitimler.kategoriler', {
-                        url: '/kategoriler',
-                        views: {
-                            'top@': {},
-                            'bottom@': {
-                                templateUrl: 'partials/egitimler.kategoriler.html',
-                                controller: 'EgitimlerKategoriCtrl',
-                            },
-                            'kategorilersag@': {
-                                templateUrl: 'partials/yazilim-egitimi-bulutu.html',
-                                controller: 'YazilimEgitimBulutuCtrl'
-                            }
-                        }
-                    })
-                    .state('egitimler.kategoriler.kategori', {
-                        url: '/kategoriler',
-                        views: {
-                            'top@': {},
-                            'bottom@': {
-                                templateUrl: 'partials/egitimler.kategoriler.html',
-                                controller: 'EgitimlerKategoriCtrl'
-                            }
-                        }
-                    })
                     .state('egitimler.kategori', {
                         abstract: true,
                         url: '/kategori',
-                        templateUrl: 'partials/egitimler.kategori.html',
-                        //controller: 'EgitimlerKategoriCtrl'
+                        views: {
+                            'top@': {},
+                            'bottom@': {
+                                templateUrl: 'partials/egitimler.kategoriler.html',
+                                controller: 'KategorilerCtrl',
+                            }
+                        }
                     })
-                    .state('egitimler.kategori.egitimlistesi', {
+                    .state('egitimler.kategori.liste', {
+                        url: '/liste',
+                        views: {
+                            'kategoriegitimleri':{},
+                            'kategorilistesi': {
+                                templateUrl: 'partials/egitimler.kategori.liste.html',
+                                controller: 'KategoriListesiCtrl',
+                            }
+                        }
+                    })
+                    .state('egitimler.kategori.liste.kategori', { 
                         url: '/:categoryUrl',
-                        templateUrl: 'partials/egitimler.kategori.egitim-listesi.html',
-                        controller: 'EgitimlerKategoriEgitimListesiCtrl'
+                        views: {
+
+                            'kategoriegitimleri': {
+                                templateUrl: 'partials/egitimler.kategori.liste.kategori.html',
+                                controller: 'KategoriEgitimleriCtrl'
+                            }
+                        }
                     })
                     .state('egitim', {
                         url: '/egitim/:egitimUrl',

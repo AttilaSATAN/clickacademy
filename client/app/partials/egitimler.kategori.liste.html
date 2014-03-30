@@ -1,0 +1,16 @@
+<div class="lupus-col-kategori">
+    <div class=" row-kategori clearfix animation-fadeAndScale"  ng-repeat="kategori in kategoriler" >
+        <a class="egitim-kategori-mega-button" ui-sref="egitimler.kategori.liste.kategori({categoryUrl:kategori.url})">
+        <div class="lupus-col-kategori-icon">
+            <img class="img-responsive" ng-src="assets/{{kategori._asset.file}}" style="margin:0 auto;"/>
+        </div>
+        <div class="lupus-col-kategori-name" >
+            <h4>{{kategori.name}}</h4>
+        </div>
+        <p class="lupus-col-kategori-subheader">{{kategori.subHeader}}</p>
+        </a>
+    </div>
+</div>
+<div class="lupus-col-kategori-egitimler">
+    <div ui-view="kategoriegitimleri" class="kategoriegitimleri animation-fadeAndSlideRight"></div>
+</div>

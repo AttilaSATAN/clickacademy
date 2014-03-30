@@ -59,9 +59,6 @@ body {
   height: 100%;
   position: relative;
 }
-body > .frame {
-  opacity: 0.8;
-}
 .frame {
   position: absolute;
   overflow: hidden;
@@ -200,9 +197,7 @@ body > .frame {
   background-color: #f5f5f5;
 }
 .row-kategori {
-  margin-bottom: 10px;
   background: #fff;
-  border: 1px solid #ccc;
 }
 .navbar-inverse {
   background-color: #025172;
@@ -211,11 +206,34 @@ body > .frame {
 .navbar-inverse .navbar-nav > li > a {
   color: #ccc;
 }
-.mesleki-egitim-canvas {
-  position: relative;
+.kategoriegitimleri {
+  width: 100%;
+  height: 100%;
+  clear: both;
 }
-.mesleki-egitim-canvas .egitim {
-  position: absolute;
+/** KENDİ RESPONSIVE FRAMEWORKUMUZ BURADA TEMELLENIYOR */
+.lupus-container:before,
+.ca-container:after {
+  content: " ";
+  display: table;
+}
+.ca-container {
+  --webkit-transition: .5s;
+  transition: .5s;
+}
+/*
+.col-olusturucu(@i: 1) when (@i < 13){
+	@col: ~'ca-col-@{@i}';
+	.@{col}{
+		position: relative;
+		min-height: 1px;
+	}
+}
+.ca-col-1{
+}
+*/
+.egitim-dynamic-icon {
+  position: relative;
   background-color: #0375a4;
   border: 3px solid #025172;
   -webkit-border-radius: 50%;
@@ -226,6 +244,100 @@ body > .frame {
   line-height: 60px;
   text-align: center;
   font-weight: bold;
+  left: -30px;
+}
+.egitim-dynamic-icon-text {
+  min-height: 66px;
+  color: #f0f0f0;
+  margin-left: -30px;
+  padding-left: 30px;
+  line-height: 64px;
+}
+.lupus-col-kategori,
+.lupus-col-kategori-icon,
+.lupus-col-kategori-name,
+.lupus-col-kategori-subheader {
+  position: relative;
+  min-height: 1px;
+}
+.lupus-state-3 .lupus-col-kategori-egitim-ayrintilari {
+  top: 0;
+  left: 40%;
+  right: 0;
+  bottom: 0;
+}
+.lupus-state-2 .lupus-col-kategori-egitimler {
+  top: 0;
+  left: 30%;
+  right: 0;
+  bottom: 0;
+}
+.lupus-state-1 .lupus-col-kategori-egitimler {
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+}
+.egitim-ayrintilar {
+  border-bottom: 1px solid #025c81;
+  width: 100%;
+  min-height: 60px;
+  display: block;
+  background-color: #025172;
+}
+.egitim-ayrintilar:hover,
+.egitim-ayrintilar:active,
+.egitim-ayrintilar:focus {
+  background-color: #025c81;
+}
+.lupus-col-kategori-egitim-ayrintilari {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  width: 100%;
+}
+.lupus-col-kategori-egitimler {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: fixed;
+  background-color: #025172;
+}
+.egitim-kategori-mega-button {
+  overflow: hidden;
+  clear: both;
+  display: block;
+  background-color: #025172;
+  opacity: 0.9;
+  color: #ccc;
+}
+.egitim-kategori-mega-button:hover,
+.egitim-kategori-mega-button:active,
+.egitim-kategori-mega-button:focus {
+  opacity: 1;
+  color: #f0f0f0;
+}
+.lupus-col-kategori {
+  width: 100%;
+  min-height: 100px;
+  position: relative;
+}
+.lupus-col-kategori-icon {
+  width: 10%;
+  float: left;
+}
+.lupus-col-kategori-name {
+  width: 20%;
+  float: left;
+  padding: 25px 0 0 25px;
+}
+.lupus-col-kategori-name h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.lupus-col-kategori-subheader {
+  width: 70%;
+  float: left;
+  padding: 25px 0 0 25px;
 }
 @charset "UTF-8";
 body {
@@ -2675,6 +2787,7 @@ body {
 .egitim-sistemi-animation-sarmalayici .orta {
   height: 332px;
   background: url(../img/click_web_oklar_orta.png) repeat-x;
+  background-color: #e6eaed;
 }
 .egitim-sistemi-animation-sarmalayici .orta .orta-canvas {
   height: 0;
@@ -2686,8 +2799,17 @@ body {
   height: 332px;
 }
 .egitim-sistemi-animation-sarmalayici .alt {
-  height: 128px;
+  height: 148px;
   background: url(../img/click_web_oklar_alt.png) repeat-x top center;
+}
+.egitim-sistemi-animation-sarmalayici .alt .alt2 .button-wrapper {
+  padding-top: 20px;
+}
+.egitim-sistemi-animation-sarmalayici .egitim-button {
+  padding: 10px;
+  text-shadow: -5px 1px 5px #888888;
+  font-size: 20px;
+  color: #025172;
 }
 .yukari-gir {
   opacity: 0;

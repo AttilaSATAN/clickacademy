@@ -1,27 +1,9 @@
-<h1>Eğitim Kategorileri</h1>
-<div class="container-fluid">
-    <!--<div class="row row-kategori" ng-class-odd="'animation-fadeAndSlideLeft'"  ng-class-even="'animation-fadeAndSlideRight'" ng-repeat="egitim in egitimler" >-->
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="row row-kategori clearfix animation-fadeAndScale"  ng-repeat="kategory in kategoriler" >
-                <a ui-sref="egitimler.kategori.egitimlistesi({categoryUrl:kategory.url})"><div class="col-md-8">
-                    <div class="col-xs-4">
-                        <img class="img-responsive" ng-src="assets/{{kategory._asset.file}}" style="margin:0 auto;"/>
-                    </div>
-                    <div class="col-xs-8">
-                        <h4>{{kategory.name}}</h4>
-                        <p>{{kategory.subHeader}}</p>
-                        <p>{{kategory.url}}</p>
-                    </div>
-                </div>
-                </a>
-                <div class="col-xs-4">
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-6" ng-controller="YazılımEgitimBulutuCtrl">
-            <div egitim-bulutu egitimler="egitimler"></div>
-        </div>
-    </div>
-</div>
+
+<div class="ca-container" ng-class="{
+    'lupus-state-1': $state.current.name == 'egitimler.kategori.liste',
+    'lupus-state-2': $state.current.name == 'egitimler.kategori.liste.kategori',
+    'lupus-state-3':kategori.stage==3}">
+
+    <div ui-view="kategorilistesi" class="animation-fadeAndSlideLeft"></div>
+    
 </div>

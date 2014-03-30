@@ -21,6 +21,7 @@ exports.save = function (req, res, next) {
                 egitim._categoryId = req.body._categoryId;
                 egitim.keywords = req.body.keywords;
                 egitim.description = req.body.description;
+                egitim.shortTag = req.body.shortTag;
                 if (req.body._asset) {
                     egitim._asset = mongoose.Types.ObjectId(req.body._asset
                         ._id);
@@ -39,7 +40,6 @@ exports.byCategory = function (req, res, next) {
         return EgitimCategories.findOne({
             url: categoryUrl
         })
-            .populate('_asset')
             .exec(function (err, category) {
                 if (err) return res.json(err);
                 if (category._id) {
@@ -50,7 +50,7 @@ exports.byCategory = function (req, res, next) {
                         })
                         .populate('_asset')
                         .exec(function (err, egitim) {
-                            console.log(category._id, egitim)
+                            
                             if (!err) {
                                 return res.json(egitim);
                             } else {

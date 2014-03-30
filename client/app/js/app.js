@@ -13,7 +13,7 @@ lupusshow.run(
             $rootScope.hideFrame1 = $rootScope.$state.current === 'home';
             console.log($rootScope.hideFrame1)
             $rootScope.$on('$stateChangeSuccess', function () {
-                console.log($rootScope.$state.current.name)
+                
                 $rootScope.hideFrame1 = $rootScope.$state.current.name ===
                     'home';
                 $timeout(function () {

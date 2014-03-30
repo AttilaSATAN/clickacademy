@@ -1,186 +1,290 @@
-// out: ../css/app.css
 @import "vars.less";
 @import "lupus.less";
-html{
-	height: 100%;
+html {
+    height: 100%;
 }
-
-body{
-	font-family: 'Merriweather Sans', sans-serif;
-	background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
-	background-attachment: fixed;
-	height: 100%;
-	position: relative;
-	>.frame{
-		opacity: 0.8;
-		>.frame{
-			>.frame{
-
-			}
-		}
-	}
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
+    background-attachment: fixed;
+    height: 100%;
+    position: relative;
+    >.frame {}
 }
-.frame{
-	position: absolute;
-	overflow:hidden;
-	top:0;
-	left:0;
-	right: 0;
-	bottom:0;
-	height: 100%;
+.frame {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
 }
-.navbar{
-	animation: 1s linear all;
-	-webkit-animation: 1s linear all;
-	margin-bottom: 0;
+.navbar {
+    animation: 1s linear all;
+    -webkit-animation: 1s linear all;
+    margin-bottom: 0;
 }
-
-.container.full-width{
-	width: 100%; max-width: 100%;
+.container.full-width {
+    width: 100%;
+    max-width: 100%;
 }
-.lupus-disko-video{
-	position: absolute;
-	top: 0;
+.lupus-disko-video {
+    position: absolute;
+    top: 0;
 }
-.lupus-disko-video-grid{
-	
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	background: url(../img/grid2.png);
-	-webkit-transition: 1s;
-	transition: 1s;
+.lupus-disko-video-grid {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: url(../img/grid2.png);
+    -webkit-transition: 1s;
+    transition: 1s;
 }
-
-.lupus-disko-video-grid.lupus-disko-video-grid-active{
-
-	opacity: 1;
+.lupus-disko-video-grid.lupus-disko-video-grid-active {
+    opacity: 1;
 }
-.perde{
-	background:url(../img/1px70-fff.png);
+.perde {
+    background: url(../img/1px70-fff.png);
 }
-
-.btn1{
-	background-color: #005bd8;
-	border-radius: 3px;
-	border:2px solid #fff;
-	color:#fff;
-	display: block;
-	
-	position: absolute;
-	bottom: 25px;
-	left:50%;
-	margin-left: -58px;
-	&:hover,&:focus{
-		background-color: #fff;
-		color:#005bd8;
-		border:2px solid #005bd8;
-	}
+.btn1 {
+    background-color: #005bd8;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    margin-left: -58px;
+    &:hover, &:focus {
+        background-color: #fff;
+        color: #005bd8;
+        border: 2px solid #005bd8;
+   }
 }
-.btn2{
-	background-color: #005bd8;
-	border-radius: 3px;
-	border:2px solid #fff;
-	color:#fff;
-	font-size: 36px;
-
-	&:hover,&:focus{
-		background-color: #fff;
-		border:2px solid #005bd8;
-		color:#005bd8;
-	}
+.btn2 {
+    background-color: #005bd8;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 36px;
+    &:hover, &:focus {
+        background-color: #fff;
+        border: 2px solid #005bd8;
+        color: #005bd8;
+   }
 }
-.mesleki-egitim-alin-banner{
-	background: #005bd8;
-	color:#fff;
-	padding: 20px 20px;
-	margin:10px 5px;
+.mesleki-egitim-alin-banner {
+    background: #005bd8;
+    color: #fff;
+    padding: 20px 20px;
+    margin: 10px 5px;
 }
-.egitim-kategorisi-giris{
-	padding: 20px 20px;
-	div{
-		position: relative;
-		min-height: 406px;
-		padding: 30px 50px;
-		// background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,72,242,0.65) 100%); /* FF3.6+ */
-		// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,72,242,0.65))); /* Chrome,Safari4+ */
-		// background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* Chrome10+,Safari5.1+ */
-		// background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* Opera 11.10+ */
-		// background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* IE10+ */
-		// background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,72,242,0.65) 100%); /* W3C */
-		// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a60048f2',GradientType=0 ); /* IE6-9 */
-		background:url(../img/x-bg-grid-noise.png);
-		color:#bbb;
-		border:1px solid #005bd8;
-	}
-	.btn-lg{
-		.btn1;
-	}
+.egitim-kategorisi-giris {
+    padding: 20px 20px;
+    div {
+        position: relative;
+        min-height: 406px;
+        padding: 30px 50px;
+        background: url(../img/x-bg-grid-noise.png);
+        color: #bbb;
+        border: 1px solid #005bd8;
+   }
+   .btn-lg {
+       .btn1;
+  }
 }
-.view-bottom{
-	overflow: auto;
+.view-bottom {
+    overflow: auto;
 }
 .lupus-gorsel-upload {
-  background: #F8F8F8;
-  border: 3px dashed #bcbcbc;
-  font-weight: 900;
-  color: #111;
-  text-shadow: 1px 1px 0 #fff;
-  -webkit-text-shadow: 1px 1px 0 #fff;
-  height: 100px;
-  text-align: center;
-  padding-top: 33px;
+    background: #F8F8F8;
+    border: 3px dashed #bcbcbc;
+    font-weight: 900;
+    color: #111;
+    text-shadow: 1px 1px 0 #fff;
+    -webkit-text-shadow: 1px 1px 0 #fff;
+    height: 100px;
+    text-align: center;
+    padding-top: 33px;
 }
 .lupus-gorsel-upload.dragover {
-  border: 5px dashed #0091dd;
+    border: 5px dashed #0091dd;
 }
 .sel-file {
-  padding: 1px 5px;
-  font-size: smaller;
-  color: grey;
+    padding: 1px 5px;
+    font-size: smaller;
+    color: grey;
 }
 .progress-display div {
-  color: #fff;
-  font-size: smaller;
-  background: #0091dd;
-  width: 0;
+    color: #fff;
+    font-size: smaller;
+    background: #0091dd;
+    width: 0;
 }
 .progress-display {
-  width: 100%;
-  display: inline-block;
-  height: 20px;
-  overflow: hidden;
-  background-color: #f5f5f5;
+    width: 100%;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
 }
-.row-kategori{
-	margin-bottom: 10px;
-	background: #fff;
-	border:1px solid #ccc;
+.row-kategori {
+
+    background: #fff;
 }
-.navbar-inverse{
-	background-color: @ca-blue;
-	border: 1px solid @ca-blue-border;
-	.navbar-nav > li > a {
-		color:#ccc;
-	}
+.navbar-inverse {
+    background-color: @ca-blue;
+    border: 1px solid @ca-blue-border;
+    .navbar-nav > li > a {
+        color: #ccc;
+   }
 }
-.mesleki-egitim-canvas{
-	position: relative;
-	.egitim{
+.kategoriegitimleri {
 	
-		position:absolute;
-		background-color:lighten(@ca-blue,10%);
-		border: 3px solid @ca-blue;
-		-webkit-border-radius: 50%;
-		border-radius: 50%;
-		min-width: 60px;
-		min-height: 60px;
-		color:#f0f0f0;
-		line-height: 60px;
-		text-align: center;
-		font-weight: bold;
+	width: 100%;
+	height: 100%;
+	clear:both;
+}
+/** KENDİ RESPONSIVE FRAMEWORKUMUZ BURADA TEMELLENIYOR */
+
+.lupus-container:before, .ca-container:after {
+    content: " ";
+    display: table;
+}
+.ca-container {
+    --webkit-transition: .5s;
+    transition: .5s;
+}
+/*
+.col-olusturucu(@i: 1) when (@i < 13){
+	@col: ~'ca-col-@{@i}';
+	.@{col}{
+		position: relative;
+		min-height: 1px;
 	}
+}
+.ca-col-1{
+}
+*/
+.egitim-dynamic-icon {
+	position: relative;
+    background-color: lighten(@ca-blue, 10%);
+    border: 3px solid @ca-blue;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    min-width: 60px;
+    min-height: 60px;
+    color: #f0f0f0;
+    line-height: 60px;
+    text-align: center;
+    font-weight: bold;
+    left:-30px;
+}
+.egitim-dynamic-icon-text{
+	min-height: 66px;
+	color: #f0f0f0;
+	margin-left: -30px;
+	padding-left: 30px;
+	line-height: 64px;
+	
+}
+.lupus-col-kategori, .lupus-col-kategori-icon, .lupus-col-kategori-name, .lupus-col-kategori-subheader {
+    position: relative;
+    min-height: 1px;
+
+}
+.lupus-state-3 {
+	.lupus-col-kategori-egitim-ayrintilari{
+		top: 0;
+        left: 40%;
+        right: 0;
+        bottom: 0;
+	}
+} 
+.lupus-state-2 {
+	.lupus-col-kategori-egitimler {
+        top: 0;
+        left: 30%;
+        right: 0;
+        bottom: 0;
+   }
+}
+.lupus-state-1 {
+    .lupus-col-kategori-egitimler {
+        top: 0;
+        left: 100%;
+        right: 0;
+        bottom: 0;
+   }
+}
+.egitim-ayrintilar{
+	border-bottom: 1px solid lighten(@ca-blue,3%);
+	width: 100%;
+	min-height: 60px;
+	display: block;
+	background-color: @ca-blue;
+	&:hover,
+	&:active,
+	&:focus{
+		background-color: lighten(@ca-blue, 3%);
+	}
+}
+
+.lupus-col-kategori-egitim-ayrintilari{
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+	position: absolute;
+	width: 100%;
+
+}
+.lupus-col-kategori-egitimler {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+	position: fixed; 
+	background-color: @ca-blue;
+	
+
+}
+.egitim-kategori-mega-button{
+	overflow:hidden;
+	clear:both;
+	display: block;
+	background-color: @ca-blue;
+	opacity: 0.9;
+    color:#ccc;
+    &:hover,
+	&:active,
+	&:focus{
+		opacity:1;
+		color: #f0f0f0;
+	}
+	
+}
+.lupus-col-kategori {
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+}
+.lupus-col-kategori-icon {
+    width: 10%;
+    float: left;
+}
+.lupus-col-kategori-name {
+    width: 20%;
+    float: left;
+    padding: 25px 0 0 25px;
+	h4{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+.lupus-col-kategori-subheader {
+    width: 70%;
+    float: left;
+    padding: 25px 0 0 25px;
 }
 @import "app-animations.less";

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-        
+
             <div ng-if="yeni.egitim._id">
                 <h4>Düzenle</h4>
             </div>
@@ -37,15 +37,19 @@
                     <input type="text" name="kategori-url" id="kategori-url" class="form-control" ng-model="yeni.egitim.url"/>
                 </div>
                 <div class="form-group">
-                    <label for="egitim-kategori">Eğitim Kategorisi</label>
-                    <select class="form-control" name="egitim-kategori" id="egitim-kategori" ng-model="yeni.egitim._categoryId" ng-options="kategori._id as kategori.name for kategori in egitimCategories">{{kategori}}</select>
+                    <label for="short-tag">Kısaltma</label>
+                    <input type="text" name="short-tag" id="short-tag" class="form-control" ng-model="yeni.egitim.shortTag"/>
                 </div>
                 <div class="form-group">
-                    <label >Anahtar Kelimeler</label>
-                    <input type-text class="form-control" ng-model="yeni.egitim.keywords[$index]" ng-repeat="keyword in yeni.egitim.keywords track by $index" placeholder="Anahtar Kelime"/>
-                    <button class="btn btn-sm btn-default" ng-click="yeni.egitim.keywords.push(null)">
-                        <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
-                </div>
+                    <label for="egitim-kategori">Eğitim Kategorisi</label>
+                <select class="form-control" name="egitim-kategori" id="egitim-kategori" ng-model="yeni.egitim._categoryId" ng-options="kategori._id as kategori.name for kategori in egitimCategories">{{kategori}}</select>
+            </div>
+            <div class="form-group">
+                <label >Anahtar Kelimeler</label>
+                <input type-text class="form-control" ng-model="yeni.egitim.keywords[$index]" ng-repeat="keyword in yeni.egitim.keywords track by $index" placeholder="Anahtar Kelime"/>
+                <button class="btn btn-sm btn-default" ng-click="yeni.egitim.keywords.push(null)">
+                <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
+            </div>
         </form>
         <a href="javascript:void(0);" ng-if="!yeni.egitim._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.egitim)"><span class="glyphicon glyphicon-plus"></span>Yeni</a>
         <a href="javascript:void(0);" ng-if="yeni.egitim._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.egitim)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>

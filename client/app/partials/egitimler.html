@@ -16,10 +16,12 @@
         </div>
     </div>
     <div class="alt">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <a href="#" class="btn btn-lg btn-primary bounceIn" ui-sref="{{button.sref}}" ng-class="{in:animationStep[$index + 2]}"ng-repeat="button in buttons">{{button.buttonText}}</a>
+        <div class="alt2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center button-wrapper">
+                        <a href="#" class="egitim-button bounceIn" ui-sref="{{button.sref}}" ng-class="{in:animationStep[$index + 2]}"ng-repeat="button in buttons">{{button.buttonText}}</a>
+                    </div>
                 </div>
             </div>
         </div>
