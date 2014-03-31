@@ -1,40 +1,42 @@
-<div style="position:relative">
-    <div class="map-over-contact">
-        <div class="wrapper">
-            <address class="address" itemprop="address" itemscope="" itemtype="http://data-vocabulary.org/Address">
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="wrapper">
+                <address class="address" itemprop="address" itemscope="" itemtype="http://data-vocabulary.org/Address">
                 <h3>
-                    Click Academy
+                Click Academy ( Ankara Merkez )
                 </h3>
                 <span itemprop="streetAddress">
-                   Karanfil Sk. Zafir İş Hanı No: 4 Kat: 4
+                Karanfil Sk. Zafir İş Hanı No: 4 Kat: 4
                 </span>
                 <br>
                 <span itemprop="locality">
-                    Kızılay
+                Kızılay
                 </span>
                 <br>
                 <span itemprop="region">
-                    ANKARA / TÜRKİYE
+                ANKARA / TÜRKİYE
                 </span>
                 <br>
                 <br>
                 <span class="glyphicon glyphicon-earphone">
                 </span>
                 <span itemprop="telephone" style="vertical-align: bottom; margin-left:5px; margin-right: 20px;">
-                    +90 0 (312) 419 90 98
+                +90 0 (312) 419 90 98
                 </span>
                 <br>
                 <br>
                 <span class="glyphicon glyphicon-envelope">
                 </span>
                 <span itemprop="email" style="vertical-align: bottom; margin-left:5px; margin-right: 20px;">
-                    info@adoruk.net
+                info@adoruk.net
                 </span>
                 <!--<img class="img-responsive qrcode" src="LupusWebUserControls/Contact/Images/qrcode.png">-->
-            </address>
+                </address>
+            </div>
         </div>
-        <div class="wrapper kurumsal-mavi"  ng-include="'partials/' + lang.current + '/contact-form.html'"></div>
-    </div>
-    <div class="googleMaps" draggable='true' google-map center='map.center' zoom='map.zoom'>
+        <div class="googleMaps col-md-6" draggable='true' google-map center='map.center' zoom='map.zoom'>
+        <marker coords='map.marker'></marker>
+        </div>
     </div>
 </div>

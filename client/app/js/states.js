@@ -92,7 +92,7 @@ angular.module('lupusshow')
                             'top': {},
                             'bottom': {
                                 templateUrl: 'partials/iletisim.html',
-                                contoller: 'IletisimCtrl'
+                                controller: 'IletisimCtrl'
                             }
                         }
                     })

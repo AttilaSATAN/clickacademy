@@ -198,12 +198,14 @@ angular.module('lupusshow.controllers', [])
         }, true);
     })
     .controller('IletisimCtrl', function ($scope) {
+        console.log('IletisimCtrl')
+
         $scope.map = {
             center: {
-                latitude: 39.991162,
-                longitude: 32.77
+                latitude: 39.919648,
+                longitude: 32.855119
             },
-            zoom: 14,
+            zoom: 16,
             marker: {
                 coords: {
                     latitude: 39.991162,
@@ -211,8 +213,7 @@ angular.module('lupusshow.controllers', [])
                 },
                 options: {
                     draggable: false,
-                },
-                icon: 'img/hz_icon_marker.png'
+                }
             }
         };
     })
