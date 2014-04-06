@@ -7,6 +7,7 @@ var AssetsSchema = new Schema({
         type: String,
         unique: true
     },
-    type: String
+    type: String,
+    date: { type: Date, default: Date.now },
 });
 var Assets = mongoose.model('Assets', AssetsSchema);

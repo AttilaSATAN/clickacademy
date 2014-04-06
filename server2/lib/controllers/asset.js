@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
     fs = require('fs'),
     path = require('path'),
     config = require('../../lib/config/config');
+
+
 exports.file = function (req, res, next) {
     if (typeof req.files.gorsel.path === 'undefined') return res.send([new Error(
         'Dosya alınamadı.')]);
@@ -51,7 +53,7 @@ exports.file = function (req, res, next) {
                             });
                         });
                 });
-            })
+            });
         }
     });
 };
