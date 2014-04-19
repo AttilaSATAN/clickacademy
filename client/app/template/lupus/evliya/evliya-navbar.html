@@ -1,7 +1,10 @@
 <div class="evliya-sarmalayici" style="">
     <div class="lupus-evliya-navbar" style="">
-        <ul >
-            <li>
+        <ul>
+            <li class="evliya-menu-button" >
+                <a ng-click="menuKapali = !menuKapali" href="javascript:void(0);">Menü</a>
+            </li>
+            <div ng-show="!menuKapali" class=" will-collaps"><li>
                 <a ui-sref="hakkimizda">Biz</a>
             </li>
             <li>
@@ -40,7 +43,7 @@
             </li>
             <li>
                 <a ui-sref="iletisim">İletişim</a>
-            </li>
+            </li></div>
         </ul>
         <!-- /.nav-collapse -->
         <a class="pull-right" ui-sref="home"  style="margin-top: -10px;" ><img style="height: 70px;" src="img/click-academy-logo-2.png" ></a>

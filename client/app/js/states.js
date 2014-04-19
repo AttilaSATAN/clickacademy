@@ -126,6 +126,11 @@ angular.module('lupusshow')
                             }
                         }
                     })
+                    // .state('yonetim.slides', {
+                    //     url: '/bloglar',
+                    //     templateUrl: 'partials/yonetim/slides.html',
+                    //     controller: 'YonetimSlidesCtrl'
+                    // })
                     .state('yonetim.blogs', {
                         url: '/bloglar',
                         templateUrl: 'partials/yonetim/blogs.html',

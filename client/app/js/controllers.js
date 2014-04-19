@@ -15,25 +15,25 @@ angular.module('lupusshow.controllers', [])
         // };
         $scope.homeSlides = [{
             type: 'image',
-            src: 'img/after_effects.jpg'
+            file: 'img/after_effects.jpg'
         }, {
             type: 'image',
-            src: 'img/grafik_tasarim.jpg'
+            file: 'img/grafik_tasarim.jpg'
         }, {
             type: 'image',
-            src: 'img/photoshop.jpg'
+            file: 'img/photoshop.jpg'
         }, {
             type: 'image',
-            src: 'img/web_tasarim.jpg'
+            file: 'img/web_tasarim.jpg'
         }, {
             type: 'image',
-            src: 'img/autocad.jpg'
+            file: 'img/autocad.jpg'
         }, {
             type: 'image',
-            src: 'img/java.jpg'
+            file: 'img/java.jpg'
         }, {
             type: 'image',
-            src: 'img/seo.jpg'
+            file: 'img/seo.jpg'
         }];
     })
     .controller('BizCtrl', function ($scope, $interval, $timeout) {})

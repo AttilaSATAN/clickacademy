@@ -20,6 +20,77 @@ angular.module('lupusshow.directives', [])
             }
         };
     })
+    .directive('swiperB', function ($timeout) {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            scope: {
+                slides: '=',
+                pagination: '='
+            }, // {} = isolate, true = child, false/undefined = no change
+            controller: function ($scope, $element, $attrs, $transclude) {
+                // var swiperSettings = {
+                //                    autoplay: 4000,
+                //                    mode: 'horizontal',
+                //                    loop: true,
+                //                    autoResize: true,
+                //                    paginationClickable: true
+                //                };
+                //console.log($scope.slides);
+                //if ($scope.pagination) swiperSettings.pagination = $scope.pagination;
+                // $scope.swiper = new Swiper('.swiper-container',
+                //     swiperSettings);
+                //     
+            },
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            restrict: 'AE', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            templateUrl: 'template/swiper/swiper.html',
+            // replace: true,
+            transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function ($scope, iElm, iAttrs, controller) {
+                $timeout(function () {
+                    var gallery = $('.swiper-container')
+                        .swiper({
+                            slidesPerView: 'auto',
+                            watchActiveIndex: true,
+                            centeredSlides: true,
+                            pagination: '.pagination',
+                            paginationClickable: true,
+                            resizeReInit: true,
+                            keyboardControl: true,
+                            grabCursor: true,
+                            onImagesReady: function () {
+                                changeSize()
+                            }
+                        })
+
+                        function changeSize() {
+                            $('.swiper-slide')
+                                .css('width', '')
+                            var imgWidth = $('.swiper-slide img')
+                                .width();
+                            if (imgWidth + 40 > $(window)
+                                .width()) imgWidth = $(window)
+                                .width() - 40;
+                            $('.swiper-slide')
+                                .css('width', imgWidth + 40);
+                        }
+                    changeSize();
+                    gallery.resizeFix(true)
+                    $(window)
+                        .resize(function () {
+                            changeSize()
+                            gallery.resizeFix(true)
+                        });
+
+                }, 1500)
+            }
+        }
+    })
     .directive('lupusAssetsB', function ($http, $timeout, $upload, slugify,
         AssetsResource, $rootScope) {
         return {
@@ -167,25 +238,24 @@ angular.module('lupusshow.directives', [])
             link: function ($scope, iElm, iAttrs, controller) {}
         };
     })
-    .
-directive('lupusAssetsDisplayer', function () {
-    // Runs during compile
-    return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        // scope: {}, // {} = isolate, true = child, false/undefined = no change
-        // controller: function($scope, $element, $attrs, $transclude) {},
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-        // template: '',
-        templateUrl: '',
-        // replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        link: function ($scope, iElm, iAttrs, controller) {}
-    };
-})
+    .directive('lupusAssetsDisplayer', function () {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            // scope: {}, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            templateUrl: '',
+            // replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function ($scope, iElm, iAttrs, controller) {}
+        };
+    })
     .directive('egitimBulutuEgitim', function ($timeout) {
         // Runs during compile
         return {
@@ -211,7 +281,6 @@ directive('lupusAssetsDisplayer', function () {
                 var angle = poz * Math.PI * 2;
                 x = Math.cos(angle) * 100 * 10 / $scope.egitimLength;
                 y = Math.sin(angle) * 100 * 10 / $scope.egitimLength;
-
                 iElm.css({
                     'top': 120 + y + 'px',
                     'left': 300 + x + 'px'

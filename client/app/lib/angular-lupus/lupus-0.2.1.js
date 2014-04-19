@@ -455,7 +455,6 @@ yatayOrtala angular-lupus-0.2.0.js:270
             }
         };
     });
-
 angular.module('lupus.evliya', [])
     .directive('lupusEvliyaNavbar', function (windowSize, $rootScope) {
         return {
@@ -479,7 +478,6 @@ angular.module('lupus.evliya', [])
                 $scope.window = {};
                 $scope.window = windowSize();
                 $scope.box = iElm[0].getBoundingClientRect();
-                console.log($scope.box)
                 iElm.css({
                     'transition': '.3s ease-in-out',
                     '-webkit-transition': '.3s ease-in-out'
@@ -490,8 +488,7 @@ angular.module('lupus.evliya', [])
                     if ($scope.stateName !== 'home') {
                         poz = 0;
                     } else {
-                        poz = $scope.window.height - 76 +
-                            'px';
+                        poz = $scope.window.height - 76 + 'px';
                     }
                     iElm.removeClass('navbar-fixed-bottom');
                     iElm.css({
@@ -511,6 +508,17 @@ angular.module('lupus.evliya', [])
                     $scope.stateName = toState.name;
                     $scope.pozisyonla();
                 });
+                window.onresize = function () {
+                    collapseControl();
+                };
+
+                function collapseControl() {
+                    if (document.body.getBoundingClientRect()
+                        .width <= 980) {
+                        iElm.addClass('collepsed');
+                    } else iElm.removeClass('collepsed');
+                }
+                collapseControl();
             }
         };
     });
