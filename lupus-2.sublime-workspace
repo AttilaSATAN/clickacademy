@@ -231,7 +231,7 @@
 			"file": "client/app/less/app.less",
 			"settings":
 			{
-				"buffer_size": 5374,
+				"buffer_size": 5692,
 				"line_ending": "Windows"
 			}
 		},
@@ -271,6 +271,14 @@
 			}
 		},
 		{
+			"file": "server2/lib/controllers/assets.js",
+			"settings":
+			{
+				"buffer_size": 374,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "client/app/partials/yonetim/egitimler.html",
 			"settings":
 			{
@@ -279,10 +287,7 @@
 			}
 		},
 		{
-			"contents": "/*global angular */\n/*jshint devel:true, browser:true */\nangular.module('lupusshow.controllers', [])\n    .controller('HomeCtrl', function ($scope, $timeout) {\n        \"use strict\";\n        // $scope.videoIntro = {\n        //     type: 'video',\n        //     srcs: [{\n        //         src: 'assets/click_web_anim.mp4',\n        //         type: 'video/mp4'\n        //     }, {\n        //         src: 'video/click_web_anim.webm',\n        //         type: 'video/webm'\n        //     }]\n        // };\n        $scope.homeSlides = [{\n            type: 'image',\n            src: 'img/after_effects.jpg'\n        }, {\n            type: 'image',\n            src: 'img/grafik_tasarim.jpg'\n        }, {\n            type: 'image',\n            src: 'img/photoshop.jpg'\n        }, {\n            type: 'image',\n            src: 'img/web_tasarim.jpg'\n        }, {\n            type: 'image',\n            src: 'img/autocad.jpg'\n        }, {\n            type: 'image',\n            src: 'img/java.jpg'\n        }, {\n            type: 'image',\n            src: 'img/seo.jpg'\n        }];\n    })\n    .controller('BizCtrl', function ($scope, $interval, $timeout) {})\n    .controller('KategorilerCtrl', function ($scope) {})\n    .controller('KategoriListesiCtrl', function ($scope, $rootScope, $timeout,\n        $stateParams, $interval, EgitimCategoriesResource) {\n        $rootScope.kategori = $rootScope.kategori || {};\n        $timeout(function () {\n            $scope.kategoriler = EgitimCategoriesResource.query();\n        }, 1500);\n    })\n    .controller('KategoriEgitimleriCtrl', function ($scope,\n        EgitimByCategoryResource, $stateParams, $timeout, $rootScope) {\n        $rootScope.kategori = $rootScope.kategori || {};\n        $scope.egitimler = [];\n        $scope.getCollection = function () {\n            $scope.egitimler = EgitimByCategoryResource.get({\n                categoryUrl: $stateParams.categoryUrl\n            });\n        };\n        $timeout(function () {\n            $scope.getCollection();\n        }, 500);\n    })\n    .controller('EgitimCtrl', function ($scope, $stateParams) {})\n    .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {\n        var totalStep = 5,\n            currentStep = 0;\n        $scope.buttons = [{\n            buttonText: \"Uzmanlık Eğitimleri\",\n            sref: 'egitimler.kategori.liste'\n        }, {\n            buttonText: \"Akademik Eğitimler\",\n            sref: 'egitimler.mesleki'\n        }, {\n            buttonText: \"Sektörel Eğitimler\",\n            sref: 'egitimler.sektorel'\n        }];\n        $scope.animationStep = [];\n        var doStep = function () {\n            $scope.animationStep[currentStep] = true;\n            if (currentStep < totalStep) {\n                currentStep++;\n                step();\n            }\n        };\n        var step = function () {\n            $timeout(function () {\n                doStep();\n            }, 500);\n        };\n        step();\n    })\n    .controller('YonetimCtrl', ['$scope',\n        function ($scope) {}\n    ])\n    .controller('YonetimStatesCtrl', function ($scope, StateResource) {\n        $scope.states = StateResource.query(function () {\n            console.log(arguments);\n        });\n        $scope.create = function () {};\n        //$scope.update = function (){};\n    })\n    .controller('YonetimTemplatesCtrl', ['$scope', 'PartialsResource',\n        'slugify', 'TemplateResource',\n        function ($scope, PartialsResource, slugify, TemplateResource) {\n            $scope.data = PartialsResource.get(function () {\n                console.log(arguments);\n            });\n            $scope.state = {};\n            $scope.$watch('state.pageName', function () {\n                $scope.state.url = slugify($scope.state.pageName);\n            });\n            $scope.kaydet = function () {};\n            //$scope.partials = PartialsResource.query();\n        }\n    ])\n    .controller('YonetimEgitimlerCtrl', function ($scope, EgitimResource,\n        EgitimlerResource, EgitimCategoriesResource, slugify) {\n        $scope.yeni = {};\n        $scope.noop = {\n            keywords: [],\n            name: null,\n            url: null,\n            _categoryId: null\n        };\n        $scope.yeni.egitim = angular.copy($scope.noop);\n        $scope.egitimCategories = EgitimCategoriesResource.query();\n        $scope.crud = {\n            remove: function (_id) {\n                EgitimResource.remove({\n                    egitimId: _id\n                }, function () {\n                    getCollection();\n                });\n            },\n            save: function (kategoriObj) {\n                console.log({\n                    egitimId: kategoriObj._id || 0\n                });\n                var egitim = EgitimResource.get({\n                    egitimId: kategoriObj._id || 0\n                }, function () {\n                    egitim.name = $scope.yeni.egitim.name;\n                    egitim.url = $scope.yeni.egitim.url;\n                    egitim._categoryId = $scope.yeni.egitim._categoryId;\n                    egitim.keywords = $scope.yeni.egitim.keywords;\n                    egitim.shortTag = $scope.yeni.egitim.shortTag;\n                    egitim.$save(function () {\n                        $scope.yeni.egitim = angular.copy($scope.noop);\n                        getCollection();\n                    });\n                });\n            }\n        };\n        $scope.$watch('yeni.egitim.name', function () {\n            if (typeof $scope.yeni.egitim !== 'undefined') $scope.yeni.egitim\n                .url = slugify($scope.yeni.egitim.name);\n        });\n        $scope.duzenle = function (egitimObj) {\n            $scope.yeni.egitim = angular.copy(egitimObj);\n        };\n        var getCollection = function () {\n            $scope.egitimler = EgitimlerResource.query();\n        };\n        getCollection();\n    })\n    .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,\n        EgitimlerResource, EgitimByUrlResource, $stateParams, $timeout) {\n        $scope.kaydediliyor = false;\n        $scope.kaydedildi = false;\n        $scope.egitim = {};\n        var to = null;\n        var getEgitim = function () {\n            $scope.egitim = EgitimByUrlResource.get({\n                egitimUrl: $stateParams.egitimUrl\n            }, function () {\n                console.log($scope.egitim)\n            });\n        };\n        getEgitim();\n        $scope.$watch('egitim', function () {\n            if (to) $timeout.cancel(to);\n            $scope.kaydediliyor = true;\n            to = $timeout(function () {\n                var egitim = EgitimResource.get({\n                    egitimId: $scope.egitim._id || 0\n                }, function () {\n                    if ($scope.egitim._asset) {\n                        egitim._asset = egitim._asset || {};\n                        egitim._asset._id = $scope.egitim._asset\n                            ._id || null;\n                    }\n                    egitim.name = $scope.egitim.name;\n                    egitim.description = $scope.egitim.description;\n                    egitim.$save(function (gitimServer) {\n                        $scope.kaydediliyor = false;\n                        $scope.kaydedildi = true;\n                    });\n                });\n            }, 3000);\n        }, true);\n    })\n    .controller('IletisimCtrl', function ($scope) {\n        console.log('IletisimCtrl')\n\n        $scope.map = {\n            center: {\n                latitude: 39.919648,\n                longitude: 32.855119\n            },\n            zoom: 16,\n            marker: {\n                coords: {\n                    latitude: 39.991162,\n                    longitude: 32.738901\n                },\n                options: {\n                    draggable: false,\n                }\n            }\n        };\n    })\n    .controller('YonetimBlogCtrl', function ($scope, BlogsResource,\n        BlogResource, BlogByUrlResource, $stateParams, $timeout) {\n        $scope.kaydediliyor = false;\n        $scope.kaydedildi = false;\n        $scope.blog = {};\n        var to = null;\n        var getBlog = function () {\n            $scope.blog = BlogByUrlResource.get({\n                blogUrl: $stateParams.blogUrl\n            }, function () {\n                console.log($scope.blog)\n            });\n        };\n        getBlog();\n        $scope.newRow = function () {\n            $scope.blog._rows = $scope.blog._rows || [];\n            $scope.blog._rows.push({\n                name: 'Boş Başlık',\n                text: 'boş metin'\n            });\n        };\n        $scope.kaydet = function () {\n            $scope.kaydediliyor = true;\n            var blog = BlogResource.get({\n                blogId: $scope.blog._id || 0\n            }, function () {\n                blog._rows = $scope.blog._rows;\n                blog.description = $scope.blog.description;\n                console.log(\"giden blog\", blog._rows[0])\n                blog.$save(function (gitimServer) {\n                    console.log('birşeyler kaydedilmiş olmalı')\n                    $scope.kaydediliyor = false;\n                    $scope.kaydedildi = true;\n                    getBlog();\n                });\n            });\n        };\n    })\n    .controller('YazılımEgitimBulutuCtrl', function ($scope) {\n        $scope.egitimler = [{\n            name: 'CS'\n        }, {\n            name: 'CSS'\n        }, {\n            name: 'JS'\n        }, {\n            name: 'ASP'\n        }, {\n            name: 'C++'\n        }, {\n            name: 'PY'\n        }, {\n            name: 'RUBY'\n        }, {\n            name: 'ALG'\n        }, {\n            name: 'CRYP'\n        }];\n    })\n    .controller('YonetimBlogsCtrl', function ($scope, BlogsResource,\n        BlogResource, slugify) {\n        $scope.yeni = {};\n        $scope.noop = {\n            tags: [],\n            name: null,\n            url: null,\n        };\n        $scope.yeni.blog = angular.copy($scope.noop);\n        $scope.crud = {\n            remove: function (_id) {\n                BlogResource.remove({\n                    blogId: _id\n                }, function () {\n                    getCollection();\n                });\n            },\n            save: function (blogObj) {\n                console.log({\n                    blogId: blogObj._id || 0\n                })\n                var blog = BlogResource.get({\n                    blogId: blogObj._id || 0\n                }, function () {\n                    console.log(blog)\n                    blog.name = $scope.yeni.blog.name;\n                    blog.url = $scope.yeni.blog.url;\n                    blog.tags = $scope.yeni.blog.tags;\n                    blog.$save(function () {\n                        $scope.yeni.blog = angular.copy($scope.noop);\n                        getCollection();\n                    });\n                });\n            }\n        };\n        $scope.$watch('yeni.blog.name', function () {\n            console.log($scope.yeni.blog)\n            if (typeof $scope.yeni.blog !== 'undefined') $scope.yeni.blog\n                .url = slugify($scope.yeni.blog.name);\n        });\n        $scope.duzenle = function (blogObj) {\n            $scope.yeni.blog = angular.copy(blogObj);\n        };\n        var getCollection = function () {\n            $scope.blogs = BlogsResource.query();\n        };\n        getCollection();\n    })\n    .controller('YonetimEgitimKategorileriCtrl', function ($scope,\n        EgitimCategoriesResource, EgitimCategoryResource, slugify) {\n        $scope.yeniKategori = {};\n        $scope.crud = {\n            remove: function (_id) {\n                EgitimCategoryResource.remove({\n                    categoryId: _id\n                }, function () {\n                    getCollection();\n                });\n            },\n            create: function (kategoriObj) {\n                var kategori = EgitimCategoryResource.get({\n                    categoryId: kategoriObj._id || 0\n                }, function () {\n                    kategori.name = $scope.yeniKategori.name;\n                    kategori.url = $scope.yeniKategori.url;\n                    kategori.subHeader = $scope.yeniKategori.subHeader;\n                    kategori.description = $scope.yeniKategori.description;\n                    kategori._asset = kategori._asset || {};\n                    kategori._asset._id = $scope.yeniKategori._asset._id;\n                    kategori.$save(function () {\n                        getCollection();\n                    });\n                });\n            }\n        };\n        $scope.$watch('yeniKategori.name', function () {\n            if (typeof $scope.yeniKategori !== 'undefined') $scope.yeniKategori\n                .url = slugify($scope.yeniKategori.name);\n        });\n        $scope.duzenle = function (kategoriObj) {\n            $scope.yeniKategori = angular.copy(kategoriObj);\n        };\n        var getCollection = function () {\n            $scope.egitimCategories = EgitimCategoriesResource.query();\n        };\n        getCollection();\n    });",
 			"file": "client/app/js/controllers.js",
-			"file_size": 12977,
-			"file_write_time": 130407283825478559,
 			"settings":
 			{
 				"buffer_size": 12963,
@@ -301,50 +306,55 @@
 			"file": "client/app/js/states.js",
 			"settings":
 			{
-				"buffer_size": 7330,
+				"buffer_size": 7588,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "/*globals angular:true, console:true*/\n/* Services */\nangular.module('lupusshow.services', [])\n    .('BildirimlerSrvc', ['$alert',\n        function ($alert) {\n            \"use strictfactory\";\n            var bildirimler = {\n                bildirim: function (data) {\n                    $alert(data);\n                },\n                info: function (msg) {\n                    var data = {\n                        //duration: 5,\n                        animation: 'am-fadeAndSlideTop',\n                        title: 'Bilgilendirme: ',\n                        content: msg,\n                        placement: 'top-left',\n                        type: 'info',\n                        show: true\n                    };\n                    this.bildirim(data);\n                },\n                warning: function (msg) {\n                    var data = {\n                        //duration: 5,\n                        animation: 'am-fadeAndSlideTop',\n                        title: 'Uyarı: ',\n                        content: msg,\n                        placement: 'top-left',\n                        type: 'warning',\n                        show: true\n                    };\n                    this.bildirim(data);\n                },\n                success: function (msg) {\n                    var data = {\n                        //duration: 5,\n                        animation: 'am-fadeAndSlideTop',\n                        title: 'Tebrikler: ',\n                        content: msg,\n                        placement: 'top-left',\n                        type: 'success',\n                        show: true\n                    };\n                    this.bildirim(data);\n                },\n                danger: function (msg) {\n                    var data = {\n                        //duration: 5,\n                        animation: 'am-fadeAndSlideTop',\n                        title: 'Dikkat: ',\n                        content: msg,\n                        placement: 'top-left',\n                        type: 'danger',\n                        show: true\n                    };\n                    this.bildirim(data);\n                }\n            };\n            return bildirimler;\n        }\n    ])\n    .factory('slugify', function () {\n        return function (text) {\n            if (!text) return null;\n            var trMap = {\n                'çÇ': 'c',\n                'ğĞ': 'g',\n                'şŞ': 's',\n                'üÜ': 'u',\n                'ıİ': 'i',\n                'öÖ': 'o'\n            };\n            for (var key in trMap) {\n                text = text.replace(new RegExp('[' + key + ']', 'g'), trMap[\n                    key]);\n            }\n            return text.replace(/[^-a-zA-Z0-9\\s]+/ig, '') // remove non-alphanumeric chars\n            .replace(/\\s/gi, \"-\") // convert spaces to dashes\n            .replace(/[-]+/gi, \"-\") // trim repeated dashes\n            .toLowerCase();\n        };\n    })\n    .factory('StateResource', function ($resource) {\n        return $resource('http://lupus-2.dev/service/api/states', {}, {});\n    })\n    .factory('TemplatesResource', function ($resource) {\n        return $resource('http://lupus-2.dev/service/api/templates', {}, {\n            query: {\n                method: 'GET',\n                isArray: true\n            },\n            create: {\n                method: 'POST'\n            }\n        });\n    })\n    .factory('TemplateResource', function ($resource) {\n        return $resource('http://lupus-2.dev/service/api/templates', {}, {\n            create: {\n                method: 'POST'\n            }\n        });\n    })\n    .factory('AssetsResource',function($resource){\n        return $resource('/service/api/assets');\n    })\n    .factory('AssetResource',function($resource){\n        return $resource('/service/api/asset');\n    })\n    .factory('PartialsResource', function ($resource) {\n        return $resource('/service/api/partials');\n    })\n    .factory('BlogsResource', function ($resource){\n        return $resource('/service/api/blogs');\n    })\n    .factory('BlogResource', function ($resource) {\n        return $resource('/service/api/blog/:blogId', \n            {blogId:'@id'});\n    })\n    .factory('BlogByUrlResource', function ($resource) {\n        return $resource('/service/api/blog/by-url/:blogUrl', \n            {blogUrl:'@url'});\n    })\n    .factory('EgitimCategoriesResource', function ($resource) {\n        return $resource('/service/api/egitim-categories');\n    })\n    .factory('EgitimCategoryResource', function ($resource) {\n        return $resource('/service/api/egitim-category/:categoryId', \n            {categoryId:'@id'});\n    })\n    .factory('EgitimlerResource', function ($resource) {\n        return $resource('/service/api/egitimler');\n    })\n    .factory('EgitimResource', function ($resource) {\n        return $resource('/service/api/egitim/:egitimId', \n            {egitimId:'@id'});\n    })\n    .factory('EgitimByCategoryResource', function($resource){\n        return $resource('/service/api/egitim/by-category/:categoryUrl', \n            {categoryUrl:'@categoryUrl'}, \n            {'get': {\n                isArray: true\n            }});\n    })\n    .factory('EgitimByUrlResource', function($resource){\n        return $resource('/service/api/egitim/by-url/:egitimUrl', \n            {egitimUrl:'@url'});\n    })\n    .factory('ProgramResource', function ($resource) {\n        return $resource('/service/api/program');\n    })\n    .factory('MeslekiResource', function ($resource) {\n        return $resource('/service/api/mesleki');\n    })\n    .factory('SektorelResource', function ($resource) {\n        return $resource('/service/api/sektorel');\n    })\n    ",
-			"file": "client/app/js/services.js",
-			"file_size": 5685,
-			"file_write_time": 130397868358605346,
+			"file": "client/app/lib/angular/angular-lupus-0.2.1.js",
 			"settings":
 			{
-				"buffer_size": 5672,
+				"buffer_size": 28843,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/app/js/directives.js",
+			"settings":
+			{
+				"buffer_size": 11356,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "server2/lib/controllers/blog.js",
-			"settings":
-			{
-				"buffer_size": 6087,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/app/partials/yonetim/index.html",
-			"settings":
-			{
-				"buffer_size": 571,
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "client/app/template/lupus/evliya/evliya-navbar.html",
 			"settings":
 			{
-				"buffer_size": 1711,
+				"buffer_size": 1300,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "client/app/partials/egitimler.html",
+			"file": "client/app/partials/yonetim/slider.html",
 			"settings":
 			{
-				"buffer_size": 997,
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/app/js/services.js",
+			"settings":
+			{
+				"buffer_size": 5679,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/app/partials/yonetim/index.html",
+			"settings":
+			{
+				"buffer_size": 573,
 				"line_ending": "Windows"
 			}
 		}
@@ -352,7 +362,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 110.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
@@ -512,7 +522,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 458.0
+		"width": 522.0
 	},
 	"console":
 	{
@@ -533,6 +543,11 @@
 	},
 	"file_history":
 	[
+		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/akademik-egitimler.html",
+		"/C/Dev/Projects/lupus-2/client/app/index.html",
+		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/index.html",
+		"/C/Dev/Projects/lupus-2/client/app/template/lupus/evliya/evliya-navbar.html",
+		"/C/Dev/Projects/lupus-2/client/app/partials/egitimler.html",
 		"/C/Dev/Projects/lupus-2/client/app/js/states.js",
 		"/C/Dev/Projects/lupus-2/client/app/partials/egitimler.kategori.liste.html",
 		"/C/Dev/Projects/lupus-2/client/app/partials/egitimler.kategoriler.html",
@@ -556,19 +571,15 @@
 		"/C/Dev/Projects/lupus-2/client/app/partials/hakkimizda.html",
 		"/C/Dev/Projects/lupus-2/client/app/less/vars.less",
 		"/C/Dev/Projects/lupus-2/client/app/partials/iletisim.html",
-		"/C/Dev/Projects/lupus-2/client/app/index.html",
 		"/C/Dev/Projects/lupus-2/server2/lib/controllers/blog.js",
 		"/C/Dev/Projects/lupus-2/client/app/js/services.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/models/blogs.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/controllers/blogs.js",
-		"/C/Dev/Projects/lupus-2/client/app/partials/egitimler.html",
 		"/C/Dev/Projects/lupus-2/client/app/template/mesleki-egitim-canvas.html",
-		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/index.html",
 		"/C/Dev/Projects/lupus-2/nginx.conf.d/clickacademy.com.conf",
 		"/C/Dev/Projects/lupus-2/client/app/template/akademik-egitim-bulutu.html",
 		"/C/Dev/Projects/lupus-2/server2/lib/routes.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/config/dummydata.js",
-		"/C/Dev/Projects/lupus-2/client/app/template/lupus/evliya/evliya-navbar.html",
 		"/C/Dev/Projects/lupus-2/server2/lib/models/rows.js",
 		"/C/Dev/Projects/lupus-2/server2/lib/models/assets.js",
 		"/C/Dev/Projects/lupus-2/client/app/partials/yonetim/blog.html",
@@ -659,8 +670,7 @@
 		"/C/Dev/Projects/hzesal1/snapshots/index.html",
 		"/C/Users/Attila/AppData/Roaming/npm/node_modules/seoserver/lib/phantom-server.js",
 		"/C/Users/Attila/AppData/Roaming/npm/node_modules/seoserver/bin/seoserver.js",
-		"/C/Dev/Projects/hzesal1/snapshots",
-		"/C/Dev/Projects/hzesal1/client/app/less/disko.less"
+		"/C/Dev/Projects/hzesal1/snapshots"
 	],
 	"find":
 	{
@@ -682,6 +692,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"asset",
+			"yonet",
+			"assets",
 			"iletisim",
 			"orta",
 			"        \n",
@@ -806,10 +819,7 @@
 			"EgitimCategories",
 			"yeniegitim",
 			"EgitimCategoryResource",
-			"yeniKategori",
-			"button",
-			"param",
-			"h4"
+			"yeniKategori"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -834,7 +844,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -1012,7 +1022,7 @@
 						"translation.y": 5616.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -1021,15 +1031,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5374,
+						"buffer_size": 5692,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4126,
-								4126
+								5364,
+								5344
 							]
 						],
 						"settings":
@@ -1037,46 +1047,46 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
-								"bh_tag_close"
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1187,10 +1197,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2619.0,
+						"translation.y": 3745.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1206,8 +1216,8 @@
 						"selection":
 						[
 							[
-								254,
-								214
+								311,
+								311
 							]
 						],
 						"settings":
@@ -1223,10 +1233,26 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1235,22 +1261,6 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -1366,7 +1376,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1382,8 +1392,8 @@
 						"selection":
 						[
 							[
-								1825,
-								1825
+								953,
+								953
 							]
 						],
 						"settings":
@@ -1391,46 +1401,46 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
-								"bh_tag_close"
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1541,10 +1551,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 323.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1569,6 +1579,22 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1577,34 +1603,18 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -1722,7 +1732,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1900,11 +1910,85 @@
 						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
+					"file": "server2/lib/controllers/assets.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 374,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								280,
+								280
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "client/app/partials/yonetim/egitimler.html",
 					"semi_transient": false,
 					"settings":
@@ -1916,8 +2000,8 @@
 						"selection":
 						[
 							[
-								1312,
-								1312
+								0,
+								3585
 							]
 						],
 						"settings":
@@ -1925,26 +2009,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1957,14 +2021,34 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
-								"bh_tag_close"
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -2078,11 +2162,11 @@
 						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "client/app/js/controllers.js",
 					"semi_transient": false,
 					"settings":
@@ -2094,8 +2178,8 @@
 						"selection":
 						[
 							[
-								8629,
-								8641
+								8819,
+								8819
 							]
 						],
 						"settings":
@@ -2103,6 +2187,10 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2111,30 +2199,18 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -2142,7 +2218,15 @@
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
-								"bh_angle_close"
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -2256,11 +2340,11 @@
 						"translation.y": 3031.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "server2/lib/models/blogs.js",
 					"semi_transient": false,
 					"settings":
@@ -2434,202 +2518,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "client/app/js/states.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7330,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1408,
-								1408
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 164.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
 					"buffer": 10,
-					"file": "client/app/js/services.js",
+					"file": "client/app/js/states.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5672,
+						"buffer_size": 7588,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4144,
-								4117
+								7326,
+								7326
 							]
 						],
 						"settings":
@@ -2637,6 +2543,10 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2645,30 +2555,18 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -2676,7 +2574,15 @@
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
-								"bh_angle_close"
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -2787,101 +2693,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1576.0,
+						"translation.y": 1794.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 11,
-					"file": "server2/lib/controllers/blog.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 6087,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1887,
-								1887
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 546.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "client/app/partials/yonetim/index.html",
+					"file": "client/app/lib/angular/angular-lupus-0.2.1.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 571,
+						"buffer_size": 28843,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								388,
-								388
+								19451,
+								25458
 							]
 						],
 						"settings":
@@ -2893,14 +2725,14 @@
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -2909,18 +2741,10 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -2928,7 +2752,15 @@
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
-								"bh_angle_close"
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -3034,15 +2866,193 @@
 							},
 							"codeintel_tooltips": "popup",
 							"sublime_auto_complete": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7189.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "client/app/js/directives.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7769,
+								7769
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1873.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -3051,15 +3061,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1711,
+						"buffer_size": 1300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								666,
-								666
+								58,
+								58
 							]
 						],
 						"settings":
@@ -3067,34 +3077,22 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -3103,10 +3101,22 @@
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -3220,24 +3230,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 14,
-					"file": "client/app/partials/egitimler.html",
+					"file": "client/app/partials/yonetim/slider.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 997,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								762,
-								762
+								0,
+								0
 							]
 						],
 						"settings":
@@ -3249,14 +3259,14 @@
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -3265,18 +3275,10 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -3284,7 +3286,265 @@
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
-								"bh_angle_close"
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "client/app/js/services.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "client/app/partials/yonetim/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								305,
+								297
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -3398,7 +3658,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -3472,7 +3732,7 @@
 		[
 			[
 				"",
-				"C:\\Dev\\Projects\\mean-hzesal\\mean-hzesal.sublime-project"
+				"C:\\Dev\\Projects\\tnb3\\tnb3.sublime-project"
 			],
 			[
 				"gay",

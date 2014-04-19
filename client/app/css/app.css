@@ -339,6 +339,31 @@ body {
   float: left;
   padding: 25px 0 0 25px;
 }
+.lupus-evliya-navbar {
+  clear: both;
+}
+.lupus-evliya-navbar ul {
+  float: left;
+  clear: both;
+  display: block;
+}
+.lupus-evliya-navbar li {
+  float: left;
+  position: relative;
+  display: block;
+}
+.lupus-evliya-navbar li > a {
+  padding: 10px 15px;
+  color: #ccc;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 20px;
+  position: relative;
+  display: block;
+}
+.lupus-evliya-navbar > a.pull-right {
+  margin-right: 10px;
+}
 @charset "UTF-8";
 body {
   -webkit-backface-visibility: hidden;

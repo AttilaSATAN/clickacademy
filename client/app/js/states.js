@@ -146,9 +146,9 @@ angular.module('lupusshow')
                         templateUrl: 'partials/yonetim/egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })
-                    .state('yonetim.mesleki', {
+                    .state('yonetim.akademik', {
                         url: '/mesleki-egitimler',
-                        templateUrl: 'partials/yonetim/mesleki-egitimler.html',
+                        templateUrl: 'partials/yonetim/akademik-egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })
                     .state('yonetim.sektorel', {
@@ -156,10 +156,16 @@ angular.module('lupusshow')
                         templateUrl: 'partials/yonetim/egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })
+                    
                     .state('yonetim.egitim-sayfasi', {
                         url: '/egitim-sayfasi/:egitimUrl',
                         templateUrl: 'partials/yonetim/egitim-sayfasi.html',
                         controller: 'YonetimEgitimSayfasiCtrl'
+                    })
+                    .state('yonetim.slider', {
+                        url: '/slider',
+                        templateUrl: 'partials/yonetim/slider.html',
+                        controller: 'YonetimSliderCtrl'
                     });
             }
         ]);

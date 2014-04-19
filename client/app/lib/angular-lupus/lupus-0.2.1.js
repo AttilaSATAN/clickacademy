@@ -479,6 +479,7 @@ angular.module('lupus.evliya', [])
                 $scope.window = {};
                 $scope.window = windowSize();
                 $scope.box = iElm[0].getBoundingClientRect();
+                console.log($scope.box)
                 iElm.css({
                     'transition': '.3s ease-in-out',
                     '-webkit-transition': '.3s ease-in-out'
@@ -489,7 +490,7 @@ angular.module('lupus.evliya', [])
                     if ($scope.stateName !== 'home') {
                         poz = 0;
                     } else {
-                        poz = $scope.window.height - 3 - $scope.box.height +
+                        poz = $scope.window.height - 76 +
                             'px';
                     }
                     iElm.removeClass('navbar-fixed-bottom');

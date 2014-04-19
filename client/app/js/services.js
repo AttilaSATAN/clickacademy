@@ -3,7 +3,7 @@
 angular.module('lupusshow.services', [])
     .factory('BildirimlerSrvc', ['$alert',
         function ($alert) {
-            "use strict";
+            "use strictfactory";
             var bildirimler = {
                 bildirim: function (data) {
                     $alert(data);
