@@ -341,6 +341,13 @@ body {
 }
 .lupus-evliya-navbar {
   clear: both;
+  height: 52px;
+  margin: 10px 0 ;
+  background-color: #025172;
+  border: 1px solid #25627a;
+}
+.lupus-evliya-navbar.collepsed li {
+  float: none;
 }
 .lupus-evliya-navbar ul {
   float: left;
@@ -360,6 +367,13 @@ body {
   line-height: 20px;
   position: relative;
   display: block;
+  background-color: #025172;
+}
+.lupus-evliya-navbar li > a:hover,
+.lupus-evliya-navbar li > a:focus,
+.lupus-evliya-navbar li > a .active {
+  background-color: #02638b;
+  text-decoration: none;
 }
 .lupus-evliya-navbar > a.pull-right {
   margin-right: 10px;

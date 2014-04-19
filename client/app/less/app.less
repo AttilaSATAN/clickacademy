@@ -289,6 +289,16 @@ body {
 }
 .lupus-evliya-navbar{
     clear:both;
+    height:52px;
+    margin:10px 0 ;
+    background-color: #025172;
+    border:1px solid #25627a;
+
+    &.collepsed{
+        li{
+            float:none;
+        }
+    }
     ul {
         float:left;
         clear:both;
@@ -306,6 +316,11 @@ body {
             line-height: 20px;
             position: relative;
             display: block;
+            background-color: #025172;
+            &:hover,&:focus, .active{
+                background-color: lighten(#025172, 5%);
+                text-decoration: none;
+            }
         }
     }
     &>a.pull-right{
