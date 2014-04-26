@@ -20,7 +20,27 @@ angular.module('lupusshow.directives', [])
             }
         };
     })
-    .directive('swiperB', function ($timeout) {
+    .directive('sameHight', function ($interval) {
+        return {
+            link: function ($scope, iElm, iAttrs, controller) {
+                var doit = function () {
+                    var kategoriler = angular.element('.col-kategoriler',
+                        iElm);
+                    angular.element(
+                        '.col-kategori-egitimleri, .col-egitim-ayrinti',
+                        iElm)
+                        .css('height', kategoriler.height());
+                };
+                var inter = $interval(function () {
+                    doit();
+                }, 1000);
+                $scope.$on("$destroy", function (event) {
+                    $interval.cancel(inter);
+                });
+            }
+        };
+    })
+    .directive('swiperB', function ($timeout, $rootScope) {
         // Runs during compile
         return {
             // name: '',
@@ -32,9 +52,9 @@ angular.module('lupusshow.directives', [])
             }, // {} = isolate, true = child, false/undefined = no change
             controller: function ($scope, $element, $attrs, $transclude) {
                 // var swiperSettings = {
-                //                    autoplay: 4000,
                 //                    mode: 'horizontal',
                 //                    loop: true,
+                //                    autoplay: 4000,
                 //                    autoResize: true,
                 //                    paginationClickable: true
                 //                };
@@ -50,44 +70,101 @@ angular.module('lupusshow.directives', [])
             templateUrl: 'template/swiper/swiper.html',
             // replace: true,
             transclude: true,
+            //replace: true,
             // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
             link: function ($scope, iElm, iAttrs, controller) {
+                // $timeout(function () {
+                //     var gallery = $('.swiper-container')
+                //         .swiper({
+                //             slidesPerView: 'auto',
+                //             watchActiveIndex: true,
+                //             centeredSlides: true,
+                //             //pagination: '.pagination',
+                //             paginationClickable: true,
+                //             resizeReInit: true,
+                //             keyboardControl: true,
+                //             grabCursor: true,
+                //             loop: true,
+                //             autoplay: 4000,
+                //             onImagesReady: function () {
+                //                 changeSize()
+                //             }
+                //         });
+                //     function changeSize() {
+                //         $('.swiper-slide')
+                //             .css('width', '')
+                //         var imgWidth = $('.swiper-slide img')
+                //             .width();
+                //         if (imgWidth + 40 > $(window)
+                //             .width()) imgWidth = $(window)
+                //             .width() - 40;
+                //         $('.swiper-slide')
+                //             .css('width', imgWidth + 40);
+                //     }
+                //     changeSize();
+                //     gallery.resizeFix(true)
+                //     $(window)
+                //         .resize(function () {
+                //             changeSize();
+                //             gallery.resizeFix(true);
+                //         });
+                // }, 1500)
+                $scope.swiperHidden = true;
                 $timeout(function () {
-                    var gallery = $('.swiper-container')
-                        .swiper({
-                            slidesPerView: 'auto',
-                            watchActiveIndex: true,
-                            centeredSlides: true,
-                            pagination: '.pagination',
-                            paginationClickable: true,
-                            resizeReInit: true,
-                            keyboardControl: true,
-                            grabCursor: true,
-                            onImagesReady: function () {
-                                changeSize()
+                    var mySwiper = new Swiper('.swiper-container', {
+                        progress: true,
+                        centeredSlides: true,
+                        onFirstInit: function (swiper) {
+                            $('.swiper-container')
+                                .show();
+                            $scope.swiperHidden = false;
+                        },
+                        onProgressChange: function (swiper) {
+                            
+                                for (var i = 0; i < swiper.slides.length; i++) {
+                                    var slide = swiper.slides[i];
+                                    var progress = slide.progress;
+                                    var scale, translate, opacity;
+                                    if (progress <= 0) {
+                                        opacity = 1 - Math.min(Math
+                                            .abs(progress), 1);
+                                        scale = 1 - Math.min(Math.abs(
+                                            progress / 2), 1);
+                                        translate = progress *
+                                            swiper.width;
+                                    } else {
+                                        opacity = 1 - Math.min(Math
+                                            .abs(progress / 2), 1);
+                                        scale = 1;
+                                        translate = 0;
+                                    }
+                                    slide.style.opacity = opacity;
+                                    swiper.setTransform(slide,
+                                        'translate3d(' + (translate) +
+                                        'px,0,0) scale(' + scale +
+                                        ')');
+                                }
+                            
+                        },
+                        onTouchStart: function (swiper) {
+                            for (var i = 0; i < swiper.slides.length; i++) {
+                                swiper.setTransition(swiper.slides[
+                                    i], 0);
                             }
-                        })
-
-                        function changeSize() {
-                            $('.swiper-slide')
-                                .css('width', '')
-                            var imgWidth = $('.swiper-slide img')
-                                .width();
-                            if (imgWidth + 40 > $(window)
-                                .width()) imgWidth = $(window)
-                                .width() - 40;
-                            $('.swiper-slide')
-                                .css('width', imgWidth + 40);
+                        },
+                        onSetWrapperTransition: function (swiper) {
+                            for (var i = 0; i < swiper.slides.length; i++) {
+                                swiper.setTransition(swiper.slides[
+                                    i], swiper.params.speed);
+                            }
                         }
-                    changeSize();
-                    gallery.resizeFix(true)
-                    $(window)
-                        .resize(function () {
-                            changeSize()
-                            gallery.resizeFix(true)
-                        });
-
-                }, 1500)
+                    });
+                    // Set Z-Indexes
+                    for (var i = 0; i < mySwiper.slides.length; i++) {
+                        mySwiper.slides[i].style.zIndex = mySwiper.slides
+                            .length - i;
+                    }
+                }, 1000);
             }
         }
     })

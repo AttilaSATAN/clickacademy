@@ -36,18 +36,52 @@ angular.module('lupusshow.controllers', [])
             file: 'img/seo.jpg'
         }];
     })
+    .controller('YonetimSliderCtrl', ['$scope',
+        function ($scope) {
+            $scope.slides = [{
+                type: 'image',
+                file: 'img/after_effects.jpg'
+            }, {
+                type: 'image',
+                file: 'img/grafik_tasarim.jpg'
+            }, {
+                type: 'image',
+                file: 'img/photoshop.jpg'
+            }, {
+                type: 'image',
+                file: 'img/web_tasarim.jpg'
+            }, {
+                type: 'image',
+                file: 'img/autocad.jpg'
+            }, {
+                type: 'image',
+                file: 'img/java.jpg'
+            }, {
+                type: 'image',
+                file: 'img/seo.jpg'
+            }];
+        }
+    ])
     .controller('BizCtrl', function ($scope, $interval, $timeout) {})
     .controller('KategorilerCtrl', function ($scope) {})
     .controller('KategoriListesiCtrl', function ($scope, $rootScope, $timeout,
-        $stateParams, $interval, EgitimCategoriesResource) {
+        $stateParams, $interval, EgitimCategoriesResource, $state) {
+
         $rootScope.kategori = $rootScope.kategori || {};
+
+        var getKategories = function () {
+            $scope.kategoriler = EgitimCategoriesResource.query(function () {
+                
+            });
+        };
         $timeout(function () {
-            $scope.kategoriler = EgitimCategoriesResource.query();
+            getKategories();
         }, 1500);
     })
     .controller('KategoriEgitimleriCtrl', function ($scope,
         EgitimByCategoryResource, $stateParams, $timeout, $rootScope) {
-        $rootScope.kategori = $rootScope.kategori || {};
+
+        //$rootScope.kategori = $rootScope.kategori || {};
         $scope.egitimler = [];
         $scope.getCollection = function () {
             $scope.egitimler = EgitimByCategoryResource.get({
@@ -58,7 +92,11 @@ angular.module('lupusshow.controllers', [])
             $scope.getCollection();
         }, 500);
     })
-    .controller('EgitimCtrl', function ($scope, $stateParams) {})
+    .controller('EgitimCtrl', function ($scope, $stateParams, EgitimByUrlResource) {
+        $scope.egitim = EgitimByUrlResource.get({
+            egitimUrl: $stateParams.egitimUrl
+        });
+    })
     .controller('EgitimlerCtrl', function ($scope, $interval, $timeout) {
         var totalStep = 5,
             currentStep = 0;
@@ -199,7 +237,6 @@ angular.module('lupusshow.controllers', [])
     })
     .controller('IletisimCtrl', function ($scope) {
         console.log('IletisimCtrl')
-
         $scope.map = {
             center: {
                 latitude: 39.919648,

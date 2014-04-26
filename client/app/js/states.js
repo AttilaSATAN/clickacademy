@@ -44,27 +44,29 @@ angular.module('lupusshow')
                     .state('egitimler.kategori.liste', {
                         url: '/liste',
                         views: {
-                            'kategoriegitimleri':{},
                             'kategorilistesi': {
                                 templateUrl: 'partials/egitimler.kategori.liste.html',
                                 controller: 'KategoriListesiCtrl',
                             }
                         }
                     })
-                    .state('egitimler.kategori.liste.kategori', { 
+                    .state('egitimler.kategori.liste.kategori', {
                         url: '/:categoryUrl',
                         views: {
-
                             'kategoriegitimleri': {
                                 templateUrl: 'partials/egitimler.kategori.liste.kategori.html',
                                 controller: 'KategoriEgitimleriCtrl'
                             }
                         }
                     })
-                    .state('egitim', {
-                        url: '/egitim/:egitimUrl',
-                        templateUrl: 'partials/egitim.html',
-                        controller: 'EgitimCtrl'
+                    .state('egitimler.kategori.liste.kategori.egitim', {
+                        url: '/:egitimUrl',
+                        views: {
+                            'egitim': {
+                                templateUrl: 'partials/egitim.html',
+                                controller: 'EgitimCtrl',
+                            }
+                        }
                     })
                     .state('mesleki-uzmanlik-egitimi', {
                         url: '/mesleki-uzmanlik-egitimi',
@@ -126,16 +128,16 @@ angular.module('lupusshow')
                             }
                         }
                     })
-                    // .state('yonetim.slides', {
-                    //     url: '/bloglar',
-                    //     templateUrl: 'partials/yonetim/slides.html',
-                    //     controller: 'YonetimSlidesCtrl'
-                    // })
-                    .state('yonetim.blogs', {
-                        url: '/bloglar',
-                        templateUrl: 'partials/yonetim/blogs.html',
-                        controller: 'YonetimBlogsCtrl'
-                    })
+                // .state('yonetim.slides', {
+                //     url: '/bloglar',
+                //     templateUrl: 'partials/yonetim/slides.html',
+                //     controller: 'YonetimSlidesCtrl'
+                // })
+                .state('yonetim.blogs', {
+                    url: '/bloglar',
+                    templateUrl: 'partials/yonetim/blogs.html',
+                    controller: 'YonetimBlogsCtrl'
+                })
                     .state('yonetim.blog', {
                         url: '/blog/:blogUrl',
                         templateUrl: 'partials/yonetim/blog.html',
@@ -161,7 +163,6 @@ angular.module('lupusshow')
                         templateUrl: 'partials/yonetim/egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })
-                    
                     .state('yonetim.egitim-sayfasi', {
                         url: '/egitim-sayfasi/:egitimUrl',
                         templateUrl: 'partials/yonetim/egitim-sayfasi.html',
@@ -171,6 +172,11 @@ angular.module('lupusshow')
                         url: '/slider',
                         templateUrl: 'partials/yonetim/slider.html',
                         controller: 'YonetimSliderCtrl'
+                    })
+                    .state('yonetim.users', {
+                        url: '/users',
+                        templateUrl: 'partials/yonetim/users.html',
+                        controller: 'YonetimUserCtrl'
                     });
             }
         ]);

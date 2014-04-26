@@ -1,0 +1,7 @@
+<div class="container">
+	<div class="row panel" ng-repeat="slide in slides" >
+		<div class="col-md-1"><h1>{{$index+1}}.</h1></div>
+		<div class="col-md-4"><img ng-src="{{slide.file}}" alt="" class="img-responsive"><a style="position:relative; top:-34px;left:5px; background-color: white;padding: 10px;" href="javascript:viod(0)"><span class="glyphicon glyphicon-pencil"></span> </a></div>
+	</div>
+	<div class="row"><div class="col-md-1"><a href="javascript:void(0)"><h1><span class="glyphicon glyphicon-plus"></span> </h1></a></div></div>
+</div>

@@ -1,8 +1,15 @@
-<div class="col-md-5"><img class="img-responsive" src="http://lorempixel.com/g/600/600/"/></div>
-<div class="col-md-7"><h1>{{egitim.name}}</h1><p>{{egitim.description}}</p><br/>
 <div class="container-fluid">
-	<div class="col-md-4"><h4 class="lead"> İlgili Blog Yazılar </h4><a href="#"><h5 ng-repeat="blogAdi in bloglar" ># {{blogAdi}}</a></div>
-	<div class="col-md-4"><h4 class="lead"> İlgili Mesleki Eğitimler </h4><a href="#"><h5 ng-repeat="meslek in mesleki" ># {{meslek}}</a></div>
-	<div class="col-md-4"></div>
+    <div class="row">
+        <div class="col-md-4"><img style="padding:10px" ng-if="egitim._asset.file" class="img-responsive img-circle" ng-src="/assets/{{egitim._asset.file}}"/></div>
+        <div class="col-md-8">
+            <h1>{{egitim.name}}</h1>
+        </div>
+    </div>
+    <div class="row"><div class="col-md-12"><p>{{egitim.description}}</p></div></div>
+    <div class="row">
+        <div class="col-md-4"><h4 class="lead"> İlgili Blog Yazılar </h4><a href="#"><h5 ng-repeat="blogAdi in bloglar" ># {{blogAdi}}</a></div>
+        <div class="col-md-4"><h4 class="lead"> İlgili Mesleki Eğitimler </h4><a href="#"><h5 ng-repeat="meslek in mesleki" ># {{meslek}}</a></div>
+        <div class="col-md-4"></div>
+    </div>
 </div>
 </div>

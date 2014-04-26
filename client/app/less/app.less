@@ -4,13 +4,14 @@ html {
     height: 100%;
 }
 body {
-    font-family: 'Merriweather Sans', sans-serif;
+    font-family: 'Arimo', 'sans-serif';
     background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
     background-attachment: fixed;
     height: 100%;
     position: relative;
     >.frame {}
 }
+
 .frame {
     position: absolute;
     overflow: hidden;
@@ -43,6 +44,7 @@ body {
     -webkit-transition: 1s;
     transition: 1s;
 }
+
 .lupus-disko-video-grid.lupus-disko-video-grid-active {
     opacity: 1;
 }
@@ -208,7 +210,7 @@ body {
 .lupus-state-2 {
 	.lupus-col-kategori-egitimler {
         top: 0;
-        left: 30%;
+        left: 16.666666666666668%;
         right: 0;
         min-height: 100%;
    }
@@ -222,18 +224,31 @@ body {
    }
 }
 .egitim-ayrintilar{
-	border-bottom: 1px solid lighten(@ca-blue,3%);
+	border-bottom: 1px solid darken(#82c7d1,3%);
 	width: 100%;
-	min-height: 60px;
+    padding:10px;
 	display: block;
-	background-color: @ca-blue;
-	&:hover,
-	&:active,
+	background-color: #82c7d1;
+    color:white;
+	&.active,
+    &:hover,
 	&:focus{
-		background-color: lighten(@ca-blue, 3%);
+		
+        color: @ca-blue;
 	}
 }
+.container-kategoriler{
+    width: 100%;
+}
+.col-kategoriler{
 
+}
+.col-kategori-egitimleri{
+    background-color: #82c7d1;
+}
+.col-egitim-ayrinti{
+    background-color: white;
+}
 .lupus-col-kategori-egitim-ayrintilari{
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -254,14 +269,15 @@ body {
 	clear:both;
 	display: block;
 	background-color: @ca-blue;
-	opacity: 0.9;
     color:#ccc;
     &:hover,
-	&:active,
 	&:focus{
 		opacity:1;
-		color: #f0f0f0;
+		background-color: lighten(@ca-blue, 5%);
 	}
+    &.active{
+        background-color:#82c7d1;
+    }
 	
 }
 .lupus-col-kategori {
@@ -341,8 +357,98 @@ body {
         }
     }
 }
+.egitim-sistemi-animation-sarmalayici{
+    height: 100%;
+    background-color: #E7EEFE;
+    
+}
+.ok_1,.ok_2,.ok_3{
+    
+    transition: background-position .3s ;
+    -webkit-transition: background-position .3s ;
+    &:hover,&:focus{
+     .ok-sarmalayici{
+        opacity:  1;
+     }
+    }
+     .ok-sarmalayici{
+        opacity:  0;
+        transition: opacity .3s;
+        -webkit-transition: opacity .3s;
+        animation-delay: .5s;
+        -webkit-animation-delay: .5s;
+        display: block;
+        text-align: center;
+        width: 195px;
+        position: absolute;
+        color:white;
+        font-weight: 900;
+        &:hover,&:focus{
+            color:white;
+            text-decoration: none;
+        }
+    }
+    img{
+        margin:0 auto;
+        display: block;
+        width: 128px;
+    }
+}
+.ok_1{
+    width: 500px;
+    height: 500px;
+    background: url(/img/ok_1.png) -999px -150px  no-repeat;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    &:hover, &:focus{
+        background-position: -304px center;
+        opacity: 1;
+    }
+    .ok-sarmalayici{
+        left: 70px;
+        bottom: 84px;
+        font-weight: 500;
+    }
+}
+.ok_2{
+    width: 380px;
+    height: 500px;
+    background: url(/img/ok_2.png) 0 999px  no-repeat;
+    bottom: 0;
+    left: 50%;
+    margin-left:-188px;
+    position: absolute;
+    &:hover, &:focus{
+        opacity: 1;
+        background-position: center 6px;
+    }
+    .ok-sarmalayici{
+        left: 50%;
+        bottom: 84px;
+        font-weight: 500;
+        margin-left: -118px;
+    }
+}
+.ok_3{
+    width: 501px;
+    height: 500px;
+    background: url(/img/ok_3.png) 999px 999px no-repeat;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    &:hover, &:focus{
+        opacity: 1;
 
+        background-position: 10px 154px;
+    }
 
+    .ok-sarmalayici{
+        right: 86px;
+        bottom: 114px;
+        font-weight: 500;
+    }
+}
 /******************** SWIPER */
 
 .swiper-outher-container{
@@ -382,8 +488,8 @@ body {
     }
 }
 .swiper-slide {
-  height: 500px;
-    width: 600px;
+  height: 200px;
+    width: 400px;
 }
 
 .swiper-container {
@@ -455,5 +561,10 @@ body {
 .swipe-next:hover, .swipe-next:focus, .swipe-next:active.swipe-prev:hover, .swipe-prev:focus, .swipe-prev:active{
     opacity:0.7;
 }
+
+
+
+
+
 /*************************************/
 @import "app-animations.less";

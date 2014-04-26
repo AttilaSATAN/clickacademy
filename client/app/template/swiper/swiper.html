@@ -1,0 +1,50 @@
+<div class="swiper-container" ng-hide="swiperHidden">
+    <!-- <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                                    <div ng-repeat="slide in slides" class="swiper-slide" style="background-color: black;position:relative;">
+                                                    <a  href="{{slide.href}}">
+                                                    <div style="height: 500px;overflow:hidden;">
+                                                                    <img class="img-responsive" ng-src="{{slide.file}}"/>
+                                                    </div>
+                                                    </a>
+                                    </div>
+                    </div>
+    </div> -->
+    <!-- <div class="pagination"></div> -->
+    <div class="swiper-wrapper" >
+        <div ng-repeat="slide in slides" class="swiper-slide" >
+            <div class="inner">
+                <img class="img-responsive" ng-src="{{slide.file}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script>
+$(function(){
+var gallery = $('.swiper-container').swiper({
+slidesPerView:'auto',
+watchActiveIndex:true,
+centeredSlides:true,
+pagination:'.pagination',
+paginationClickable:true,
+resizeReInit:true,
+keyboardControl:true,
+grabCursor:true,
+onImagesReady:function(){
+changeSize()
+}})
+function changeSize(){
+$('.swiper-slide').css('width','')
+var imgWidth = $('.swiper-slide img').width();
+if(imgWidth + 40 > $(window).width())
+imgWidth = $(window).width() - 40;
+$('.swiper-slide').css('width',imgWidth+40);
+}
+changeSize();
+$(window).resize(function(){
+changeSize()
+gallery.resizeFix(true)
+})
+})
+</script> -->
+</div>

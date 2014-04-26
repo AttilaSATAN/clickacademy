@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <button class="pull-right btn btn-lg btn-primary" ng-click="yeni.listItem = null">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h4>Eğitimler</h4>
+            <div class="list-group">
+                <div href="#" class="list-group-item clearfix animation-fadeAndScale"  ng-class="{'list-group-item-info': yeni.listItem._id == listItem._id}"  ng-repeat="listItem in list">
+                    <div class="col-sm-9">
+                        <p class="list-group-item-heading">{{listItem.name}}</p>
+                        <p class="list-group-item-heading">/{{listItem.url}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-sm btn-warning pull-right" ui-sref="yonetim.listItem-sayfasi({listItemUrl:listItem.url})">Sayfayı Düzenle</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="crud.remove(listItem._id);">Sil</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="duzenle(listItem);">Düzenle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+            <div ng-if="yeni.listItem._id">
+                <h4>Düzenle</h4>
+            </div>
+            <div ng-if="!yeni.listItem._id">
+                <h4>Yeni</h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="kategori-adi">Eğitim Adı</label>
+                    <input type="text" name="kategori-adi" id="kategori-adi" class="form-control" ng-model="yeni.listItem.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="kategori-url">Eğitim URL</label>
+                    <input type="text" name="kategori-url" id="kategori-url" class="form-control" ng-model="yeni.listItem.url"/>
+                </div>
+                <div class="form-group">
+                    <label for="short-tag">Kısaltma</label>
+                    <input type="text" name="short-tag" id="short-tag" class="form-control" ng-model="yeni.listItem.shortTag"/>
+                </div>
+                <div class="form-group">
+                    <label for="listItem-kategori">Eğitim Kategorisi</label>
+                <select class="form-control" name="listItem-kategori" id="listItem-kategori" ng-model="yeni.listItem._categoryId" ng-options="kategori._id as kategori.name for kategori in listItemCategories">{{kategori}}</select>
+            </div>
+            <div class="form-group">
+                <label >Anahtar Kelimeler</label>
+                <input type-text class="form-control" ng-model="yeni.listItem.keywords[$index]" ng-repeat="keyword in yeni.listItem.keywords track by $index" placeholder="Anahtar Kelime"/>
+                <button class="btn btn-sm btn-default" ng-click="yeni.listItem.keywords.push(null)">
+                <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
+            </div>
+        </form>
+        <a href="javascript:void(0);" ng-if="!yeni.listItem._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.listItem)"><span class="glyphicon glyphicon-plus"></span>Yeni</a>
+        <a href="javascript:void(0);" ng-if="yeni.listItem._id" class="btn btn-primary pull-right" ng-click="crud.save(yeni.listItem)"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+    </div>
+</div>
+</div>

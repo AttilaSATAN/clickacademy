@@ -53,7 +53,7 @@ html {
   height: 100%;
 }
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Arimo', 'sans-serif';
   background: url(../img/click_patern.png) #f6f6f6 0 0 repeat;
   background-attachment: fixed;
   height: 100%;
@@ -268,7 +268,7 @@ body {
 }
 .lupus-state-2 .lupus-col-kategori-egitimler {
   top: 0;
-  left: 30%;
+  left: 16.666666666666668%;
   right: 0;
   min-height: 100%;
 }
@@ -279,16 +279,26 @@ body {
   bottom: 0;
 }
 .egitim-ayrintilar {
-  border-bottom: 1px solid #025c81;
+  border-bottom: 1px solid #77c2cd;
   width: 100%;
-  min-height: 60px;
+  padding: 10px;
   display: block;
-  background-color: #025172;
+  background-color: #82c7d1;
+  color: white;
 }
+.egitim-ayrintilar.active,
 .egitim-ayrintilar:hover,
-.egitim-ayrintilar:active,
 .egitim-ayrintilar:focus {
-  background-color: #025c81;
+  color: #025172;
+}
+.container-kategoriler {
+  width: 100%;
+}
+.col-kategori-egitimleri {
+  background-color: #82c7d1;
+}
+.col-egitim-ayrinti {
+  background-color: white;
 }
 .lupus-col-kategori-egitim-ayrintilari {
   -webkit-transition: 0.5s;
@@ -307,14 +317,15 @@ body {
   clear: both;
   display: block;
   background-color: #025172;
-  opacity: 0.9;
   color: #ccc;
 }
 .egitim-kategori-mega-button:hover,
-.egitim-kategori-mega-button:active,
 .egitim-kategori-mega-button:focus {
   opacity: 1;
-  color: #f0f0f0;
+  background-color: #02638b;
+}
+.egitim-kategori-mega-button.active {
+  background-color: #82c7d1;
 }
 .lupus-col-kategori {
   width: 100%;
@@ -387,6 +398,111 @@ body {
 .evliya-sarmalayici .lupus-evliya-navbar > a.pull-right {
   margin-right: 10px;
 }
+.egitim-sistemi-animation-sarmalayici {
+  height: 100%;
+  background-color: #E7EEFE;
+}
+.ok_1,
+.ok_2,
+.ok_3 {
+  transition: background-position 0.3s;
+  -webkit-transition: background-position 0.3s;
+}
+.ok_1:hover .ok-sarmalayici,
+.ok_2:hover .ok-sarmalayici,
+.ok_3:hover .ok-sarmalayici,
+.ok_1:focus .ok-sarmalayici,
+.ok_2:focus .ok-sarmalayici,
+.ok_3:focus .ok-sarmalayici {
+  opacity: 1;
+}
+.ok_1 .ok-sarmalayici,
+.ok_2 .ok-sarmalayici,
+.ok_3 .ok-sarmalayici {
+  opacity: 0;
+  transition: opacity .3s;
+  -webkit-transition: opacity .3s;
+  animation-delay: .5s;
+  -webkit-animation-delay: .5s;
+  display: block;
+  text-align: center;
+  width: 195px;
+  position: absolute;
+  color: white;
+  font-weight: 900;
+}
+.ok_1 .ok-sarmalayici:hover,
+.ok_2 .ok-sarmalayici:hover,
+.ok_3 .ok-sarmalayici:hover,
+.ok_1 .ok-sarmalayici:focus,
+.ok_2 .ok-sarmalayici:focus,
+.ok_3 .ok-sarmalayici:focus {
+  color: white;
+  text-decoration: none;
+}
+.ok_1 img,
+.ok_2 img,
+.ok_3 img {
+  margin: 0 auto;
+  display: block;
+  width: 128px;
+}
+.ok_1 {
+  width: 500px;
+  height: 500px;
+  background: url(/img/ok_1.png) -999px -150px no-repeat;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.ok_1:hover,
+.ok_1:focus {
+  background-position: -304px center;
+  opacity: 1;
+}
+.ok_1 .ok-sarmalayici {
+  left: 70px;
+  bottom: 84px;
+  font-weight: 500;
+}
+.ok_2 {
+  width: 380px;
+  height: 500px;
+  background: url(/img/ok_2.png) 0 999px no-repeat;
+  bottom: 0;
+  left: 50%;
+  margin-left: -188px;
+  position: absolute;
+}
+.ok_2:hover,
+.ok_2:focus {
+  opacity: 1;
+  background-position: center 6px;
+}
+.ok_2 .ok-sarmalayici {
+  left: 50%;
+  bottom: 84px;
+  font-weight: 500;
+  margin-left: -118px;
+}
+.ok_3 {
+  width: 501px;
+  height: 500px;
+  background: url(/img/ok_3.png) 999px 999px no-repeat;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.ok_3:hover,
+.ok_3:focus {
+  opacity: 1;
+  background-position: 10px 154px;
+}
+.ok_3 .ok-sarmalayici {
+  right: 86px;
+  bottom: 114px;
+  font-weight: 500;
+}
 /******************** SWIPER */
 .swiper-outher-container {
   height: 500px;
@@ -424,8 +540,8 @@ body {
   }
 }
 .swiper-slide {
-  height: 500px;
-  width: 600px;
+  height: 200px;
+  width: 400px;
 }
 .swiper-container {
   width: 100%;
@@ -2632,7 +2748,7 @@ body {
 }
 .view-bottom {
   position: absolute;
-  top: 52px;
+  top: 62px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -2979,4 +3095,7 @@ body {
 .yukari-gir.in {
   -webkit-animation: fadeInUpScale 1s;
   animation: fadeInUpScale 1s;
+}
+.egitim-ayrintilar.ng-enter {
+  animation: slideInRight 1s;
 }

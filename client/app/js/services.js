@@ -155,5 +155,8 @@ angular.module('lupusshow.services', [])
     })
     .factory('SektorelResource', function ($resource) {
         return $resource('/service/api/sektorel');
+    })    
+    .factory('AuthResource', function ($resource) {
+        return $resource('/service/api/sektorel');
     })
     
