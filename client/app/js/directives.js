@@ -114,11 +114,8 @@ angular.module('lupusshow.directives', [])
                     var mySwiper = new Swiper('.swiper-container', {
                         progress: true,
                         centeredSlides: true,
-                        onFirstInit: function (swiper) {
-                            $('.swiper-container')
-                                .show();
-                            $scope.swiperHidden = false;
-                        },
+                        loop: true,
+                        mode:'horizontal',
                         onProgressChange: function (swiper) {
                             
                                 for (var i = 0; i < swiper.slides.length; i++) {
