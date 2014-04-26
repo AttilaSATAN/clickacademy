@@ -58,6 +58,7 @@ body {
   background-attachment: fixed;
   height: 100%;
   position: relative;
+  font-size: 16px;
 }
 .frame {
   position: absolute;
@@ -160,6 +161,61 @@ body {
   background-color: #fff;
   color: #005bd8;
   border: 2px solid #005bd8;
+}
+.ana-sayfa-swiper {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  right: 0;
+}
+.swiper-controls {
+  position: relative;
+  top: -60px;
+  z-index: 100;
+  overflow: hidden;
+  height: 30px;
+}
+.swiper-controls .swiper-left {
+  display: block;
+  height: 30px;
+  width: 50px;
+  float: left;
+  background: url(img/swiper-kucuk-oklar.png) no-repeat 0 0 #cccccc;
+}
+.ana-sayfa-egitim-basligi {
+  color: #025172;
+  transition: .5s;
+  -webkit-transition: .5s;
+  font-size: 79px;
+  font-weight: 900;
+  top: 50%;
+  margin-top: -187px;
+  position: absolute;
+  left: 0;
+  padding: 5%;
+  padding-bottom: 8%;
+  padding-left: 3%;
+  background: url(../img/ana-sayfa-click-arrow.png) -3999px 114% no-repeat;
+  line-height: 70px;
+}
+.ana-sayfa-egitim-basligi small {
+  font-size: 50%;
+}
+.ana-sayfa-egitim-basligi .ana-sayfa-egitim-link {
+  transition: .5s;
+  -webkit-transition: .5s;
+  color: #82c7d1;
+}
+.ana-sayfa-egitim-basligi:hover,
+.ana-sayfa-egitim-basligi:focus {
+  background: url(../img/ana-sayfa-click-arrow.png) 84% 77% no-repeat;
+  color: #025172;
+  text-decoration: none;
+}
+.ana-sayfa-egitim-basligi:hover .ana-sayfa-egitim-link,
+.ana-sayfa-egitim-basligi:focus .ana-sayfa-egitim-link {
+  color: white;
+  text-decoration: none;
 }
 .view-bottom {
   overflow: auto;

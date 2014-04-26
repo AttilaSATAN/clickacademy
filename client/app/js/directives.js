@@ -116,6 +116,7 @@ angular.module('lupusshow.directives', [])
                         centeredSlides: true,
                         loop: true,
                         mode:'horizontal',
+                        autoplay: 5000,
                         onProgressChange: function (swiper) {
                             
                                 for (var i = 0; i < swiper.slides.length; i++) {
