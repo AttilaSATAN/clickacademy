@@ -163,6 +163,7 @@ body {
 }
 .view-bottom {
   overflow: auto;
+  background-color: #f6f6f6;
 }
 .lupus-gorsel-upload {
   background: #F8F8F8;
