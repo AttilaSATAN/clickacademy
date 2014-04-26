@@ -180,7 +180,14 @@ body {
   height: 30px;
   width: 50px;
   float: left;
-  background: url(img/swiper-kucuk-oklar.png) no-repeat 0 0 #cccccc;
+  background: url(../img/swiper-kucuk-oklar.png) no-repeat 0 0;
+}
+.swiper-controls .swiper-right {
+  display: block;
+  height: 30px;
+  width: 50px;
+  float: right;
+  background: url(../img/swiper-kucuk-oklar.png) no-repeat -50px 0;
 }
 .ana-sayfa-egitim-basligi {
   color: #025172;

@@ -115,34 +115,30 @@ angular.module('lupusshow.directives', [])
                         progress: true,
                         centeredSlides: true,
                         loop: true,
-                        mode:'horizontal',
+                        mode: 'horizontal',
                         autoplay: 5000,
                         onProgressChange: function (swiper) {
-                            
-                                for (var i = 0; i < swiper.slides.length; i++) {
-                                    var slide = swiper.slides[i];
-                                    var progress = slide.progress;
-                                    var scale, translate, opacity;
-                                    if (progress <= 0) {
-                                        opacity = 1 - Math.min(Math
-                                            .abs(progress), 1);
-                                        scale = 1 - Math.min(Math.abs(
-                                            progress / 2), 1);
-                                        translate = progress *
-                                            swiper.width;
-                                    } else {
-                                        opacity = 1 - Math.min(Math
-                                            .abs(progress / 2), 1);
-                                        scale = 1;
-                                        translate = 0;
-                                    }
-                                    slide.style.opacity = opacity;
-                                    swiper.setTransform(slide,
-                                        'translate3d(' + (translate) +
-                                        'px,0,0) scale(' + scale +
-                                        ')');
+                            for (var i = 0; i < swiper.slides.length; i++) {
+                                var slide = swiper.slides[i];
+                                var progress = slide.progress;
+                                var scale, translate, opacity;
+                                if (progress <= 0) {
+                                    opacity = 1 - Math.min(Math.abs(
+                                        progress), 1);
+                                    scale = 1 - Math.min(Math.abs(
+                                        progress / 2), 1);
+                                    translate = progress * swiper.width;
+                                } else {
+                                    opacity = 1 - Math.min(Math.abs(
+                                        progress / 2), 1);
+                                    scale = 1;
+                                    translate = 0;
                                 }
-                            
+                                slide.style.opacity = opacity;
+                                swiper.setTransform(slide,
+                                    'translate3d(' + (translate) +
+                                    'px,0,0) scale(' + scale + ')');
+                            }
                         },
                         onTouchStart: function (swiper) {
                             for (var i = 0; i < swiper.slides.length; i++) {
@@ -161,6 +157,12 @@ angular.module('lupusshow.directives', [])
                     for (var i = 0; i < mySwiper.slides.length; i++) {
                         mySwiper.slides[i].style.zIndex = mySwiper.slides
                             .length - i;
+                    }
+                    $scope.prev = function () {
+                        mySwiper.swipePrev();
+                    };
+                    $scope.next = function () {
+                        mySwiper.swipeNext();
                     }
                 }, 1000);
             }

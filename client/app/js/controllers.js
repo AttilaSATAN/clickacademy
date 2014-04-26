@@ -13,27 +13,97 @@ angular.module('lupusshow.controllers', [])
         //         type: 'video/webm'
         //     }]
         // };
+        // $scope.homeSlides = [{
+        //     type: 'image',
+        //     file: 'img/after_effects.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/grafik_tasarim.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/photoshop.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/web_tasarim.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/autocad.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/java.jpg'
+        // }, {
+        //     type: 'image',
+        //     file: 'img/seo.jpg'
+        // }];
         $scope.homeSlides = [{
             type: 'image',
-            file: 'img/after_effects.jpg'
+            file: "img/banners/3ds-max.jpg"
         }, {
             type: 'image',
-            file: 'img/grafik_tasarim.jpg'
+            file: "img/banners/after-effects.jpg"
         }, {
             type: 'image',
-            file: 'img/photoshop.jpg'
+            file: "img/banners/android-yazilim-egitimleri.jpg"
         }, {
             type: 'image',
-            file: 'img/web_tasarim.jpg'
+            file: "img/banners/autocad.jpg"
         }, {
             type: 'image',
-            file: 'img/autocad.jpg'
+            file: "img/banners/cisco.jpg"
         }, {
             type: 'image',
-            file: 'img/java.jpg'
+            file: "img/banners/coreldraw-1.jpg"
         }, {
             type: 'image',
-            file: 'img/seo.jpg'
+            file: "img/banners/digi-girl.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/dreamweaver.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/fireworks.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/flash.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/googleadwords.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/indesign-1.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/ios-yazilim-uzmanligi.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/java-eğitimi.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/leo.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/maya.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/microsoft-office.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/oracle.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/premiere.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/programlama-dilleri.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/solid-works.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/sosyal-medya.jpg"
+        }, {
+            type: 'image',
+            file: "img/banners/windows-phone.jpg"
         }];
     })
     .controller('YonetimSliderCtrl', ['$scope',
@@ -66,13 +136,9 @@ angular.module('lupusshow.controllers', [])
     .controller('KategorilerCtrl', function ($scope) {})
     .controller('KategoriListesiCtrl', function ($scope, $rootScope, $timeout,
         $stateParams, $interval, EgitimCategoriesResource, $state) {
-
         $rootScope.kategori = $rootScope.kategori || {};
-
         var getKategories = function () {
-            $scope.kategoriler = EgitimCategoriesResource.query(function () {
-                
-            });
+            $scope.kategoriler = EgitimCategoriesResource.query(function () {});
         };
         $timeout(function () {
             getKategories();
@@ -80,7 +146,6 @@ angular.module('lupusshow.controllers', [])
     })
     .controller('KategoriEgitimleriCtrl', function ($scope,
         EgitimByCategoryResource, $stateParams, $timeout, $rootScope) {
-
         //$rootScope.kategori = $rootScope.kategori || {};
         $scope.egitimler = [];
         $scope.getCollection = function () {
@@ -92,7 +157,8 @@ angular.module('lupusshow.controllers', [])
             $scope.getCollection();
         }, 500);
     })
-    .controller('EgitimCtrl', function ($scope, $stateParams, EgitimByUrlResource) {
+    .controller('EgitimCtrl', function ($scope, $stateParams,
+        EgitimByUrlResource) {
         $scope.egitim = EgitimByUrlResource.get({
             egitimUrl: $stateParams.egitimUrl
         });
