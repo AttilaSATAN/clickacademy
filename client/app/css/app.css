@@ -383,8 +383,14 @@ body {
   background-color: #025172;
   color: #ccc;
   text-align: center;
+  position: relative;
 }
 .egitim-kategori-mega-button span {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-size: 12px;
 }
 .egitim-kategori-mega-button:hover,
@@ -421,15 +427,6 @@ body {
   float: left;
   padding: 25px 0 0 25px;
 }
-.evliya-sarmalayici.collepsed .lupus-evliya-navbar > ul > li.evliya-menu-button {
-  display: block;
-}
-.evliya-sarmalayici.collepsed .lupus-evliya-navbar > ul .will-collaps {
-  display: none;
-}
-.evliya-sarmalayici.collepsed .lupus-evliya-navbar > ul > li {
-  float: none;
-}
 .evliya-sarmalayici .lupus-evliya-navbar {
   clear: both;
   height: 52px;
@@ -442,15 +439,17 @@ body {
   clear: both;
   display: block;
 }
-.evliya-sarmalayici .lupus-evliya-navbar ul > li.evliya-menu-button {
-  display: none;
+@media (min-width: 1100px) {
+  .evliya-sarmalayici .lupus-evliya-navbar ul > li.evliya-menu-button {
+    display: none;
+  }
 }
 .evliya-sarmalayici .lupus-evliya-navbar li {
-  float: left;
-  position: relative;
+  z-index: 10001;
   display: block;
 }
 .evliya-sarmalayici .lupus-evliya-navbar li > a {
+  font-size: 13px;
   padding: 10px 15px;
   color: #ccc;
   padding-top: 15px;
@@ -462,12 +461,33 @@ body {
 }
 .evliya-sarmalayici .lupus-evliya-navbar li > a:hover,
 .evliya-sarmalayici .lupus-evliya-navbar li > a:focus,
-.evliya-sarmalayici .lupus-evliya-navbar li > a .active {
+.evliya-sarmalayici .lupus-evliya-navbar li > a.active {
   background-color: #02638b;
   text-decoration: none;
 }
+@media (min-width: 1100px) {
+  .evliya-sarmalayici .lupus-evliya-navbar li {
+    float: left;
+    position: relative;
+  }
+}
 .evliya-sarmalayici .lupus-evliya-navbar > a.pull-right {
   margin-right: 10px;
+}
+@media (min-width: 1100px) {
+  .evliya-sarmalayici .lupus-evliya-nav {
+    display: block !important;
+  }
+}
+@media (max-width: 1100px) {
+  .evliya-sarmalayici .lupus-evliya-nav {
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    overflow: auto;
+  }
 }
 .egitim-sistemi-animation-sarmalayici {
   height: 100%;

@@ -16,16 +16,16 @@
 </div> -->
 <div class="container-kategoriler container-fluid">
     <div class="row" same-hight >
-        <div class="col-md-2 animation-fadeAndScale col-egitim col-kategoriler">
+        <div class="col-xs-2 animation-fadeAndScale col-egitim col-kategoriler">
             <div class="row" ng-repeat="kategori in kategoriler">
                 <a class="egitim-kategori-mega-button" ui-sref-active="active" ui-sref="egitimler.kategori.liste.kategori({categoryUrl:kategori.url})">
                 <img class="img-responsive" ng-src="assets/{{kategori._asset.file}}" style="margin:0 auto;"/>{{state.current}}
                 <!-- <pre>{{kategori|json}}</pre> -->
-                <span class="">{{kategori.name}}</span>
+                <span class="visible-lg">{{kategori.name}}</span>
                 </a>
             </div>
         </div>
-        <div class="col-md-10 col-egitim col-kategori-egitimleri" >
+        <div class="col-xs-10 col-egitim col-kategori-egitimleri" >
             <div ui-view="kategoriegitimleri" class="kategoriegitimleri animation-fadeAndSlideRight">
             </div>
         </div>

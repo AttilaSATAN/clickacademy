@@ -342,7 +342,14 @@ body {
 	background-color: @ca-blue;
     color:#ccc;
     text-align:center;
+    position: relative;
     span{
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
         font-size: 12px;
     }
     &:hover,
@@ -382,19 +389,9 @@ body {
     padding: 25px 0 0 25px;
 }
 .evliya-sarmalayici {
-    &.collepsed{
-        .lupus-evliya-navbar > ul { 
-            &> li.evliya-menu-button {
-                display:block;
-            }
-            .will-collaps{
-                display:none;
-            }
-            &> li{
-                float:none;
-            }
-        }
-    }
+    // &.collepsed{
+
+    // }
     .lupus-evliya-navbar{
         clear:both;
         height:52px;
@@ -407,15 +404,19 @@ body {
             float:left;
             clear:both;
             display: block;
-            &> li.evliya-menu-button{
-                display: none;
+            @media (min-width: 1100px) {
+                &> li.evliya-menu-button{
+                    display: none;
+                }
             }
         }
+        
         li {
-            float: left;
-            position: relative;
+            z-index: 10001;
             display: block;
             &> a{
+
+                font-size: 13px;
                 padding:10px 15px;
                 color: #ccc;
                 padding-top: 15px;
@@ -424,16 +425,40 @@ body {
                 position: relative;
                 display: block;
                 background-color: #025172;
-                &:hover,&:focus, .active{
+                &:hover,&:focus, &.active{
                     background-color: lighten(#025172, 5%);
                     text-decoration: none;
                 }
+            }
+        }
+        @media (min-width: 1100px) {
+          li {
+                float: left;
+                position: relative;
+                
             }
         }
         &>a.pull-right{
             margin-right: 10px;
         }
     }
+    @media (min-width: 1100px) {
+        .lupus-evliya-nav{
+            display: block !important;
+        }
+    }
+    @media (max-width: 1100px) {
+        .lupus-evliya-nav{
+            position: fixed;
+            top:80px;
+            left: 10px;
+            right: 10px;
+            bottom:10px;
+            overflow: auto;
+        }
+    }
+    
+
 }
 .egitim-sistemi-animation-sarmalayici{
     height: 100%;
