@@ -382,14 +382,17 @@ body {
   display: block;
   background-color: #025172;
   color: #ccc;
+  text-align: center;
 }
 .egitim-kategori-mega-button:hover,
 .egitim-kategori-mega-button:focus {
   opacity: 1;
   background-color: #02638b;
+  color: #fff;
 }
 .egitim-kategori-mega-button.active {
   background-color: #82c7d1;
+  color: #fff;
 }
 .lupus-col-kategori {
   width: 100%;

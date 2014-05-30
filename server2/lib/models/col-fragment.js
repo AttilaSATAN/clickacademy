@@ -8,4 +8,15 @@ var colFragmentSchema = new Schema({
 	fragmentData: Object
 });
 
-mongoose.model('ColFragment', colFragmentSchema);
+
+var ColFagment = mongoose.model('ColFragment', colFragmentSchema);
+
+ColFagment.find({}).remove(function () {
+	ColFagment.create([{
+
+	},{
+
+	},{
+		
+	}])
+})
