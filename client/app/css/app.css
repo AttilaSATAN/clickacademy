@@ -384,8 +384,12 @@ body {
   color: #ccc;
   text-align: center;
 }
+.egitim-kategori-mega-button span {
+  font-size: 12px;
+}
 .egitim-kategori-mega-button:hover,
 .egitim-kategori-mega-button:focus {
+  text-decoration: none;
   opacity: 1;
   background-color: #02638b;
   color: #fff;
