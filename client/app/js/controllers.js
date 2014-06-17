@@ -499,7 +499,7 @@ angular.module('lupusshow.controllers', [])
                 academicId: $stateParams.academicId
             }, function () {});
             $scope.egitimler = EgitimlerResource.query();
-            $scope.updateEgitimList();
+            // $scope.updateEgitimList();
         };
         $scope.delete = function (academic) {
             academic.$delete( function () {

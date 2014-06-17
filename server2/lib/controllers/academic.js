@@ -37,7 +37,7 @@
             });
     };
     exports.create = function (req, res) {
-        if (!req.body._asset || !req.body._asset._id) delete req.body._asset;
+        if (!req.body._asset ||!req.body._asset._id) delete req.body._asset;
         else {
             req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
