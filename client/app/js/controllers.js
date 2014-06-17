@@ -358,27 +358,6 @@ angular.module('lupusshow.controllers', [])
             });
         };
     })
-    .controller('YazılımEgitimBulutuCtrl', function ($scope) {
-        $scope.egitimler = [{
-            name: 'CS'
-        }, {
-            name: 'CSS'
-        }, {
-            name: 'JS'
-        }, {
-            name: 'ASP'
-        }, {
-            name: 'C++'
-        }, {
-            name: 'PY'
-        }, {
-            name: 'RUBY'
-        }, {
-            name: 'ALG'
-        }, {
-            name: 'CRYP'
-        }];
-    })
     .controller('YonetimBlogsCtrl', function ($scope, BlogsResource,
         BlogResource, slugify) {
         $scope.yeni = {};
@@ -465,4 +444,87 @@ angular.module('lupusshow.controllers', [])
             $scope.egitimCategories = EgitimCategoriesResource.query();
         };
         getCollection();
+    })
+    .controller('YonetimAcademicCtrl', function ($scope, $stateParams,
+        AcademicResource, slugify, $timeout, EgitimlerResource) {
+        var academicSchema = {
+            name: '',
+            url: '',
+            description: '',
+            keywords: [],
+            shortTag: '',
+            _asset: null,
+            egitimler: []
+        };
+        var watch;
+        var watch2;
+        var to = null;
+        var to2 = null;
+        var startWatch = function () {
+            watch = $scope.$watch('activeAcademic.name', function () {
+                if ($scope.activeAcademic) $scope.activeAcademic.url =
+                    slugify($scope.activeAcademic.name);
+            });
+        };
+        var stopWatch = function () {
+            if (typeof watch === 'function') watch();
+        };
+        var stopAutoSaveWatch = function () {
+            if (typeof watch2 === 'function') watch2();
+        };
+        $scope.addEgitim = function (egitim) {
+            $scope.academic.egitimler.push(egitim);
+        };
+        $scope.removeEgitim = function () {};
+        $scope.query = function () {
+            $scope.academics = AcademicResource.query();
+        };
+        $scope.newAcademic = function () {
+            stopWatch();
+            $scope.activeAcademic = new AcademicResource(academicSchema);
+            startWatch();
+        };
+        $scope.selectAcademic = function (academic) {
+            stopWatch();
+            $scope.activeAcademic = academic;
+            startWatch();
+        };
+        $scope.create = function () {
+            $scope.activeAcademic.$save(function () {
+                $scope.query();
+            });
+        };
+        $scope.get = function () {
+            $scope.academic = AcademicResource.get({
+                academicId: $stateParams.academicId
+            }, function () {});
+            $scope.egitimler = EgitimlerResource.query();
+            $scope.updateEgitimList();
+        };
+        $scope.delete = function (academic) {
+            academic.$delete( function () {
+                $scope.query();
+            });
+        };
+        $scope.update = function () {
+            $scope.kaydediliyor = true;
+            $scope.kaydedildi = false;
+            stopWatch();
+            var academic;
+            if ($scope.activeAcademic) academic = $scope.activeAcademic;
+            else academic = $scope.academic;
+            academic.$update(function (response) {
+                $scope.kaydediliyor = false;
+                $scope.kaydedildi = true;
+                $timeout(function () {
+                    startWatch();
+                }, 1000);
+            }, function (errorResponse) {
+                $timeout(function () {
+                    startWatch();
+                }, 1000);
+                $scope.error = errorResponse.data.message;
+            });
+        };
+        $scope.getById = function () {};
     });

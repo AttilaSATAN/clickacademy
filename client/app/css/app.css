@@ -482,10 +482,11 @@ body {
 @media (max-width: 1166px) {
   .evliya-sarmalayici .lupus-evliya-nav {
     position: fixed;
+    z-index: 10001;
     top: 80px;
     left: 10px;
     right: 10px;
-    bottom: 10px;
+    bottom: 80px;
     overflow: auto;
   }
 }

@@ -102,50 +102,57 @@ angular.module('lupusshow.services', [])
             }
         });
     })
-    .factory('AssetsResource',function($resource){
+    .factory('AssetsResource', function ($resource) {
         return $resource('/service/api/assets');
     })
-    .factory('AssetResource',function($resource){
+    .factory('AssetResource', function ($resource) {
         return $resource('/service/api/asset');
     })
     .factory('PartialsResource', function ($resource) {
         return $resource('/service/api/partials');
     })
-    .factory('BlogsResource', function ($resource){
+    .factory('BlogsResource', function ($resource) {
         return $resource('/service/api/blogs');
     })
     .factory('BlogResource', function ($resource) {
-        return $resource('/service/api/blog/:blogId', 
-            {blogId:'@id'});
+        return $resource('/service/api/blog/:blogId', {
+            blogId: '@id'
+        });
     })
     .factory('BlogByUrlResource', function ($resource) {
-        return $resource('/service/api/blog/by-url/:blogUrl', 
-            {blogUrl:'@url'});
+        return $resource('/service/api/blog/by-url/:blogUrl', {
+            blogUrl: '@url'
+        });
     })
     .factory('EgitimCategoriesResource', function ($resource) {
         return $resource('/service/api/egitim-categories');
     })
     .factory('EgitimCategoryResource', function ($resource) {
-        return $resource('/service/api/egitim-category/:categoryId', 
-            {categoryId:'@id'});
+        return $resource('/service/api/egitim-category/:categoryId', {
+            categoryId: '@id'
+        });
     })
     .factory('EgitimlerResource', function ($resource) {
         return $resource('/service/api/egitimler');
     })
     .factory('EgitimResource', function ($resource) {
-        return $resource('/service/api/egitim/:egitimId', 
-            {egitimId:'@id'});
+        return $resource('/service/api/egitim/:egitimId', {
+            egitimId: '@id'
+        });
     })
-    .factory('EgitimByCategoryResource', function($resource){
-        return $resource('/service/api/egitim/by-category/:categoryUrl', 
-            {categoryUrl:'@categoryUrl'}, 
-            {'get': {
+    .factory('EgitimByCategoryResource', function ($resource) {
+        return $resource('/service/api/egitim/by-category/:categoryUrl', {
+            categoryUrl: '@categoryUrl'
+        }, {
+            'get': {
                 isArray: true
-            }});
+            }
+        });
     })
-    .factory('EgitimByUrlResource', function($resource){
-        return $resource('/service/api/egitim/by-url/:egitimUrl', 
-            {egitimUrl:'@url'});
+    .factory('EgitimByUrlResource', function ($resource) {
+        return $resource('/service/api/egitim/by-url/:egitimUrl', {
+            egitimUrl: '@url'
+        });
     })
     .factory('ProgramResource', function ($resource) {
         return $resource('/service/api/program');
@@ -155,8 +162,16 @@ angular.module('lupusshow.services', [])
     })
     .factory('SektorelResource', function ($resource) {
         return $resource('/service/api/sektorel');
-    })    
+    })
     .factory('AuthResource', function ($resource) {
         return $resource('/service/api/sektorel');
     })
-    
+    .factory('AcademicResource', function ($resource) {
+        return $resource('/service/api/academic/:academicId', {
+            academicId: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
+        });
+    });

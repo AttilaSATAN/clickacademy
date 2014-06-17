@@ -13,7 +13,8 @@ var api = require('./controllers/api'),
     blogs = require('./controllers/blogs'),
     blog = require('./controllers/blog'),
     assets = require('./controllers/assets'),
-    asset = require('./controllers/asset');
+    asset = require('./controllers/asset'),
+    academic = require('./controllers/academic');
 var middleware = require('./middleware');
 /**
  * Application routes
@@ -50,6 +51,14 @@ module.exports = function (app) {
     app.delete('/service/api/egitim-category/:categoryId', egitimCategory.delete);
     app.post('/service/api/egitim-category', egitimCategory.save);
     app.get('/service/api/egitim-categories', egitimCategories.query);
+    // academic
+    app.get('/service/api/academic', academic.query);
+    app.post('/service/api/academic', academic.create);
+    app.get('/service/api/academic/:academicId', academic.get);
+    app.delete('/service/api/academic/:academicId', academic.delete);
+    app.put('/service/api/academic/:academicId', academic.update);
+    app.param('academicId', academic.getById);
+    //
     app.get('/service/*', function (req, res) {
         res.send(404);
     });

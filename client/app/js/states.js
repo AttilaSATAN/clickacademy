@@ -153,10 +153,15 @@ angular.module('lupusshow')
                         templateUrl: 'partials/yonetim/egitimler.html',
                         controller: 'YonetimEgitimlerCtrl'
                     })
-                    .state('yonetim.akademik', {
-                        url: '/mesleki-egitimler',
-                        templateUrl: 'partials/yonetim/akademik-egitimler.html',
-                        controller: 'YonetimEgitimlerCtrl'
+                    .state('yonetim.academic', {
+                        url: '/academic-egitimler',
+                        templateUrl: 'partials/yonetim/academic.html',
+                        controller: 'YonetimAcademicCtrl'
+                    })
+                    .state('yonetim.academic-page', {
+                        url: '/academic-egitimler/:academicId',
+                        templateUrl: 'partials/yonetim/academic-page.html',
+                        controller: 'YonetimAcademicCtrl'
                     })
                     .state('yonetim.sektorel', {
                         url: '/sektorel-egitimler',
