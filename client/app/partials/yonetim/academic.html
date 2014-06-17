@@ -1,0 +1,59 @@
+<div class="container" ng-init="query();">
+    <div class="row" style="position:relative">
+        <div class="col-sm-8">
+            <button class="pull-right btn btn-lg btn-primary" ng-click="newAcademic()">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h4>Akademik Eğitimler</h4>
+            <pre>{{activeAcademic|json}}</pre>
+            <div class="list-group">
+                <div href="#" class="list-group-item clearfix animation-fadeAndScale"  ng-class="{'list-group-item-info': current._id == current._id}"  ng-repeat="academic in academics">
+                    <div class="col-sm-9">
+                        <p class="list-group-item-heading">{{academic.name}}</p>
+                        <p class="list-group-item-heading">/{{academic.url}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-sm btn-warning pull-right" ui-sref="yonetim.academic-page({academicId:academic._id})">Sayfayı Düzenle</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="delete(academic);">Sil</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="selectAcademic(academic);">Düzenle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" style="position: fixed;right: 30px;">
+
+            <div ng-if="yeni.egitim._id">
+                <h4>Düzenle</h4>
+            </div>
+            <div ng-if="!yeni.egitim._id">
+                <h4>Yeni</h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="kategori-adi">Akademik Eğitim Adı</label>
+                    <input type="text" name="kategori-adi" id="kategori-adi" class="form-control" ng-model="activeAcademic.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="kategori-url">URL</label>
+                    <input type="text" name="kategori-url" id="kategori-url" class="form-control" ng-model="activeAcademic.url"/>
+                </div>
+                <div class="form-group">
+                    <label for="short-tag">Kısaltma</label>
+                    <input type="text" name="short-tag" id="short-tag" class="form-control" ng-model="activeAcademic.shortTag"/>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="egitim-kategori">Eğitim Kategorisi</label>
+                <select class="form-control" name="egitim-kategori" id="egitim-kategori" ng-model="activeAcademic._categoryId" ng-options="kategori._id as kategori.name for kategori in egitimCategories">{{kategori}}</select> -->
+            
+            <div class="form-group">
+                <label >Anahtar Kelimeler</label>
+                <input type-text class="form-control" ng-model="activeAcademic.keywords[$index]" ng-repeat="keyword in activeAcademic.keywords track by $index" placeholder="Anahtar Kelime"/>
+                <button class="btn btn-sm btn-default" ng-click="activeAcademic.keywords.push(null)">
+                <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
+            </div>
+        </form>
+        <a href="javascript:void(0);" ng-if="!activeAcademic._id" class="btn btn-primary pull-right" ng-click="create()"><span class="glyphicon glyphicon-plus"></span>Yeni</a>
+        <a href="javascript:void(0);" ng-if="activeAcademic._id" class="btn btn-primary pull-right" ng-click="update()"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+    </div>
+</div>
+</div>
