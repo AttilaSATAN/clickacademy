@@ -20,16 +20,24 @@
                     <label for="academic-description">İçerik</label>
                     <textarea name="academic-description" id="academic-description" class="form-control" ng-model="academic.description"></textarea>
                 </div>
-                <h2>Eklenmiş Eğitim</h2>
-                <ul>
-                    <li ng-repeat="eklenmisEgitim in academic.egitimler">{{eklenmisEgitim.name}} <a ng-click="removeEgitim($index)" href="javascript:void(0)">Kaldır</a></li>
-                </ul>
-                <hr/>
-                <ul>
-                    <li ng-repeat="egitim in egitimler">
-                        <a class="btn btn-default" href="javascript:void(0)" ng-click="addEgitim(egitim)">{{egitim.name}}</a>
-                    </li>
-                </ul>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul>
+                                <li ng-repeat="egitim in egitimler">
+                                    <a class="btn btn-default" href="javascript:void(0)" ng-click="addEgitim(egitim)">{{egitim.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr/>
+                        <div class="col-sm-6">
+                            <h2>Eklenmiş Eğitim</h2>
+                            <ul>
+                                <li ng-repeat="eklenmisEgitim in academic.egitimler">{{eklenmisEgitim.name}} <a ng-click="removeEgitim($index)" href="javascript:void(0)">Kaldır</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <a href="javascript:void(0);"  class="btn btn-primary pull-right" ng-click="update()"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
             </form>
         </div>
