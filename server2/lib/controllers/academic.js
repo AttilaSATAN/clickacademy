@@ -37,7 +37,7 @@
             });
     };
     exports.create = function (req, res) {
-        if (!req.body._asset ||!req.body._asset._id) delete req.body._asset;
+        if (!req.body._asset || !req.body._asset._id) delete req.body._asset;
         else {
             req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
@@ -50,7 +50,8 @@
                     message: getErrorMessage(err)
                 });
             } else {
-                res.jsonp(academic);
+                res.jsonp(academic.populate('_asset')
+                    .populate('egitimler'));
             }
         });
     };
@@ -71,15 +72,16 @@
     };
     exports.update = function (req, res) {
         var egitimler = [];
-        if (!req.body._asset._id) delete req.body._asset;
+        if (!req.body._asset || !req.body._asset._id) delete req.body._asset;
         else {
-            // req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
+            req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
+        
         if (req.body.egitimler.length) {
             egitimler = _.map(req.body.egitimler, function (egitim) {
                 return mongoose.Types.ObjectId(egitim._id);
             });
-            console.log(egitimler)
+            
         }
         var academic = req.academic;
         req.body.egitimler = egitimler;
