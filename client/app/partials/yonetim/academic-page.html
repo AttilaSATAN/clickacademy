@@ -3,12 +3,14 @@
         <p class="text-center text-warning" ng-if="kaydediliyor">Yaptığınız değişiklikler otomatik olarak kaydediliyor lütfen bekleyiniz.</p>
     <p class="text-center text-success" ng-if="!kaydediliyor && kaydedildi">Kaydedildi.</p></div>
     <div class="row">
-        <div class="col-sm-5" >
+        <div class="col-sm-9" >
             <div lupus-assets-b model-data="academic">
             </div>
         </div>
-        <div class="col-sm-4">
-<h1>{{academic.name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>{{academic.name}}</h1>
             <form role="form">
                 <div class="form-group">
                     <label for="academic-baslik">Başlık</label>
@@ -16,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label for="academic-description">İçerik</label>
-<textarea name="academic-description" id="academic-description" class="form-control" ng-model="academic.description"></textarea>
+                    <textarea name="academic-description" id="academic-description" class="form-control" ng-model="academic.description"></textarea>
                 </div>
                 <h2>Eklenmiş Eğitim</h2>
                 <ul>
@@ -25,11 +27,12 @@
                 <hr/>
                 <ul>
                     <li ng-repeat="egitim in egitimler">
-<a class="btn btn-default" href="javascript:void(0)" ng-click="addEgitim(egitim)">{{egitim.name}}</a>
+                        <a class="btn btn-default" href="javascript:void(0)" ng-click="addEgitim(egitim)">{{egitim.name}}</a>
                     </li>
                 </ul>
-<a href="javascript:void(0);"  class="btn btn-primary pull-right" ng-click="update()"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+                <a href="javascript:void(0);"  class="btn btn-primary pull-right" ng-click="update()"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
             </form>
         </div>
     </div>
+</div>
 </div>
