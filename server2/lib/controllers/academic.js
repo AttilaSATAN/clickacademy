@@ -42,7 +42,7 @@
             req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
         var academic = new Academic(req.body);
-        console.log(academic)
+        
         // academic._asset = mongoose.Types.ObjectId(req.body._asset._id) || null;
         academic.save(function (err) {
             if (err) {

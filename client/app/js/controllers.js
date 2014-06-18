@@ -472,10 +472,13 @@ angular.module('lupusshow.controllers', [])
         var stopAutoSaveWatch = function () {
             if (typeof watch2 === 'function') watch2();
         };
+
         $scope.addEgitim = function (egitim) {
             $scope.academic.egitimler.push(egitim);
         };
-        $scope.removeEgitim = function () {};
+        $scope.removeEgitim = function (index) {
+            $scope.academic.egitimler.splice(index, 1);
+        };
         $scope.query = function () {
             $scope.academics = AcademicResource.query();
         };

@@ -20,7 +20,7 @@
                 </div>
                 <h2>Eklenmiş Eğitim</h2>
                 <ul>
-                    <li ng-repeat="eklenmisEgitim in academic.egitimler">{{eklenmisEgitim.name}}</li>
+                    <li ng-repeat="eklenmisEgitim in academic.egitimler">{{eklenmisEgitim.name}} <a ng-click="removeEgitim($index)" href="javascript:void(0)">Kaldır</a></li>
                 </ul>
                 <hr/>
                 <ul>
