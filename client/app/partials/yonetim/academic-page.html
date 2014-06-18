@@ -22,7 +22,9 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <h2>Tüm Eğitim</h2>
+
                             <ul>
                                 <li ng-repeat="egitim in egitimler">
                                     <a class="btn btn-default" href="javascript:void(0)" ng-click="addEgitim(egitim)">{{egitim.name}}</a>
@@ -30,7 +32,7 @@
                             </ul>
                         </div>
                         <hr/>
-                        <div class="col-sm-6">
+                        <div class="col-sm-8">
                             <h2>Eklenmiş Eğitim</h2>
                             <ul>
                                 <li ng-repeat="eklenmisEgitim in academic.egitimler">{{eklenmisEgitim.name}} <a ng-click="removeEgitim($index)" href="javascript:void(0)">Kaldır</a></li>
