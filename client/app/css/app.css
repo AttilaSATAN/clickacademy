@@ -384,9 +384,18 @@ body {
 }
 .col-kategori-egitimleri {
   background-color: #82c7d1;
+  margin-top: -54px;
+  padding-top: 20px;
 }
 .col-egitim-ayrinti {
   background-color: white;
+  margin-top: -20px;
+  padding: 20px;
+}
+.col-kategoriler {
+  margin-top: -44px;
+  padding-top: 60px;
+  background-color: #025172;
 }
 .lupus-col-kategori-egitim-ayrintilari {
   -webkit-transition: 0.5s;

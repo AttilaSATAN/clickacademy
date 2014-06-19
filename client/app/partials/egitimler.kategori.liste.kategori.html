@@ -17,6 +17,6 @@
         <a ui-sref="egitimler.kategori.liste.kategori.egitim({egitimUrl: egitim.url})" class="row egitim-ayrintilar clearfix animation-fadeAndSlideRight" ui-sref-active="active" ng-repeat="egitim in egitimler">{{egitim.name}}</a>
     </div>
     <div class="col-md-9 col-egitim-ayrinti">
-        <div ui-view="egitim" class="kategoriegitimleri animation-fadeAndSlideRight"></div>
+        <div ui-view="egitim" autoscroll="off" class="kategoriegitimleri animation-fadeAndSlideRight"></div>
     </div>
 </div>
