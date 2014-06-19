@@ -413,82 +413,100 @@ body {
     padding: 25px 0 0 25px;
 }
 .evliya-sarmalayici {
-    // &.collepsed{
-
-    // }
-    .lupus-evliya-navbar{
-        clear:both;
-        height:52px;
-
-        margin:10px 0 ;
-        background-color: #025172;
-        border:1px solid #25627a;
-
-        ul {
-            float:left;
+    z-index: 9000;
+    background: url('/img/nav-bar-sol-bg.png') left 60px no-repeat;
+    .evliya-inner-sarmalayici{
+        background: url('/img/nav-bar-sag-bg.png') right 39px no-repeat;
+        padding:50px 0;
+        width: 100%;
+        height: 100%;
+        .lupus-evliya-navbar{
             clear:both;
-            display: block;
-            @media (min-width: 1166px) {
-                &> li.evliya-menu-button{
-                    display: none;
+            height:36px;
+            margin:10px 220px 10px 247px;
+            background-color: #025172;
+
+            ul {
+                margin: 0 auto;
+                float:left;
+                clear:both;
+                display: block;
+                text-align: center;
+                @media (min-width: 1166px) {
+                    &> li.evliya-menu-button{
+                        display: none;
+                    }
                 }
             }
-        }
-        
-        li {
-            z-index: 10001;
-            display: block;
-            &> a{
-
-                font-size: 13px;
-                padding:10px 15px;
-                color: #ccc;
-                padding-top: 15px;
-                padding-bottom: 15px;
-                line-height: 20px;
-                position: relative;
-                display: block;
-                background-color: #025172;
-                &:hover,&:focus, &.active{
-                    background-color: lighten(#025172, 5%);
-                    text-decoration: none;
+            
+            li {
+                z-index: 10001;
+                display: table-cell;
+                &> a{
+                    
+                    font-size: 13px;
+                    padding:10px 30px;
+                    color: #ccc;
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+                    line-height: 22px;
+                    position: relative;
+                    display: block;
+                    background-color: #025172;
+                    &:hover,&:focus, &.active{
+                        background-color: lighten(#025172, 5%);
+                        text-decoration: none;
+                    }
                 }
+            }
+            @media (min-width: 1166px) {
+              li {
+
+                    position: relative;
+                    
+                }
+            }
+            &>a.pull-right{
+                margin-right: -160px;
+                margin-top: -50px;
+
             }
         }
         @media (min-width: 1166px) {
-          li {
-                float: left;
-                position: relative;
-                
+            .lupus-evliya-nav{
+                display: block !important;
             }
         }
-        &>a.pull-right{
-            margin-right: 10px;
+        @media (max-width: 1166px) {
+            .lupus-evliya-nav{
+                position: fixed;
+                z-index: 10001;
+                top:80px;
+                left: 10px;
+                right: 10px;
+                bottom:80px;
+                overflow: auto;
+            }
         }
     }
-    @media (min-width: 1166px) {
-        .lupus-evliya-nav{
-            display: block !important;
-        }
-    }
-    @media (max-width: 1166px) {
-        .lupus-evliya-nav{
-            position: fixed;
-            z-index: 10001;
-            top:80px;
-            left: 10px;
-            right: 10px;
-            bottom:80px;
-            overflow: auto;
-        }
-    }
-    
-
 }
 .egitim-sistemi-animation-sarmalayici{
     height: 100%;
-    background-color: #E7EEFE;
-    
+    position: relative;
+    .container-fluid {
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:5;
+        width:100%;
+        height: 100%; 
+    }
+    .egitim-kutu {
+        position: absolute;
+        width:500px;
+        height:500px;
+        bottom:0;
+    }
 }
 .ok_1,.ok_2,.ok_3{
     
@@ -583,6 +601,7 @@ body {
     background-color: @ca-blue;
     padding-left: 0;
     ul {
+        padding-top: 30px;
         list-style: none;
         -webkit-padding-start: 0;
         &> li {
@@ -590,8 +609,9 @@ body {
             display:block;
             padding-left: 15px;
             &> a {
+                font-size: 12px;
                 display:block;
-                padding:5px;
+                padding:9px;
                 color:#f0f0f0;
                 &:hover, &:focus, &.active{
                     color:#fff;
@@ -606,6 +626,7 @@ body {
     min-height: 768px;
     position:absolute;
     left: 0;
+    top:55px;
 }
 .icerik-sayfasi{
     padding-top: 20px;

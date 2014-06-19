@@ -451,60 +451,71 @@ body {
   float: left;
   padding: 25px 0 0 25px;
 }
-.evliya-sarmalayici .lupus-evliya-navbar {
-  clear: both;
-  height: 52px;
-  margin: 10px 0 ;
-  background-color: #025172;
-  border: 1px solid #25627a;
+.evliya-sarmalayici {
+  z-index: 9000;
+  background: url('/img/nav-bar-sol-bg.png') left 60px no-repeat;
 }
-.evliya-sarmalayici .lupus-evliya-navbar ul {
+.evliya-sarmalayici .evliya-inner-sarmalayici {
+  background: url('/img/nav-bar-sag-bg.png') right 39px no-repeat;
+  padding: 50px 0;
+  width: 100%;
+  height: 100%;
+}
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar {
+  clear: both;
+  height: 36px;
+  margin: 10px 220px 10px 247px;
+  background-color: #025172;
+}
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar ul {
+  margin: 0 auto;
   float: left;
   clear: both;
   display: block;
+  text-align: center;
 }
 @media (min-width: 1166px) {
-  .evliya-sarmalayici .lupus-evliya-navbar ul > li.evliya-menu-button {
+  .evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar ul > li.evliya-menu-button {
     display: none;
   }
 }
-.evliya-sarmalayici .lupus-evliya-navbar li {
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li {
   z-index: 10001;
-  display: block;
+  display: table-cell;
 }
-.evliya-sarmalayici .lupus-evliya-navbar li > a {
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li > a {
   font-size: 13px;
-  padding: 10px 15px;
+  padding: 10px 30px;
   color: #ccc;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  line-height: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  line-height: 22px;
   position: relative;
   display: block;
   background-color: #025172;
 }
-.evliya-sarmalayici .lupus-evliya-navbar li > a:hover,
-.evliya-sarmalayici .lupus-evliya-navbar li > a:focus,
-.evliya-sarmalayici .lupus-evliya-navbar li > a.active {
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li > a:hover,
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li > a:focus,
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li > a.active {
   background-color: #02638b;
   text-decoration: none;
 }
 @media (min-width: 1166px) {
-  .evliya-sarmalayici .lupus-evliya-navbar li {
-    float: left;
+  .evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar li {
     position: relative;
   }
 }
-.evliya-sarmalayici .lupus-evliya-navbar > a.pull-right {
-  margin-right: 10px;
+.evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-navbar > a.pull-right {
+  margin-right: -160px;
+  margin-top: -50px;
 }
 @media (min-width: 1166px) {
-  .evliya-sarmalayici .lupus-evliya-nav {
+  .evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-nav {
     display: block !important;
   }
 }
 @media (max-width: 1166px) {
-  .evliya-sarmalayici .lupus-evliya-nav {
+  .evliya-sarmalayici .evliya-inner-sarmalayici .lupus-evliya-nav {
     position: fixed;
     z-index: 10001;
     top: 80px;
@@ -516,7 +527,21 @@ body {
 }
 .egitim-sistemi-animation-sarmalayici {
   height: 100%;
-  background-color: #E7EEFE;
+  position: relative;
+}
+.egitim-sistemi-animation-sarmalayici .container-fluid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+}
+.egitim-sistemi-animation-sarmalayici .egitim-kutu {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: 0;
 }
 .ok_1,
 .ok_2,
@@ -625,6 +650,7 @@ body {
   padding-left: 0;
 }
 .akademik-egitim-nav ul {
+  padding-top: 30px;
   list-style: none;
   -webkit-padding-start: 0;
 }
@@ -634,8 +660,9 @@ body {
   padding-left: 15px;
 }
 .akademik-egitim-nav ul > li > a {
+  font-size: 12px;
   display: block;
-  padding: 5px;
+  padding: 9px;
   color: #f0f0f0;
 }
 .akademik-egitim-nav ul > li > a:hover,
@@ -651,8 +678,10 @@ body {
   min-height: 768px;
   position: absolute;
   left: 0;
+  top: 55px;
 }
 .akademik-egitim-nav-background ul {
+  padding-top: 30px;
   list-style: none;
   -webkit-padding-start: 0;
 }
@@ -662,8 +691,9 @@ body {
   padding-left: 15px;
 }
 .akademik-egitim-nav-background ul > li > a {
+  font-size: 12px;
   display: block;
-  padding: 5px;
+  padding: 9px;
   color: #f0f0f0;
 }
 .akademik-egitim-nav-background ul > li > a:hover,
@@ -2936,12 +2966,13 @@ body {
 }
 .view-bottom {
   position: absolute;
-  top: 62px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   transition: 1s;
   -webkit-transition: 1s;
+  padding-top: 110px;
 }
 .view-bottom.ng-leave {
   -webkit-transition: 0.3 ease-in-out;
