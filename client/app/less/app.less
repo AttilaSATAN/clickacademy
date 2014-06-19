@@ -100,36 +100,60 @@ body {
        .btn1;
   }
 }
-.ana-sayfa-swiper{
-    position: absolute;
-    
-    top: 50%;
-    margin-top: -200px;
-    right: 0;
-    
-    //background: url(../img/ok-swiper.png) no-repeat right -100px bottom;
+.ana-sayfa-swiper {
+    margin: 0 auto;
 }
-.swiper-controls{
+
+@media (min-width: 768px) {
+    .ana-sayfa-swiper {
+        margin-top: 40px;
+        width: 640px;
+        height: 360px;
+    }
+}
+@media (min-width: 992px) {
+    .ana-sayfa-swiper {
+        margin-top: 52px;
+        width: 672px;
+        height: 378px;
+    }
+}
+.swiper-outer-container{
+    width: 100%;
+    height: 100%;
     position: relative;
-    top: -60px;
-    z-index: 100;
-    overflow: hidden;
-    height: 30px;
-    .swiper-left{
-        display: block;
-        height: 30px;
-        width: 50px;
-        float: left;
-        background: url(../img/swiper-kucuk-oklar.png) no-repeat 0 0 ;
-    }
-    .swiper-right{
-        display: block;
-        height: 30px;
-        width: 50px;
-        float: right;
-        background: url(../img/swiper-kucuk-oklar.png) no-repeat -50px 0 ;
-    }
 }
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 5px 10px rgba(0,0,0,.8);
+}
+
+.swiper-left-control{
+    top:50%;
+    margin-top: -15px;
+    position: absolute;
+    left: -20px;
+    display: block;
+    height: 30px;
+    width: 50px;
+    float: left;
+    background: url(../img/swiper-kucuk-oklar.png) no-repeat 0 0 ;
+    z-index: 1020;
+}
+.swiper-right-control{
+    top:50%;
+    margin-top: -15px;
+    position: absolute;
+    right: -20px;
+    display: block;
+    height: 30px;
+    width: 50px;
+    float: right;
+    background: url(../img/swiper-kucuk-oklar.png) no-repeat -50px 0 ;
+    z-index: 1020;
+}
+
 .ana-sayfa-egitim-basligi{
     color:@ca-blue;
     transition: .5s;

@@ -88,11 +88,7 @@
 }*/
 
 
-.swiper-container {
-    width: 700px;
-    height: 400px;
 
-}
 .swiper-wrapper {
     -webkit-perspective: 1200px;
     -moz-perspective: 1200px;
@@ -118,7 +114,7 @@
     vertical-align: middle;
 }
 .inner {
-    padding: 20px;
+    
     font-size: 14px;
     font-weight: 300;
     width: 100%;

@@ -1,27 +1,16 @@
-<div class="swiper-container" >
-    <!-- <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                                    <div ng-repeat="slide in slides" class="swiper-slide" style="background-color: black;position:relative;">
-                                                    <a  href="{{slide.href}}">
-                                                    <div style="height: 500px;overflow:hidden;">
-                                                                    <img class="img-responsive" ng-src="{{slide.file}}"/>
-                                                    </div>
-                                                    </a>
-                                    </div>
-                    </div>
-    </div> -->
-    <!-- <div class="pagination"></div> -->
-    <div class="swiper-wrapper" >
-        <div ng-repeat="slide in slides" class="swiper-slide" >
-            <div class="inner">
-                <img class="img-responsive" ng-src="{{slide.file}}" alt="">
+<div class="swiper-outer-container">
+    <div class="swiper-container" >
+
+        <div class="swiper-wrapper" >
+            <div ng-repeat="slide in slides" class="swiper-slide" >
+                <div class="inner">
+                    <img class="img-responsive" ng-src="{{slide.file}}" alt="">
+                </div>
             </div>
         </div>
     </div>
-    <div class="swiper-controls">
-        <a href="javascript:void(0);" ng-click="prev()" class="swiper-left"></a>
-        <a href="javascript:void(0);" ng-click="next()" class="swiper-right"></a>
-    </div>
+    <a href="javascript:void(0);" ng-click="prev()" class="swiper-left-control"></a>
+    <a href="javascript:void(0);" ng-click="next()" class="swiper-right-control"></a>
 </div>
 <!-- <script>
 $(function(){
