@@ -3010,6 +3010,7 @@ body {
 .view-bottom:empty {
   height: 0;
   top: 100%;
+  padding-top: 0;
 }
 @-webkit-keyframes rollIn {
   0% {
