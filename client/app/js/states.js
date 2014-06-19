@@ -30,6 +30,26 @@ angular.module('lupusshow')
                             },
                         }
                     })
+                    .state('egitimler.akademik', {
+                        url: '/akademik',
+                        views: {
+                            'top@': {},
+                            'bottom@': {
+                                templateUrl: 'partials/egitimler.akademik.html',
+                                controller: 'AkademikCtrl',
+                            }
+                        }
+                    })
+                    .state('egitimler.akademik.icerik', {
+                        url: '/:akademikEgitimUrl',
+                        views: {
+                            
+                            'akademikEgitimIcerik': {
+                                templateUrl: 'partials/egitimler.akademik.icerik.html',
+                                controller: 'AkademikCtrl',
+                            }
+                        }
+                    })
                     .state('egitimler.kategori', {
                         abstract: true,
                         url: '/kategori',

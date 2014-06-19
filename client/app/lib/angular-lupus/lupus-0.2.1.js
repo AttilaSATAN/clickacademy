@@ -5,6 +5,7 @@ var lupus = angular.module("lupus", ["lupus.acrophobia", "lupus.danceFloor",
     "lupus.scrollDisplay", "lupus.templates", "lupus.disko",
     "lupus.service", 'lupus.evliya'
 ]);
+
 /**
  * @ngdoc service
  * @name lupus.acrofobia.service
@@ -51,24 +52,48 @@ angular.module('lupus.service', [])
             referance.window.height = windowSize.height;
         };
     })*/
-.factory('windowSize', function () {
-    var x, y,
+.factory('resizeCommander', function () {
+    var allResizeCommands = [],
         calc = function () {
             var w = window,
                 d = document,
                 e = d.documentElement,
                 g = d.getElementsByTagName('body')[0];
-            x = w.innerWidth || e.clientWidth || g.clientWidth;
-            y = w.innerHeight || e.clientHeight || g.clientHeight;
+            return {
+                width: w.innerWidth || e.clientWidth || g.clientWidth,
+                height: w.innerHeight || e.clientHeight || g.clientHeight
+            };
         };
-    return function () {
-        calc();
-        return {
-            width: x,
-            height: y
-        };
+    window.addEventListener('resize', function () {
+        var size = calc();
+        angular.forEach(allResizeCommands, function (resize) {
+            resize(size);
+        });
+    });
+    return {
+        addCommand: function (command) {
+            allResizeCommands.push(command);
+        }
     };
-});
+})
+    .factory('windowSize', function () {
+        var x, y,
+            calc = function () {
+                var w = window,
+                    d = document,
+                    e = d.documentElement,
+                    g = d.getElementsByTagName('body')[0];
+                x = w.innerWidth || e.clientWidth || g.clientWidth;
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+            };
+        return function () {
+            calc();
+            return {
+                width: x,
+                height: y
+            };
+        };
+    });
 angular.module('lupus.scrollDisplay', ['lupus.acrophobia'])
     .directive('scrollDisplay', ['$acrophobia',
         function ($acrophobia) {

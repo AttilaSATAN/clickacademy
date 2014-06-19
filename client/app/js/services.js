@@ -174,4 +174,8 @@ angular.module('lupusshow.services', [])
                 method: 'PUT'
             }
         });
+    }).factory('AcademicByUrlResource', function ($resource){
+        return $resource('/service/api/academicByUrl/:url', {
+            url:'@url'
+        });
     });

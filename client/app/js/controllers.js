@@ -265,6 +265,15 @@ angular.module('lupusshow.controllers', [])
         };
         getCollection();
     })
+.controller('AkademikCtrl', ['$scope','AcademicResource','AcademicByUrlResource','$stateParams', function ($scope, AcademicResource, AcademicByUrlResource, $stateParams) {
+    $scope.akademikEgitimler = AcademicResource.query();
+    $scope.getByUrl = function(){
+        $scope.akademikEgitim = AcademicByUrlResource.get({
+            url: $stateParams.akademikEgitimUrl
+        });
+    };
+
+}])
     .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,
         EgitimlerResource, EgitimByUrlResource, $stateParams, $timeout) {
         $scope.kaydediliyor = false;

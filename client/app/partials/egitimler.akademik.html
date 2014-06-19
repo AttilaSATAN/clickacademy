@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="row">
+    	<div class="col-xs-3 akademik-egitim-nav-background" ></div>
+        <div class="col-xs-3 akademik-egitim-nav">
+            <ul class="">
+                <li data-ng-repeat="akademikEgitim in akademikEgitimler"><a ui-sref="egitimler.akademik.icerik({akademikEgitimUrl:akademikEgitim.url})">{{akademikEgitim.name}}</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-6 animation-fadeAndSlideBottom" ui-view="akademikEgitimIcerik" ></div>
+    </div>
+</div>

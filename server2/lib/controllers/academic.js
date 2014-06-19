@@ -42,7 +42,6 @@
             req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
         var academic = new Academic(req.body);
-        
         // academic._asset = mongoose.Types.ObjectId(req.body._asset._id) || null;
         academic.save(function (err) {
             if (err) {
@@ -76,12 +75,10 @@
         else {
             req.body._asset = mongoose.Types.ObjectId(req.body._asset._id);
         }
-        
         if (req.body.egitimler.length) {
             egitimler = _.map(req.body.egitimler, function (egitim) {
                 return mongoose.Types.ObjectId(egitim._id);
             });
-            
         }
         var academic = req.academic;
         req.body.egitimler = egitimler;
@@ -99,6 +96,23 @@
     };
     exports.getById = function (req, res, next, academicId) {
         Academic.findById(academicId)
+            .populate('_asset')
+            .populate('egitimler')
+            .exec(function (err, academic) {
+                if (err) {
+                    return res.send(400, {
+                        message: getErrorMessage(err)
+                    });
+                } else {
+                    req.academic = academic;
+                    next();
+                }
+            });
+    };
+    exports.getByUrl = function (req, res, next, url) {
+        Academic.findOne({
+            url: url
+        })
             .populate('_asset')
             .populate('egitimler')
             .exec(function (err, academic) {

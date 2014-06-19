@@ -55,9 +55,11 @@ module.exports = function (app) {
     app.get('/service/api/academic', academic.query);
     app.post('/service/api/academic', academic.create);
     app.get('/service/api/academic/:academicId', academic.get);
+    app.get('/service/api/academicByUrl/:url', academic.get);
     app.delete('/service/api/academic/:academicId', academic.delete);
     app.put('/service/api/academic/:academicId', academic.update);
     app.param('academicId', academic.getById);
+    app.param('url', academic.getByUrl);
     //
     app.get('/service/*', function (req, res) {
         res.send(404);
