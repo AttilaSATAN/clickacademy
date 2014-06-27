@@ -14,7 +14,8 @@ var api = require('./controllers/api'),
     blog = require('./controllers/blog'),
     assets = require('./controllers/assets'),
     asset = require('./controllers/asset'),
-    academic = require('./controllers/academic');
+    academic = require('./controllers/academic'),
+    sektorel = require('./controllers/sektorel');
 var middleware = require('./middleware');
 /**
  * Application routes
@@ -55,11 +56,20 @@ module.exports = function (app) {
     app.get('/service/api/academic', academic.query);
     app.post('/service/api/academic', academic.create);
     app.get('/service/api/academic/:academicId', academic.get);
-    app.get('/service/api/academicByUrl/:url', academic.get);
+    app.get('/service/api/academicByUrl/:academicUrl', academic.get);
     app.delete('/service/api/academic/:academicId', academic.delete);
     app.put('/service/api/academic/:academicId', academic.update);
     app.param('academicId', academic.getById);
-    app.param('url', academic.getByUrl);
+    app.param('academicUrl', academic.getByUrl);
+    // sektorel
+    app.get('/service/api/sektorel', sektorel.query);
+    app.post('/service/api/sektorel', sektorel.create);
+    app.get('/service/api/sektorel/:sektorelId', sektorel.get);
+    app.get('/service/api/sektorelByUrl/:sektorelUrl', sektorel.get);
+    app.delete('/service/api/sektorel/:sektorelId', sektorel.delete);
+    app.put('/service/api/sektorel/:sektorelId', sektorel.update);
+    app.param('sektorelId', sektorel.getById);
+    app.param('sektorelUrl', sektorel.getByUrl);
     //
     app.get('/service/*', function (req, res) {
         res.send(404);

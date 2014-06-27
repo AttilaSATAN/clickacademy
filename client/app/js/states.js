@@ -30,6 +30,26 @@ angular.module('lupusshow')
                             },
                         }
                     })
+                    .state('egitimler.sektorel', {
+                        url: '/sektorel',
+                        views: {
+                            'top@': {},
+                            'bottom@': {
+                                templateUrl: 'partials/egitimler.sektorel.html',
+                                controller: 'SektorelCtrl',
+                            }
+                        }
+                    })
+                    .state('egitimler.sektorel.icerik', {
+                        url: '/:sektorelEgitimUrl',
+                        views: {
+                            
+                            'sektorelEgitimIcerik': {
+                                templateUrl: 'partials/egitimler.sektorel.icerik.html',
+                                controller: 'SektorelCtrl',
+                            }
+                        }
+                    })
                     .state('egitimler.akademik', {
                         url: '/akademik',
                         views: {
@@ -185,13 +205,13 @@ angular.module('lupusshow')
                     })
                     .state('yonetim.sektorel', {
                         url: '/sektorel-egitimler',
-                        templateUrl: 'partials/yonetim/egitimler.html',
-                        controller: 'YonetimEgitimlerCtrl'
+                        templateUrl: 'partials/yonetim/sektorel.html',
+                        controller: 'YonetimSektorelCtrl'
                     })
-                    .state('yonetim.egitim-sayfasi', {
-                        url: '/egitim-sayfasi/:egitimUrl',
-                        templateUrl: 'partials/yonetim/egitim-sayfasi.html',
-                        controller: 'YonetimEgitimSayfasiCtrl'
+                    .state('yonetim.sektorel-page', {
+                        url: '/sektorel-sayfasi/:sektorelId',
+                        templateUrl: 'partials/yonetim/sektorel-page.html',
+                        controller: 'YonetimSektorelCtrl'
                     })
                     .state('yonetim.slider', {
                         url: '/slider',

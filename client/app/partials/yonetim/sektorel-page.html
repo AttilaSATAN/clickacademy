@@ -1,0 +1,30 @@
+<div class="container" ng-init="get()">
+    <div class="row">
+        <p class="text-center text-warning" ng-if="kaydediliyor">Yaptığınız değişiklikler otomatik olarak kaydediliyor lütfen bekleyiniz.</p>
+    <p class="text-center text-success" ng-if="!kaydediliyor && kaydedildi">Kaydedildi.</p></div>
+    <div class="row">
+        <div class="col-sm-9" >
+            <div lupus-assets-b model-data="sektorel">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>{{sektorel.name}}</h1>
+            <form role="form">
+                <div class="form-group">
+                    <label for="sektorel-baslik">Başlık</label>
+                    <input type="text" ng-model="sektorel.name" class="form-control" name="sektorel-baslik" id="sektorel-baslik"/>
+                </div>
+                <div class="form-group">
+                    <label for="sektorel-description">İçerik</label>
+                    <textarea name="sektorel-description" id="sektorel-description" class="form-control" ng-model="sektorel.description"></textarea>
+                </div>
+                <hr/>
+                
+                <a href="javascript:void(0);"  class="btn btn-primary pull-right" ng-click="update()"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

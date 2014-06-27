@@ -1,0 +1,7 @@
+<div ng-init="getByUrl()" class="icerik-sayfasi">
+<img ng-src="assets/{{sektorelEgitim._asset.file}}" ng-if="sektorelEgitim._asset.file" class="img-responsive">
+<div class="icerik-baslik" ng-style="{top: sektorelEgitim._asset.file ? '-24px' : '0'}">
+	<h1>{{sektorelEgitim.name}}</h1>
+</div>
+<p>{{sektorelEgitim.description}}</p>
+</div>

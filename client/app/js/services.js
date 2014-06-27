@@ -160,9 +160,6 @@ angular.module('lupusshow.services', [])
     .factory('MeslekiResource', function ($resource) {
         return $resource('/service/api/mesleki');
     })
-    .factory('SektorelResource', function ($resource) {
-        return $resource('/service/api/sektorel');
-    })
     .factory('AuthResource', function ($resource) {
         return $resource('/service/api/sektorel');
     })
@@ -174,8 +171,23 @@ angular.module('lupusshow.services', [])
                 method: 'PUT'
             }
         });
-    }).factory('AcademicByUrlResource', function ($resource){
+    })
+    .factory('SektorelResource', function ($resource) {
+        return $resource('/service/api/sektorel/:sektorelId', {
+            sektorelId: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
+        });
+    })
+    .factory('AcademicByUrlResource', function ($resource) {
         return $resource('/service/api/academicByUrl/:url', {
-            url:'@url'
+            url: '@url'
+        });
+    })
+    .factory('SektorelByUrlResource', function ($resource) {
+        return $resource('/service/api/sektorelByUrl/:url', {
+            url: '@url'
         });
     });

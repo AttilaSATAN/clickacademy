@@ -273,6 +273,14 @@ angular.module('lupusshow.controllers', [])
         });
     };
 
+}]).controller('SektorelCtrl', ['$scope','SektorelResource','SektorelByUrlResource','$stateParams', function ($scope, SektorelResource, SektorelByUrlResource, $stateParams) {
+    $scope.sektorelEgitimler = SektorelResource.query();
+    $scope.getByUrl = function(){
+        $scope.sektorelEgitim = SektorelByUrlResource.get({
+            url: $stateParams.sektorelEgitimUrl
+        });
+    };
+
 }])
     .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,
         EgitimlerResource, EgitimByUrlResource, $stateParams, $timeout) {
@@ -539,4 +547,87 @@ angular.module('lupusshow.controllers', [])
             });
         };
         $scope.getById = function () {};
+    })
+    .controller('YonetimSektorelCtrl', function ($scope, $stateParams,
+        SektorelResource, slugify, $timeout) {
+        var sectorelSchema = {
+            name: '',
+            url: '',
+            description: '',
+            keywords: [],
+            shortTag: '',
+            _asset: null
+        };
+        var watch;
+        var watch2;
+        var to = null;
+        var to2 = null;
+        var startWatch = function () {
+
+            watch = $scope.$watch('activeSektorel.name', function () {
+                if ($scope.activeSektorel) $scope.activeSektorel.url =
+                    slugify($scope.activeSektorel.name);
+            });
+        };
+        var stopWatch = function () {
+            if (typeof watch === 'function') watch();
+        };
+        var stopAutoSaveWatch = function () {
+            if (typeof watch2 === 'function') watch2();
+        };
+
+        
+        $scope.query = function () {
+            $scope.sektorels = SektorelResource.query();
+        };
+        $scope.newSektorel = function () {
+            stopWatch();
+            $scope.activeSektorel = new SektorelResource(sectorelSchema);
+            startWatch();
+        };
+        $scope.selectSektorel = function (sektorel) {
+            stopWatch();
+            $scope.activeSektorel = sektorel;
+            startWatch();
+        };
+        $scope.create = function () {
+            $scope.activeSektorel.$save(function () {
+                $scope.query();
+            });
+        };
+        $scope.get = function () {
+            console.log('get', $stateParams.sektorelId)
+            $scope.sektorel = SektorelResource.get({
+                sektorelId: $stateParams.sektorelId
+            }, function () {});
+            
+            // $scope.updateEgitimList();
+        };
+        $scope.delete = function (sektorel) {
+            sektorel.$delete( function () {
+                // $scope.query();
+            });
+        };
+        $scope.update = function () {
+            $scope.kaydediliyor = true;
+            $scope.kaydedildi = false;
+            stopWatch();
+            var sektorel;
+            if ($scope.activeSektorel) sektorel = $scope.activeSektorel;
+            else sektorel = $scope.sektorel;
+            sektorel.$update(function (response) {
+                $scope.kaydediliyor = false;
+                $scope.kaydedildi = true;
+                $timeout(function () {
+                    startWatch();
+                }, 1000);
+            }, function (errorResponse) {
+                $timeout(function () {
+                    startWatch();
+                }, 1000);
+                $scope.error = errorResponse.data.message;
+            });
+        };
+        $scope.getById = function () {};
     });
+
