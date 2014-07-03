@@ -1,6 +1,6 @@
 <div class="container">
     <div class="table-responsive">
-        <table class="table" >
+        <table class="table table-striped table-condensed table-hover" >
         <thead class="takvim-header">
         	<th><div>Eğitim</div></th>
         	<th><div>Başlangıç Tarihi</div></th>
@@ -9,7 +9,7 @@
         	<th><div>Kontenjan</div></th>
         </thead>
         <tbody class="takvim-body">
-            <tr data-ng-repeat="training in trainings">
+            <tr data-ng-repeat="training in trainings | filter:takvimFilter">
                 <td><div>{{training.name}}</div></td>
                 <td><div>{{training.begins}}</div></td>
                 <td><div>{{training.schedule}}</div></td>
