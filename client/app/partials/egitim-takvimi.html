@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="table-responsive">
+        <table class="table" >
+        <thead class="takvim-header">
+        	<th><div>Eğitim</div></th>
+        	<th><div>Başlangıç Tarihi</div></th>
+        	<th><div>Ders Saatleri</div></th>
+        	<th><div>Süre</div></th>
+        	<th><div>Kontenjan</div></th>
+        </thead>
+        <tbody class="takvim-body">
+            <tr data-ng-repeat="training in trainings">
+                <td><div>{{training.name}}</div></td>
+                <td><div>{{training.begins}}</div></td>
+                <td><div>{{training.schedule}}</div></td>
+                <td><div>{{training.programTime}}</div></td>
+                <td><div>{{training.quota}}</div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

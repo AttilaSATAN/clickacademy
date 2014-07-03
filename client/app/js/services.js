@@ -190,4 +190,16 @@ angular.module('lupusshow.services', [])
         return $resource('/service/api/sektorelByUrl/:url', {
             url: '@url'
         });
+    })
+    .factory('TumEgitimlerResource', function($resource){
+        return $resource('service/api/tum-egitimler');
+    })
+    .factory('TrainingResource', function ($resource) {
+        return $resource('/service/api/training/:trainingId', {
+            trainingId: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
+        });
     });

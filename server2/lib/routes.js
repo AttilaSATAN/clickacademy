@@ -15,7 +15,8 @@ var api = require('./controllers/api'),
     assets = require('./controllers/assets'),
     asset = require('./controllers/asset'),
     academic = require('./controllers/academic'),
-    sektorel = require('./controllers/sektorel');
+    sektorel = require('./controllers/sektorel'),
+    training = require('./controllers/training');
 var middleware = require('./middleware');
 /**
  * Application routes
@@ -70,6 +71,13 @@ module.exports = function (app) {
     app.put('/service/api/sektorel/:sektorelId', sektorel.update);
     app.param('sektorelId', sektorel.getById);
     app.param('sektorelUrl', sektorel.getByUrl);
+    //
+    app.get('/service/api/training', training.query);
+    app.post('/service/api/training', training.create);
+    app.put('/service/api/training/:trainingId', training.update);
+    app.delete('/service/api/training/:trainingId', training.delete);
+    app.param('trainingId', training.getById);
+
     //
     app.get('/service/*', function (req, res) {
         res.send(404);

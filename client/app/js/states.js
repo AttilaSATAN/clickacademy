@@ -43,7 +43,6 @@ angular.module('lupusshow')
                     .state('egitimler.sektorel.icerik', {
                         url: '/:sektorelEgitimUrl',
                         views: {
-                            
                             'sektorelEgitimIcerik': {
                                 templateUrl: 'partials/egitimler.sektorel.icerik.html',
                                 controller: 'SektorelCtrl',
@@ -63,7 +62,6 @@ angular.module('lupusshow')
                     .state('egitimler.akademik.icerik', {
                         url: '/:akademikEgitimUrl',
                         views: {
-                            
                             'akademikEgitimIcerik': {
                                 templateUrl: 'partials/egitimler.akademik.icerik.html',
                                 controller: 'AkademikCtrl',
@@ -128,6 +126,16 @@ angular.module('lupusshow')
                             }
                         }
                     })
+                    .state('takvim',{
+                        url:'/egitim-takvimi',
+                        views:{
+                            top:{},
+                            bottom:{
+                                templateUrl:'partials/egitim-takvimi.html',
+                                controller:'EgitimTakvimiCtrl'
+                            }
+                        }
+                    })
                     .state('iletisim', {
                         url: '/iletisim',
                         views: {
@@ -135,16 +143,6 @@ angular.module('lupusshow')
                             'bottom': {
                                 templateUrl: 'partials/iletisim.html',
                                 controller: 'IletisimCtrl'
-                            }
-                        }
-                    })
-                    .state('yonetim', {
-                        url: '/yonetim',
-                        views: {
-                            'top': {},
-                            'bottom': {
-                                templateUrl: 'partials/yonetim/index.html',
-                                controller: 'YonetimCtrl'
                             }
                         }
                     })
@@ -168,16 +166,21 @@ angular.module('lupusshow')
                             }
                         }
                     })
-                // .state('yonetim.slides', {
-                //     url: '/bloglar',
-                //     templateUrl: 'partials/yonetim/slides.html',
-                //     controller: 'YonetimSlidesCtrl'
-                // })
-                .state('yonetim.blogs', {
-                    url: '/bloglar',
-                    templateUrl: 'partials/yonetim/blogs.html',
-                    controller: 'YonetimBlogsCtrl'
-                })
+                    .state('yonetim', {
+                        url: '/yonetim',
+                        views: {
+                            'top': {},
+                            'bottom': {
+                                templateUrl: 'partials/yonetim/index.html',
+                                controller: 'YonetimCtrl'
+                            }
+                        }
+                    })
+                    .state('yonetim.blogs', {
+                        url: '/bloglar',
+                        templateUrl: 'partials/yonetim/blogs.html',
+                        controller: 'YonetimBlogsCtrl'
+                    })
                     .state('yonetim.blog', {
                         url: '/blog/:blogUrl',
                         templateUrl: 'partials/yonetim/blog.html',
@@ -222,6 +225,11 @@ angular.module('lupusshow')
                         url: '/users',
                         templateUrl: 'partials/yonetim/users.html',
                         controller: 'YonetimUserCtrl'
+                    })
+                    .state('yonetim.training', {
+                        url: '/sinif',
+                        templateUrl: 'partials/yonetim/training.html',
+                        controller: 'YonetimTrainingCtrl'
                     });
             }
         ]);

@@ -124,8 +124,8 @@ angular.module('lupusshow.directives', [])
                                 var slide = swiper.slides[i];
                                 var progress = slide.progress;
                                 var scale, translate, opacity;
-                                console.log('---------Slide ' + i)
-                                console.log(slide.progress)
+                                // console.log('---------Slide ' + i)
+                                // console.log(slide.progress)
                                 if (progress <= 0) {
                                     opacity = 1 - Math.min(Math.abs(
                                         progress), 1);

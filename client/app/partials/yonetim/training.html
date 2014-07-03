@@ -1,0 +1,63 @@
+<div class="container" ng-init="list(); listTumEgitimler();">
+    <div class="row" style="position:relative">
+        <div class="col-sm-8">
+            <button class="pull-right btn btn-lg btn-primary" ng-click="yeni.training = {}">
+            <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h4>Takvim</h4>
+            <div class="list-group">
+                <div href="#" class="list-group-item clearfix animation-fadeAndScale"  ng-class="{'list-group-item-info': yeni.training._id == training._id}"  ng-repeat="training in trainings">
+                    <div class="col-sm-9">
+                        <span>{{training.name}}</span>
+                        <span> - {{training.begins}}</span>
+                        <span> - {{training.schedule}}</span>
+                        <span> - {{training.programTime}}</span>
+                        <span> - 0</span> / <span>{{training.quota}}</span>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="delete(training);">Sil</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="yeni.training = training;">Düzenle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" style="position: fixed;right: 30px;margin-top:-20px;">
+            <div ng-if="yeni.training._id">
+                <h4>Düzenle</h4>
+            </div>
+            <div ng-if="!yeni.training._id">
+                <h4>Yeni</h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="sinif-adi">Sınıf Adı</label>
+                    <input type="text" name="sinif-adi" id="sinif-adi" class="form-control" ng-model="yeni.training.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="baslangic-tarihi">Başlangıç Tarihi</label>
+                    <input type="text" name="baslangic-tarihi" id="baslangic-tarihi" class="form-control" ng-model="yeni.training.begins"/>
+                </div>
+                <div class="form-group">
+                    <label for="saatler">Saatler</label>
+                    <input type="text" name="saatler" id="saatler" class="form-control" ng-model="yeni.training.schedule"/>
+                </div>
+                <div class="form-group">
+                    <label for="sure">Süre</label>
+                    <input type="text" name="sure" id="sure" class="form-control" ng-model="yeni.training.programTime"/>
+                </div>
+                <div class="form-group">
+                    <label for="kontenjan">Kontenjan</label>
+                    <input type="number" name="kontenjan" id="kontenjan" class="form-control" ng-model="yeni.training.quota"/>
+                </div>
+                <!--             <div class="form-group">
+                                    <label >Anahtar Kelimeler</label>
+                                    <input type-text class="form-control" ng-model="yeni.training.keywords[$index]" ng-repeat="keyword in yeni.training.keywords track by $index" placeholder="Anahtar Kelime"/>
+                                    <button class="btn btn-sm btn-default" ng-click="yeni.training.keywords.push(null)">
+                                    <span class="glyphicon glyphicon-plus" ng-click=""></span> Anahtar Kelime Ekle</button>
+                </div> -->
+            </form>
+            <a href="javascript:void(0);" ng-if="!yeni.training._id" class="btn btn-primary pull-right" ng-click="create();"><span class="glyphicon glyphicon-plus"></span>Yeni</a>
+            <a href="javascript:void(0);" ng-if="yeni.training._id" class="btn btn-primary pull-right" ng-click="update(yeni.training);"><span class="glyphicon glyphicon-save"></span>Kaydet</a>
+        </div>
+    </div>

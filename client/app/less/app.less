@@ -432,7 +432,7 @@ body {
         .lupus-evliya-navbar{
             clear:both;
             height:36px;
-            margin:10px 220px 10px 247px;
+            margin:10px 220px 10px 240px;
             background-color: #025172;
 
             ul {
@@ -770,10 +770,71 @@ body {
 .swipe-next:hover, .swipe-next:focus, .swipe-next:active.swipe-prev:hover, .swipe-prev:focus, .swipe-prev:active{
     opacity:0.7;
 }
-
-
-
-
-
 /*************************************/
+.takvim-header{
+    height: 54px;
+}
+.takvim-header th div{
+margin-top: 36px;
+text-align: center;
+color: white;
+background: #055172;
+line-height: 37px;
+}
+thead.takvim-header{
+    border: 0 none transparent;
+}
+thead.takvim-header > tr > th{
+    padding: 0;
+    border: 0 none transparent;
+}
+thead.takvim-header > tr > th:first-child{
+    background: url(/img/takvim-main-bg.png) bottom left no-repeat;
+}
+thead.takvim-header > tr > th:first-child div{
+    background: none;
+}
+
+tbody.takvim-body > tr > td > div {
+    text-align: center;
+}
+.table > thead > tr > th, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > td{
+    border-top: 0 none;
+}
+/*************************************/
+.home-sag{
+    position:fixed;
+    top:0;
+    right:0;
+    width:162px;
+    background-color: #E2E2E2;
+}
+.sag-body-bg{
+    background: url(/img/sag-baslik-kenarligi-1.png)  top right no-repeat;
+    min-height: 200px;
+    .icerik-baslik{
+        h1{
+            font-size: 13px;
+            width: 100%;
+
+        }
+    }
+    .icerik-metin p{
+        font-size: 12px;
+        padding: 5px 10px 5px 10px ;
+    }
+}
+.sag-header-bg{
+    background: url('/img/sag-bilgilendirme-top.png') top right no-repeat;
+    height: 37px;
+}
+/*************************************/
+.yonetim-main{
+    font-size: 14px;
+}
 @import "app-animations.less";

@@ -265,23 +265,30 @@ angular.module('lupusshow.controllers', [])
         };
         getCollection();
     })
-.controller('AkademikCtrl', ['$scope','AcademicResource','AcademicByUrlResource','$stateParams', function ($scope, AcademicResource, AcademicByUrlResource, $stateParams) {
-    $scope.akademikEgitimler = AcademicResource.query();
-    $scope.getByUrl = function(){
-        $scope.akademikEgitim = AcademicByUrlResource.get({
-            url: $stateParams.akademikEgitimUrl
-        });
-    };
-
-}]).controller('SektorelCtrl', ['$scope','SektorelResource','SektorelByUrlResource','$stateParams', function ($scope, SektorelResource, SektorelByUrlResource, $stateParams) {
-    $scope.sektorelEgitimler = SektorelResource.query();
-    $scope.getByUrl = function(){
-        $scope.sektorelEgitim = SektorelByUrlResource.get({
-            url: $stateParams.sektorelEgitimUrl
-        });
-    };
-
-}])
+    .controller('AkademikCtrl', ['$scope', 'AcademicResource',
+        'AcademicByUrlResource', '$stateParams',
+        function ($scope, AcademicResource, AcademicByUrlResource,
+            $stateParams) {
+            $scope.akademikEgitimler = AcademicResource.query();
+            $scope.getByUrl = function () {
+                $scope.akademikEgitim = AcademicByUrlResource.get({
+                    url: $stateParams.akademikEgitimUrl
+                });
+            };
+        }
+    ])
+    .controller('SektorelCtrl', ['$scope', 'SektorelResource',
+        'SektorelByUrlResource', '$stateParams',
+        function ($scope, SektorelResource, SektorelByUrlResource,
+            $stateParams) {
+            $scope.sektorelEgitimler = SektorelResource.query();
+            $scope.getByUrl = function () {
+                $scope.sektorelEgitim = SektorelByUrlResource.get({
+                    url: $stateParams.sektorelEgitimUrl
+                });
+            };
+        }
+    ])
     .controller('YonetimEgitimSayfasiCtrl', function ($scope, EgitimResource,
         EgitimlerResource, EgitimByUrlResource, $stateParams, $timeout) {
         $scope.kaydediliyor = false;
@@ -489,7 +496,6 @@ angular.module('lupusshow.controllers', [])
         var stopAutoSaveWatch = function () {
             if (typeof watch2 === 'function') watch2();
         };
-
         $scope.addEgitim = function (egitim) {
             $scope.academic.egitimler.push(egitim);
         };
@@ -522,7 +528,7 @@ angular.module('lupusshow.controllers', [])
             // $scope.updateEgitimList();
         };
         $scope.delete = function (academic) {
-            academic.$delete( function () {
+            academic.$delete(function () {
                 $scope.query();
             });
         };
@@ -563,7 +569,6 @@ angular.module('lupusshow.controllers', [])
         var to = null;
         var to2 = null;
         var startWatch = function () {
-
             watch = $scope.$watch('activeSektorel.name', function () {
                 if ($scope.activeSektorel) $scope.activeSektorel.url =
                     slugify($scope.activeSektorel.name);
@@ -575,8 +580,6 @@ angular.module('lupusshow.controllers', [])
         var stopAutoSaveWatch = function () {
             if (typeof watch2 === 'function') watch2();
         };
-
-        
         $scope.query = function () {
             $scope.sektorels = SektorelResource.query();
         };
@@ -600,11 +603,10 @@ angular.module('lupusshow.controllers', [])
             $scope.sektorel = SektorelResource.get({
                 sektorelId: $stateParams.sektorelId
             }, function () {});
-            
             // $scope.updateEgitimList();
         };
         $scope.delete = function (sektorel) {
-            sektorel.$delete( function () {
+            sektorel.$delete(function () {
                 // $scope.query();
             });
         };
@@ -629,5 +631,35 @@ angular.module('lupusshow.controllers', [])
             });
         };
         $scope.getById = function () {};
-    });
-
+    })
+    .controller('EgitimTakvimiCtrl', ['$scope', 'TrainingResource',
+        function ($scope, TrainingResource) {
+            $scope.trainings = TrainingResource.query();
+        }
+    ])
+    .controller('YonetimTrainingCtrl', ['$scope', 'TrainingResource',
+        'TumEgitimlerResource',
+        function ($scope, TrainingResource, TumEgitimlerResource) {
+            $scope.yeni = {};
+            $scope.listTumEgitimler = function () {
+                $scope.tumEgitimler = TumEgitimlerResource.query();
+            };
+            $scope.list = function () {
+                $scope.trainings = TrainingResource.query();
+            };
+            $scope.create = function () {
+                var yeniTraining = new TrainingResource($scope.yeni.training);
+                yeniTraining.$save(function () {
+                    $scope.list();
+                });
+            };
+            $scope.delete = function (training) {
+                training.$remove();
+            };
+            $scope.update = function (training) {
+                training.$update(function () {
+                    $scope.list();
+                });
+            };
+        }
+    ]);

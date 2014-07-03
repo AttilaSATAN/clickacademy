@@ -7,11 +7,11 @@
             <h4>Eğitimler</h4>
             <div class="list-group">
                 <div href="#" class="list-group-item clearfix animation-fadeAndScale"  ng-class="{'list-group-item-info': yeni.egitim._id == egitim._id}"  ng-repeat="egitim in egitimler">
-                    <div class="col-sm-9">
+                    <div class="col-sm-6">
                         <p class="list-group-item-heading">{{egitim.name}}</p>
                         <p class="list-group-item-heading">/{{egitim.url}}</p>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <a class="btn btn-sm btn-warning pull-right" ui-sref="yonetim.egitim-sayfasi({egitimUrl:egitim.url})">Sayfayı Düzenle</a>
                         <a href="javascript:void(0);" class="btn btn-sm btn-danger pull-right" ng-click="crud.remove(egitim._id);">Sil</a>
                         <a href="javascript:void(0);" class="btn btn-sm btn-primary pull-right" ng-click="duzenle(egitim);">Düzenle</a>
