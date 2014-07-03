@@ -24,7 +24,7 @@
     };
     exports.query = function (req, res) {
         Training.find()
-            .sort('-created')
+            .sort('name')
             .exec(function (err, assets) {
                 if (err) {
                     return res.send(400, {
@@ -37,7 +37,7 @@
     };
     exports.create = function (req, res) {
         var training = new Training(req.body);
-        
+
         training.save(function (err) {
             if (err) {
                 return res.send(400, {

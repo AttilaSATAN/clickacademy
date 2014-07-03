@@ -18,7 +18,7 @@ lupusshow.run(
                     'home';
                 $timeout(function () {
                     $rootScope.$apply('hideFrame1');
-                })
+                });
             });
 
         }

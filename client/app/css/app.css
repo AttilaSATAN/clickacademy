@@ -69,6 +69,10 @@ body {
   bottom: 0;
   height: 100%;
 }
+#f1 {
+  animation: 1s linear all;
+  -webkit-animation: 1s linear all;
+}
 .navbar {
   animation: 1s linear all;
   -webkit-animation: 1s linear all;
