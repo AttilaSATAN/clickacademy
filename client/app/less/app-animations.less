@@ -2,73 +2,39 @@
 
 @egitim-animasyon-zamanlamasi: 0.5s;
 .view-top {
-
     position: absolute;
-
     top: 0;
-
     left: 0;
-
     right: 0;
-
-    bottom: 52px;
-
     overflow: hidden;
-
     transition: 1s;
-
     -webkit-transition: 1s;
-
     &.ng-leave {
-
         -webkit-transition: .3 ease-in-out;
-
         opacity: 1;
-
         transform: translateY(0);
-
         -webkit-transform: translateY(0);
-
         &.ng-leave-active {
-
             opacity: 0;
-
             transform: translateY(-100%);
-
             -webkit-transform: translateY(-100%);
-
        }
-
   }
 
   &.ng-enter {
-
       -webkit-transition: .8s ease-in-out;
-
       opacity: 0;
-
       transform: translateY(-100%);
-
       -webkit-transform: translateY(-100%);
-
       &.ng-enter-active {
-
           opacity: 1;
-
           transform: translateY(0);
-
           -webkit-transform: translateY(0);
-
      }
-
-}
-
-&:empty {
-
-    //height: 0;
-
-    bottom: 0;
-}
+  }
+  &:empty {
+      bottom: 0;
+  }
 }
 .view-bottom {
     position: absolute;

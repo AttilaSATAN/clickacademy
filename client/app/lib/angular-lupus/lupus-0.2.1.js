@@ -513,7 +513,7 @@ angular.module('lupus.evliya', [])
                     if ($scope.stateName !== 'home') {
                         poz = '-40px';
                     } else {
-                        poz = $scope.window.height - 176 + 'px';
+                        poz = $scope.window.height - 96 + 'px';
                     }
                     iElm.removeClass('navbar-fixed-bottom');
                     iElm.css({
