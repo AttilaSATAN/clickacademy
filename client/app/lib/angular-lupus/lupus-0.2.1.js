@@ -511,7 +511,7 @@ angular.module('lupus.evliya', [])
                     var poz = 0;
                     $scope.window = windowSize();
                     if ($scope.stateName !== 'home') {
-                        poz = '-40px';
+                        poz = '0';
                     } else {
                         poz = $scope.window.height - 96 + 'px';
                     }
