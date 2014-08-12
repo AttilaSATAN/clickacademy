@@ -295,8 +295,25 @@
 			"file": "client/app/lib/angular-lupus/lupus-0.2.1.js",
 			"settings":
 			{
-				"buffer_size": 23965,
+				"buffer_size": 23961,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "GENEL HİZMET SÖZLEŞMESİ\nMADDE 1 - TARAFLAR\nBir tarafta Attila SATAN - Bahattin Serdar ÇÖGEN  Ortaklığı (bu sözleşmede YÜKLENİCİLER olarak adlandırılacaktır) diğer tarafta ..., (bu sözleşmede MÜŞTERİ olarak adlandırılacaktır) arasında aşağıda belirtilen şartlarda tam bir anlaşmaya varılmıştır.\nMADDE 2 - KONU\nİş bu  sözleşme MÜŞTERİ'nin iletişim, tanıtım, reklam ve benzeri hizmetleri yürütebilmek amacıyla ihtiyaç duyduğu internet sitesi tasarımının ve/veya programların ve/veya sunucu hizmetlerinin YÜKLENİCİLER tarafından hazırlanması hizmetini, bu hizmet için gerekli araştırmaların yapılması, yapılan araştırmalar doğrultusunda internet sitesi tasarımının ve/veya programların ve/veya sunucu hizmetlerinin düzenlenmesini kapsamaktadır. Bu ürün ve hizmetler bu sözleşmede HİZMET olarak adlandırılacaktır. \n\nBu sözleşme toplam 2 nusha ve ... sayfadır.\n\nMADDE 3 - MÜŞTERİ’NİN YÜKÜMLÜLÜKLERİ\nMÜŞTERİ’nin kontrolünde olan internet sitesi içeriği Türkiye Cumhuriyeti kanunlarına aykırı ve/veya bir şahıs ya da kuruma karşı hakaret barındırmamalıdır. MÜŞTERİ tarafından yerleştirilmiş içerikten doğabilecek maddi, manevi yada hukuki sorumluluklardan YÜKLENİCİLER sorumlu tutulamaz.\nMÜŞTERİ, HİZMET için gerekli resim, video, ses kaydı, veri tabanı dökümü ve yazı bazlı dokümanları tedarik etmek ve YÜKLENİCİLER'e teslim etmekle yükümlüdür.\nMÜŞTERİ, hazırlanacak olan web sitesinde dile getirdiği tüm fikir, düşünce, ifade, yorum ve yazıların kendisine ait olduğunu, YÜKLENİCİLER’in hiçbir şekilde sorumlu olmadığını kabul ve beyan eder.\n\nMADDE 4 - YÜKLENİCİLER’İN YÜKÜMLÜLÜKLERİ\n\nYÜKLENİCİLER, MÜŞTERİ'NİN internet sitesini tasarımlamak, programlamak ve kullanımın eğitimini vermekle yükümlüdür. \nYÜKLENİCİLER, MÜŞTERİ'NİN ihtiyaç duyduğu internet sitesini 1 ay (30 gün) içinde teslim etmekle yükümlüdür. \nYÜKLENİCİLER, MÜŞTERİ'NİN internet ortamında satış ve pazarlamasını yapmak için ihtiyaç duyduğu site kullanım eğitimini ayda 12 (oniki) saatten fazla olmamak şartıyla sağlamakla yükümlüdür.\nYÜKLENİCİLER, MÜŞTERİ'NİN internet sitesinin yayınını sağlayacak 3. taraf hizmet sağlayıcılar ile \nYÜKLENİCİLER, MÜŞTERİ'ye teslim edilmiş internet sitesinin yayınını sürdürmesine engel olan yada hatalı çalışmasına sebep veren programsal ve/veya sunucudan kaynaklanan hataları ve sorunlarını düzeltmekle yükümlüdür. Bu yükümlülüklerde mücbir sebepler (internet bağlantılarında oluşabilecek genel sorunlar, doğal afetler, kazalar, savaş v.b. gibi) hariç tutulmuştur. Mücbir sebepler dahilinde gerçekleşen sorunlarda YÜKLENİCİLER ile MÜŞTERİ arasında sorunun hızlı çözümü için ayrı bir ek sözleşme yapılabilir.\n\n\n\nMADDE 5 - HİZMET SÜRESİ ve ÖDEME\n\nBu sözleşmedeki HİZMET SÜRESİ 1 (bir) yıl olarak belirlenmiştir.\n\nÖdemelerin yapılmaması durumunda, YÜKLENİCİLER taahhüt ettiği hizmeti ve/veya ürünün teslimini ertelemek, durdurmak veya iptal etmek hakkına sahiptir.\nHİZMET’in karşılanmaması durumunda MÜŞTERİ belirlenmiş ödeme takvimindeki ödemeleri yapmama hakkına sahiptir.\nBu sözleşmeden doğabilecek hak kayıplarında Ankara Mahkemeleri yetkilidir.\n\nYÜKLENİCİLER                                                                                                  MÜŞTERİ\n",
+			"settings":
+			{
+				"buffer_size": 3161,
+				"line_ending": "Windows",
+				"name": "GENEL HİZMET SÖZLEŞMESİ"
+			}
+		},
+		{
+			"file": "/D/Downloads/Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN/VAiN.nfo",
+			"settings":
+			{
+				"buffer_size": 4087,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -705,6 +722,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Madde",
+			"Ek 1",
+			",",
+			"	",
 			"display:block;width:164px;",
 			"margin-left",
 			"10px",
@@ -828,11 +849,7 @@
 			"bottom: 153px;",
 			"view-bottom",
 			"view",
-			"background-position",
-			"1s",
-			"a",
-			"h1",
-			"color"
+			"background-position"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -857,7 +874,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -873,8 +890,8 @@
 						"selection":
 						[
 							[
-								11323,
-								11323
+								11101,
+								11101
 							]
 						],
 						"settings":
@@ -883,26 +900,18 @@
 							"SideBarAutoAddFoldersForOpenedFiles": 1,
 							"bh_regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -911,22 +920,30 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1040,7 +1057,7 @@
 						"translation.y": 7912.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1222,7 +1239,7 @@
 						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1231,15 +1248,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23965,
+						"buffer_size": 23961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21820,
-								21820
+								21721,
+								21721
 							]
 						],
 						"settings":
@@ -1247,26 +1264,18 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -1275,22 +1284,30 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1409,6 +1426,262 @@
 				},
 				{
 					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3161,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2092,
+								2092
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "GENEL HİZMET SÖZLEŞMESİ",
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/Downloads/Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN/VAiN.nfo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 911.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "/C/İş/Doruk/clickacademy.net/button çlışmaları/button2.svg",
 					"semi_transient": false,
 					"settings":
@@ -1584,11 +1857,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "client/app/js/app.js",
 					"semi_transient": false,
 					"settings":
@@ -1766,11 +2039,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "client/app/js/directives.js",
 					"semi_transient": false,
 					"settings":
@@ -1948,11 +2221,11 @@
 						"translation.y": 1620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "client/app/partials/home.html",
 					"semi_transient": false,
 					"settings":
@@ -2130,11 +2403,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "client/app/index.html",
 					"semi_transient": false,
 					"settings":
@@ -2312,11 +2585,11 @@
 						"translation.y": 15.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "client/app/template/lupus/evliya/evliya-navbar.html",
 					"semi_transient": false,
 					"settings":
@@ -2506,11 +2779,11 @@
 						"translation.y": 2295.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "/C/İş/Doruk/clickacademy.net/button çlışmaları/button.svg",
 					"semi_transient": false,
 					"settings":
@@ -2688,11 +2961,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "/C/İş/Doruk/clickacademy.net/button çlışmaları/onhover2.svg",
 					"semi_transient": false,
 					"settings":
@@ -2868,11 +3141,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "client/app/partials/hakkimizda.html",
 					"semi_transient": false,
 					"settings":
@@ -3050,7 +3323,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
